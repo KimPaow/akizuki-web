@@ -31,7 +31,6 @@ export const Link: React.FC<Props> = ({
   const [isHovered, setIsHovered] = useState(false);
   return (
     <NextLink
-      data-decorator={decorator}
       className={link({ hover: isHovered, decorator, className })}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}

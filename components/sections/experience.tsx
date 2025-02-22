@@ -10,22 +10,6 @@ export function Experience({ ...props }: React.ComponentProps<"div">) {
       {...props}
     >
       <div className="min-h-200 px-8 sm:px-20 flex gap-8">
-        <div className=" flex-3 flex flex-col justify-start gap-8">
-          <Text variant="h3" color="muted">
-            体験
-          </Text>
-          <Text variant="h2" className="text-8xl">
-            歴史を感じる旅
-          </Text>
-          <div className="flex flex-col gap-8 items-start">
-            <Text variant="p">
-              春の桜、秋の紅葉が美しい秋月。歴史ある城下町を散策し、象徴的な秋月城跡を訪れ、趣のあるカフェで地元の味を楽しめます。町の武士の歴史を物語る「黒門」は必見です。四季折々の魅力が溢れる秋月へ、ぜひお越しください！
-            </Text>
-            <Link href="/experience" decorator>
-              観光スポット
-            </Link>
-          </div>
-        </div>
         <div className="flex-3 relative">
           <Image
             className="object-cover"
@@ -36,7 +20,16 @@ export function Experience({ ...props }: React.ComponentProps<"div">) {
             fill={true}
           />
         </div>
-        <div className="flex-2 flex flex-col justify-end gap-8">
+        <div className=" flex-3 flex flex-col justify-between gap-8">
+          <Text variant="h3" color="muted">
+            体験
+          </Text>
+          <Text variant="h2" className="text-8xl">
+            歴史を感じる旅
+          </Text>
+          <span />
+        </div>
+        <div className="flex-2 flex flex-col justify-between gap-8">
           <Image
             className=""
             src="/images/black_gate.webp"
@@ -44,6 +37,14 @@ export function Experience({ ...props }: React.ComponentProps<"div">) {
             width={310}
             height={282}
           />
+          <div className="flex flex-col gap-8 items-start">
+            <Text variant="p">
+              春の桜、秋の紅葉が美しい秋月。歴史ある城下町を散策し、象徴的な秋月城跡を訪れ、趣のあるカフェで地元の味を楽しめます。町の武士の歴史を物語る「黒門」は必見です。四季折々の魅力が溢れる秋月へ、ぜひお越しください！
+            </Text>
+            <Link href="/experience" decorator>
+              観光スポット
+            </Link>
+          </div>
         </div>
       </div>
     </div>
