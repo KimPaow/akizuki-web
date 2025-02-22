@@ -39,13 +39,21 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header>
-            <Link href="/" className="mr-auto">
+            <Link href="/" className="mr-auto font-semibold hover:underline">
               Akizuki
             </Link>
-            <Link href="/">秋月について</Link>
-            <Link href="/">観光</Link>
-            <Link href="/">暮らし</Link>
-            <Link href="/">アクセス</Link>
+            <Link href="/" className="font-semibold hover:underline">
+              秋月について
+            </Link>
+            <Link href="/experience" className="font-semibold hover:underline">
+              観光
+            </Link>
+            <Link href="/living" className="font-semibold hover:underline">
+              暮らし
+            </Link>
+            <Link href="/" className="font-semibold hover:underline">
+              アクセス
+            </Link>
             <ModeToggle />
           </Header>
           {children}

@@ -1,0 +1,70 @@
+import { cva, VariantProps } from "class-variance-authority";
+
+const typographyVariants = cva([], {
+  variants: {
+    variant: {
+      display: ["font-mincho", "scroll-m-20", "text-display"],
+      h1: [
+        "font-mincho",
+        "scroll-m-20",
+        "text-4xl",
+        "tracking-tight",
+        "lg:text-5xl",
+      ],
+      h2: [
+        "font-mincho",
+        "scroll-m-20",
+        "text-3xl",
+        "tracking-tight",
+        "first:mt-0",
+      ],
+      h3: ["font-mincho", "scroll-m-20", "text-2xl", "tracking-tight"],
+      h4: ["font-mincho", "scroll-m-20", "text-xl", "tracking-tight"],
+      p: ["leading-7 [&:not(:first-child)]:mt-6"],
+      large: ["text-lg"],
+      small: ["text-sm leading-none"],
+      lead: ["text-xl text-muted-foreground"],
+    },
+    color: {
+      foreground: ["text-foreground"],
+      muted: ["text-muted-foreground"],
+    },
+  },
+  defaultVariants: {
+    variant: "p",
+    color: "foreground",
+  },
+});
+
+export interface TypographyProps
+  extends Omit<React.HTMLAttributes<HTMLHeadingElement>, "color">,
+    VariantProps<typeof typographyVariants> {}
+
+export const Text: React.FC<TypographyProps> = ({
+  variant = "p",
+  color = "foreground",
+  className: test,
+  ...rest
+}) => {
+  const cn = typographyVariants({ variant, color, className: test });
+
+  if (variant === "display" || variant === "h1") {
+    return <h1 className={cn} {...rest} />;
+  }
+
+  if (variant === "h2") {
+    return <h2 className={cn} {...rest} />;
+  }
+
+  if (variant === "h3") {
+    return <h3 className={cn} {...rest} />;
+  }
+
+  if (variant === "h4") {
+    return <h4 className={cn} {...rest} />;
+  }
+
+  return <p className={cn} {...rest} />;
+};
+
+export default Text;
