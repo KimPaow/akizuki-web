@@ -5,19 +5,21 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-figtree);
+  --font-mincho: var(--font-mincho);
+
+  --text-display: 16rem;
 }
 
 :root {
-  --background: hsl(0 0% 100%);
-  --foreground: hsl(20 14.3% 4.1%);
+  --background: hsl(40, 80.5%, 92%);
+  --foreground: hsl(0, 0%, 12.5%);
   --card: hsl(0 0% 100%);
   --card-foreground: hsl(20 14.3% 4.1%);
   --popover: hsl(0 0% 100%);
   --popover-foreground: hsl(20 14.3% 4.1%);
-  --primary: hsl(24 9.8% 10%);
-  --primary-foreground: hsl(60 9.1% 97.8%);
+  --primary: hsl(0, 0%, 12.5%);
+  --primary-foreground: hsl(40, 80.5%, 92%);
   --secondary: hsl(60 4.8% 95.9%);
   --secondary-foreground: hsl(24 9.8% 10%);
   --muted: hsl(60 4.8% 95.9%);
@@ -38,8 +40,8 @@
 }
 
 .dark {
-  --background: hsl(20 14.3% 4.1%);
-  --foreground: hsl(60 9.1% 97.8%);
+  --background: hsl(0, 0%, 12.5%);
+  --foreground: hsl(40, 80.5%, 92%);
   --card: hsl(20 14.3% 4.1%);
   --card-foreground: hsl(60 9.1% 97.8%);
   --popover: hsl(20 14.3% 4.1%);
