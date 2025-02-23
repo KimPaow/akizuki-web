@@ -27,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja" suppressHydrationWarning className="h-full">
+    <html lang="ja" suppressHydrationWarning className="h-full scroll-smooth">
       <body
         className={`${figtree.variable} ${mincho.variable} font-[family-name:var(--font-figtree)] antialiased h-full`}
       >

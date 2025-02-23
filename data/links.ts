@@ -1,6 +1,6 @@
 export const links = [
   {
-    href: "/",
+    href: "/history",
     text: "歴史",
   },
   {

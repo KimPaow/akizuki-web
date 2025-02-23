@@ -34,7 +34,7 @@ const formSchema = z.object({
   }),
 });
 
-export function ContactForm() {
+export function ContactForm(props: React.ComponentProps<"form">) {
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -51,7 +51,7 @@ export function ContactForm() {
   }
 
   return (
-    <Form {...form}>
+    <Form {...props} {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
           control={form.control}

@@ -27,7 +27,6 @@ export function Experience({ ...props }: React.ComponentProps<"div">) {
           <Text variant="h2" className="text-8xl">
             歴史を感じる旅
           </Text>
-          {/* <span /> */}
         </div>
         <div className="flex-2 flex flex-col justify-between gap-8">
           <Image

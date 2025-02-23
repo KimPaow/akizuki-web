@@ -22,8 +22,8 @@ function Header({
       className="flex justify-end items-center gap-8 py-4 px-6 fixed top-0 left-0 right-0 z-10"
       {...props}
     >
-      <Link href="/" variant="nav" underline className="mr-auto">
-        Akizuki
+      <Link href="/" variant="nav" className="mr-auto flex items-center gap-2">
+        <span className="text-4xl">●</span>
       </Link>
       {links.map((link) => (
         <Link

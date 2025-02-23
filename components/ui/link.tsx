@@ -5,7 +5,7 @@ import type { LinkProps } from "next/link";
 import { cva, VariantProps } from "class-variance-authority";
 import { useState } from "react";
 
-const link = cva(["font-semibold cursor-pointer"], {
+const link = cva(["font-medium cursor-pointer"], {
   variants: {
     hover: {
       true: [""],
@@ -16,7 +16,7 @@ const link = cva(["font-semibold cursor-pointer"], {
       nav: ["text-lg relative"],
     },
     underline: {
-      true: [""],
+      true: ["relative"],
     },
   },
   compoundVariants: [
@@ -57,7 +57,7 @@ export const Link: React.FC<Props> = ({
       {underline && (
         <span
           data-line
-          className="absolute bottom-0 translate-y-0 left-0 w-0 h-0.5 bg-foreground transition-[width]"
+          className="absolute bottom-0 translate-y-1 left-0 w-0 h-0.5 bg-foreground transition-[width]"
         />
       )}
     </NextLink>
