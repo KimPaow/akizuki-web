@@ -27,7 +27,7 @@ export function Experience({ ...props }: React.ComponentProps<"div">) {
           <Text variant="h2" className="text-8xl">
             歴史を感じる旅
           </Text>
-          <span />
+          {/* <span /> */}
         </div>
         <div className="flex-2 flex flex-col justify-between gap-8">
           <Image
@@ -41,7 +41,7 @@ export function Experience({ ...props }: React.ComponentProps<"div">) {
             <Text variant="p">
               春の桜、秋の紅葉が美しい秋月。歴史ある城下町を散策し、象徴的な秋月城跡を訪れ、趣のあるカフェで地元の味を楽しめます。町の武士の歴史を物語る「黒門」は必見です。四季折々の魅力が溢れる秋月へ、ぜひお越しください！
             </Text>
-            <Link href="/experience" decorator>
+            <Link href="/experience" variant="arrow" underline>
               観光スポット
             </Link>
           </div>

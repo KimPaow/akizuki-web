@@ -3,8 +3,7 @@ import { Figtree, Shippori_Mincho } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Header } from "@/components/ui/header";
-import { ModeToggle } from "@/components/ui/mode-toggle";
-import Link from "next/link";
+import { Footer } from "@/components/ui/footer";
 
 const figtree = Figtree({
   variable: "--font-figtree",
@@ -30,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="ja" suppressHydrationWarning className="h-full">
       <body
-        className={`${figtree.variable} ${mincho.variable} antialiased h-full`}
+        className={`${figtree.variable} ${mincho.variable} font-[family-name:var(--font-figtree)] antialiased h-full`}
       >
         <ThemeProvider
           attribute="class"
@@ -38,25 +37,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header>
-            <Link href="/" className="mr-auto font-semibold hover:underline">
-              Akizuki
-            </Link>
-            <Link href="/" className="font-semibold hover:underline">
-              秋月について
-            </Link>
-            <Link href="/experience" className="font-semibold hover:underline">
-              観光
-            </Link>
-            <Link href="/living" className="font-semibold hover:underline">
-              暮らし
-            </Link>
-            <Link href="/" className="font-semibold hover:underline">
-              アクセス
-            </Link>
-            <ModeToggle />
-          </Header>
+          <Header />
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

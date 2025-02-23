@@ -1,9 +1,10 @@
 import { cva, VariantProps } from "class-variance-authority";
+import { twMerge } from "tailwind-merge";
 
 const typographyVariants = cva([], {
   variants: {
     variant: {
-      display: ["font-mincho", "scroll-m-20", "text-display"],
+      display: ["font-mincho scroll-m-20 text-[16rem]"],
       h1: [
         "font-mincho",
         "scroll-m-20",
@@ -43,10 +44,10 @@ export interface TypographyProps
 export const Text: React.FC<TypographyProps> = ({
   variant = "p",
   color = "foreground",
-  className: test,
+  className,
   ...rest
 }) => {
-  const cn = typographyVariants({ variant, color, className: test });
+  const cn = twMerge(typographyVariants({ variant, color, className }));
 
   if (variant === "display" || variant === "h1") {
     return <h1 className={cn} {...rest} />;

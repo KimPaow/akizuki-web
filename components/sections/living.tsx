@@ -41,7 +41,9 @@ export function Living({ ...props }: React.ComponentProps<"div">) {
             <Text variant="p">
               秋月は文化、創造性、そしてコミュニティが息づく活気ある街です。おしゃれなカフェや職人の店が点在し、歴史の趣と現代のリラックスしたライフスタイルが見事に融合しています。アーティスト、リモートワーカー、若い家族にも最適な環境が整っています。都会の喧騒を離れ、自然と伝統、そして洗練された田舎暮らしを楽しんでみませんか？
             </Text>
-            <Link href="/living">暮らし</Link>
+            <Link href="/living" variant="arrow" underline>
+              暮らし
+            </Link>
           </div>
         </div>
       </div>

@@ -8,7 +8,37 @@
   --font-sans: var(--font-figtree);
   --font-mincho: var(--font-mincho);
 
-  --text-display: 16rem;
+  /* --text-display: 16rem; */
+
+  --color-summer: #59B255;
+  --color-winter: #DFE4E5;
+  --color-spring: #BB98F2;
+  --color-autumn: #FFC4C0;
+  --color-water: #DE696D;
+  --color-sun: #F9C114;
+
+  /* --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+
+    to {
+      height: "0";
+    }
+  }
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  } */
 }
 
 :root {
@@ -43,22 +73,22 @@
   --background: hsl(0, 0%, 12.5%);
   --foreground: hsl(40, 80.5%, 92%);
   --card: hsl(20 14.3% 4.1%);
-  --card-foreground: hsl(60 9.1% 97.8%);
-  --popover: hsl(20 14.3% 4.1%);
-  --popover-foreground: hsl(60 9.1% 97.8%);
-  --primary: hsl(60 9.1% 97.8%);
+  --card-foreground: hsl(40, 80.5%, 92%);
+  --popover: hsl(0, 0%, 12.5%);
+  --popover-foreground: hsl(40, 80.5%, 92%);
+  --primary: hsl(40, 80.5%, 92%);
   --primary-foreground: hsl(24 9.8% 10%);
   --secondary: hsl(12 6.5% 15.1%);
-  --secondary-foreground: hsl(60 9.1% 97.8%);
+  --secondary-foreground: hsl(40, 80.5%, 92%);
   --muted: hsl(12 6.5% 15.1%);
   --muted-foreground: hsl(24 5.4% 63.9%);
-  --accent: hsl(12 6.5% 15.1%);
-  --accent-foreground: hsl(60 9.1% 97.8%);
+  --accent: hsl(0, 0%, 20%);
+  --accent-foreground: hsl(40, 80.5%, 92%);
   --destructive: hsl(0 62.8% 30.6%);
-  --destructive-foreground: hsl(60 9.1% 97.8%);
-  --border: hsl(12 6.5% 15.1%);
-  --input: hsl(12 6.5% 15.1%);
-  --ring: hsl(24 5.7% 82.9%);
+  --destructive-foreground: hsl(40, 80.5%, 92%);
+  --border: hsl(40, 80.5%, 92%);
+  --input: hsl(40, 80.5%, 92%);
+  --ring: hsl(40, 80.5%, 92%);
   --chart-1: hsl(220 70% 50%);
   --chart-2: hsl(160 60% 45%);
   --chart-3: hsl(30 80% 55%);
