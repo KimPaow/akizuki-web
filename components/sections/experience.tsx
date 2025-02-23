@@ -20,7 +20,7 @@ export function Experience({ ...props }: React.ComponentProps<"div">) {
             fill={true}
           />
         </div>
-        <div className=" flex-3 flex flex-col justify-between gap-8">
+        <div className="flex-3 flex flex-col justify-end gap-8">
           <Text variant="h3" color="muted">
             体験
           </Text>
@@ -41,7 +41,7 @@ export function Experience({ ...props }: React.ComponentProps<"div">) {
               春の桜、秋の紅葉が美しい秋月。歴史ある城下町を散策し、象徴的な秋月城跡を訪れ、趣のあるカフェで地元の味を楽しめます。町の武士の歴史を物語る「黒門」は必見です。四季折々の魅力が溢れる秋月へ、ぜひお越しください！
             </Text>
             <Link href="/experience" variant="arrow" underline>
-              観光スポット
+              体験を見る
             </Link>
           </div>
         </div>

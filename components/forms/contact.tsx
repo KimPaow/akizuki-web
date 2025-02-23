@@ -110,7 +110,11 @@ export function ContactForm(props: React.ComponentProps<"form">) {
             <FormItem>
               <FormLabel>メッセージ</FormLabel>
               <FormControl>
-                <Textarea placeholder="どうやって手伝えますか？" {...field} />
+                <Textarea
+                  placeholder="どうやって手伝えますか？"
+                  rows={8}
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>

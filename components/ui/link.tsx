@@ -5,7 +5,7 @@ import type { LinkProps } from "next/link";
 import { cva, VariantProps } from "class-variance-authority";
 import { useState } from "react";
 
-const link = cva(["font-medium cursor-pointer"], {
+const link = cva(["font-medium cursor-pointer inline-block"], {
   variants: {
     hover: {
       true: [""],
