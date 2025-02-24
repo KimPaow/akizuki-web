@@ -11,7 +11,7 @@ import { experiences as exps } from "@/data/experiences";
 import Pill from "@/components/ui/pill";
 import { useState, useEffect } from "react";
 
-const sortedExperiences = exps.sort((a, b) => a.title.localeCompare(b.title));
+const sortedExperiences = exps.sort((a, b) => a.key.localeCompare(b.key));
 
 export default function Page() {
   const [filters, setFilters] = useState<Category[]>(
@@ -40,7 +40,7 @@ export default function Page() {
         </Text>
       </div>
       <div className="flex gap-4">
-        <Text variant="lead">Filter:</Text>
+        <Text variant="large">Filter:</Text>
         {ALL_CATEGORIES.map((category) => {
           return (
             <Pill
@@ -112,7 +112,12 @@ function ListItem({
   return (
     <AccordionItem value={title}>
       <AccordionTrigger className="cursor-pointer">
-        <Text variant="h3">{title}</Text>
+        <div className="flex flex-col items-start">
+          <Text variant="h3">{title}</Text>
+          {/* <Text variant="p" color="muted" className="!mt-2">
+            {content}
+          </Text> */}
+        </div>
         {tags.map((t) => (
           <Pill key={t} variant={categoryColors[t]}>
             {t}
