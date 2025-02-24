@@ -13,7 +13,10 @@ const link = cva(["font-medium cursor-pointer inline-block"], {
     variant: {
       default: [""],
       arrow: ["pr-8 relative"],
-      nav: ["text-lg relative"],
+      nav: [
+        "py-4 px-8 font-mincho text-4xl md:text-6xl text-background relativ hover:!text-background",
+      ],
+      logo: ["py-2 px-2 font-mincho text-lg text-background"],
     },
     underline: {
       true: ["relative"],
@@ -57,7 +60,7 @@ export const Link: React.FC<Props> = ({
       {underline && (
         <span
           data-line
-          className="absolute bottom-0 translate-y-1 left-0 w-0 h-0.5 bg-foreground transition-[width]"
+          className="absolute bottom-0 translate-y-1 left-0 w-0 h-0.5 bg-current transition-[width]"
         />
       )}
     </NextLink>

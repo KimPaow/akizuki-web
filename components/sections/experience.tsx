@@ -3,6 +3,7 @@ import Image from "next/image";
 import Text from "@/components/ui/text";
 import { Link } from "@/components/ui/link";
 import { Container } from "@/components/ui/container";
+import AnimatedImageCover from "@/components/ui/animated-image-cover";
 
 export function Experience({ ...props }: React.ComponentProps<"div">) {
   return (
@@ -11,6 +12,7 @@ export function Experience({ ...props }: React.ComponentProps<"div">) {
       {...props}
     >
       <div className="aspect-square md:aspect-[initial] col-start-1 col-end-11 md:col-end-4 relative">
+        <AnimatedImageCover direction="rtl" />
         <Image
           className="object-cover"
           src="/images/landing/sacchi_01_2x.webp"
@@ -30,6 +32,7 @@ export function Experience({ ...props }: React.ComponentProps<"div">) {
       </div>
       <div className="col-start-1 md:col-start-9 col-end-11 flex flex-col justify-between gap-4 sm:gap-8 md:gap-36">
         <div className="relative aspect-square hidden sm:inline-block">
+          <AnimatedImageCover direction="btt" />
           <Image
             className=""
             src="/images/landing/washi_1_web_2x.webp"

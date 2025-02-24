@@ -3,6 +3,7 @@ import Image from "next/image";
 import Text from "@/components/ui/text";
 import { Link } from "@/components/ui/link";
 import { Container } from "@/components/ui/container";
+import AnimatedImageCover from "@/components/ui/animated-image-cover";
 
 export function Living({ ...props }: React.ComponentProps<"div">) {
   return (
@@ -19,6 +20,7 @@ export function Living({ ...props }: React.ComponentProps<"div">) {
         </Text>
       </div>
       <div className="aspect-3/2 md:aspect-[initial] row-start-1 col-start-1 col-end-11 md:col-start-8 md:col-end-11 relative">
+        <AnimatedImageCover direction="btt" />
         <Image
           className="object-cover"
           src="/images/landing/hhh_model_02_2x.webp"
@@ -29,6 +31,7 @@ export function Living({ ...props }: React.ComponentProps<"div">) {
         />
       </div>
       <div className="hidden md:block row-start-2 col-start-1 col-end-11 md:col-end-7 relative">
+        <AnimatedImageCover direction="ttb" />
         <Image
           className="object-cover"
           src="/images/landing/stone_elevation_2x.webp"

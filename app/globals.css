@@ -8,14 +8,43 @@
   --font-sans: var(--font-figtree);
   --font-mincho: var(--font-mincho);
 
+  --text-5xl--line-height: 1.2;
+  --text-6xl--line-height: 1.2;
+  --text-7xl--line-height: 1.2;
+  --text-8xl--line-height: 1.2;
+  --text-9xl--line-height: 1.2;
+
   --color-summer: #59B255;
   --color-winter: #DFE4E5;
-  --color-spring: #BB98F2;
-  --color-autumn: #FFC4C0;
-  --color-water: #DE696D;
+  --color-water: #BB98F2;
+  --color-spring: #FFC4C0;
+  --color-autumn: #DE696D;
   --color-sun: #F9C114;
 
-  /* --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-menu-close: menu-close 0.4s ease-in-out;
+  --animate-menu-open: menu-open 0.4s ease-in-out;
+
+  @keyframes menu-close {
+    from {
+      width: 50vw;
+    }
+
+    to {
+      width: 0;
+    }
+  }
+
+  @keyframes menu-open {
+    from {
+      width: 0;
+    }
+
+    to {
+      width: 50vw;
+    }
+  }
+
+  --animate-accordion-up: accordion-up 0.2s ease-out;
   --animate-accordion-down: accordion-down 0.2s ease-out;
 
   @keyframes accordion-up {
@@ -24,7 +53,7 @@
     }
 
     to {
-      height: "0";
+      height: 0;
     }
   }
 
@@ -36,7 +65,7 @@
     to {
       height: var(--radix-accordion-content-height);
     }
-  } */
+  }
 }
 
 :root {

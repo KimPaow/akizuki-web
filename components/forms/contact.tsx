@@ -60,7 +60,7 @@ export function ContactForm(props: React.ComponentProps<"form">) {
             <FormItem>
               <FormLabel>名前</FormLabel>
               <FormControl>
-                <Input placeholder="田中　ほなみ" {...field} />
+                <Input placeholder="秋月　花子" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
