@@ -2,29 +2,37 @@ import * as React from "react";
 import Image from "next/image";
 import Text from "@/components/ui/text";
 import { Link } from "@/components/ui/link";
+import { Container } from "@/components/ui/container";
 
 export function History({ ...props }: React.ComponentProps<"div">) {
   return (
-    <div
-      className="px-8 sm:px-20 flex flex-col md:flex-row gap-8 max-w-[1600px] mx-auto my-16"
+    <Container
+      className="grid grid-cols-10 flex-col md:flex-row gap-8"
       {...props}
     >
-      <div className="flex-5">
+      <div className="col-start-1 col-end-11 md:col-end-5">
         <Image
-          src="/images/landing/hinameguri_1_2x.webp"
+          src="/images/landing/sugi_no_baba_1_2x.webp"
           alt="Akizuki in spring"
           width={631}
           height={962}
           className="hidden md:inline-block object-cover"
         />
       </div>
-      <div className="flex-1 flex flex-col gap-8"></div>
-      <div className="flex-4 flex flex-col gap-8">
+      <div className="col-start-1 md:col-start-7 col-end-11 flex flex-col-reverse sm:flex-col gap-8">
         <div className="max-w-[60ch] mr-auto">
-          <Text variant="h2" id="access">
+          <Text
+            variant="h2"
+            id="access"
+            className="mt-0 sm:mt-10 text-4xl sm:text-8xl"
+          >
             秋月について
           </Text>
-          <Text variant="p" color="foreground" className="leading-8 mt-16">
+          <Text
+            variant="p"
+            color="foreground"
+            className="leading-8 !mt-8 sm:!mt-16"
+          >
             秋月を発見 - 福岡の隠れた名所。
           </Text>
           <Text variant="p" color="foreground" className="leading-8">
@@ -50,6 +58,6 @@ export function History({ ...props }: React.ComponentProps<"div">) {
           className="object-cover mt-auto"
         />
       </div>
-    </div>
+    </Container>
   );
 }

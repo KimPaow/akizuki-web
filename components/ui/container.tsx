@@ -1,12 +1,19 @@
+import { cn } from "@/lib/utils";
 import * as React from "react";
 
-export function Container({ children, ...props }: React.ComponentProps<"div">) {
+export function Container({
+  children,
+  className,
+  ...props
+}: React.ComponentProps<"div">) {
   return (
     <div
-      className="h-screen px-8 sm:px-20 flex flex-col justify-center"
+      className={cn("w-full max-w-[1600px] px-4 sm:px-0 mx-8 my-8", className)}
       {...props}
     >
       {children}
     </div>
   );
 }
+
+export default Container;
