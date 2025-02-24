@@ -8,7 +8,7 @@ export function Contact({ ...props }: React.ComponentProps<"div">) {
       className="min-h-screen flex flex-col justify-center max-w-[1600px] mx-auto"
       {...props}
     >
-      <div className="min-h-200 px-8 sm:px-20 flex gap-8">
+      <div className="min-h-200 px-8 sm:px-20 flex flex-col md:flex-row gap-8">
         <div className="flex-4 flex flex-col justify-start gap-8 mb-16">
           <Text variant="h3" color="muted">
             コンタクト

@@ -5,23 +5,26 @@ import { Link } from "@/components/ui/link";
 
 export function History({ ...props }: React.ComponentProps<"div">) {
   return (
-    <div className="px-8 sm:px-20 flex gap-8 max-w-[1600px] mx-auto" {...props}>
-      <div className="flex-4">
+    <div
+      className="px-8 sm:px-20 flex flex-col md:flex-row gap-8 max-w-[1600px] mx-auto my-16"
+      {...props}
+    >
+      <div className="flex-5">
         <Image
-          src="/images/sakura_shops.jpg"
+          src="/images/landing/hinameguri_1_2x.webp"
           alt="Akizuki in spring"
-          width={3456}
-          height={5184}
-          className="object-cover"
+          width={631}
+          height={962}
+          className="hidden md:inline-block object-cover"
         />
       </div>
       <div className="flex-1 flex flex-col gap-8"></div>
-      <div className="flex-5 flex flex-col gap-8">
+      <div className="flex-4 flex flex-col gap-8">
         <div className="max-w-[60ch] mr-auto">
           <Text variant="h2" id="access">
             秋月について
           </Text>
-          <Text variant="p" color="foreground" className="leading-8">
+          <Text variant="p" color="foreground" className="leading-8 mt-16">
             秋月を発見 - 福岡の隠れた名所。
           </Text>
           <Text variant="p" color="foreground" className="leading-8">
@@ -40,10 +43,10 @@ export function History({ ...props }: React.ComponentProps<"div">) {
           </Link>
         </div>
         <Image
-          src="/images/drums.jpg"
+          src="/images/landing/sakura_shops_2_2x.webp"
           alt="Drums in Akizuki"
-          width={986}
-          height={657}
+          width={633}
+          height={460}
           className="object-cover mt-auto"
         />
       </div>

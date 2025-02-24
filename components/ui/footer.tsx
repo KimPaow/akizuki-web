@@ -6,8 +6,8 @@ import { email, links, phone, socials } from "@/data/links";
 
 function Footer({ ...props }: React.ComponentProps<"footer">) {
   return (
-    <footer className="bg-foreground p-16" {...props}>
-      <div className="w-full max-w-[1600px] mx-auto flex gap-16 justify-start">
+    <footer className="bg-foreground p-8 md:p-16" {...props}>
+      <div className="w-full max-w-[1600px] mx-auto flex flex-col md:flex-row gap-16 md:gap-16 justify-start">
         <div className="flex-2 flex flex-col gap-4">
           <Link
             underline
@@ -64,7 +64,7 @@ function Footer({ ...props }: React.ComponentProps<"footer">) {
           )}
         </div>
         <div className="flex-4 flex flex-col mt-auto gap-8">
-          <Text variant="display" className="invert text-end !text-8xl">
+          <Text variant="display" className="invert md:text-end !text-8xl">
             秋月
           </Text>
         </div>

@@ -5,7 +5,7 @@ import Link from "../ui/link";
 export function Access({ ...props }: React.ComponentProps<"div">) {
   return (
     <div
-      className="min-h-screen flex flex-col justify-center items-stretch max-w-[1600px] mx-auto"
+      className="min-h-screen flex flex-col justify-center items-stretch max-w-[1600px] mx-auto my-16"
       {...props}
     >
       <div className="min-h-200 px-8 sm:px-20 gap-8 self-stretch">
@@ -13,7 +13,7 @@ export function Access({ ...props }: React.ComponentProps<"div">) {
           <Text variant="h2" className="text-8xl" id="access">
             アクセス
           </Text>
-          <div className="flex gap-16 justify-between">
+          <div className="flex flex-col md:flex-row gap-16 justify-between">
             <div className="flex-2 flex flex-col gap-8">
               <Text variant="h3">福岡空港から</Text>
               <div>

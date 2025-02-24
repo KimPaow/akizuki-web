@@ -6,14 +6,14 @@ import { Link } from "@/components/ui/link";
 export function Experience({ ...props }: React.ComponentProps<"div">) {
   return (
     <div
-      className="min-h-screen flex flex-col justify-center max-w-[1600px] mx-auto"
+      className="min-h-screen flex flex-col justify-center max-w-[1600px] mx-auto my-16"
       {...props}
     >
-      <div className="min-h-200 px-8 sm:px-20 flex gap-8">
+      <div className="min-h-200 px-8 sm:px-20 flex flex-col md:flex-row gap-8">
         <div className="flex-3 relative">
           <Image
             className="object-cover"
-            src="/images/autumn_shrine_1x.webp"
+            src="/images/landing/sacchi_01_2x.webp"
             alt="Shrine in Akizuki"
             // width={468}
             // height={777}
@@ -31,7 +31,7 @@ export function Experience({ ...props }: React.ComponentProps<"div">) {
         <div className="flex-2 flex flex-col justify-between gap-8">
           <Image
             className=""
-            src="/images/black_gate.webp"
+            src="/images/landing/washi_1_web_2x.webp"
             alt="The black gate of Akizuki"
             width={310}
             height={282}
