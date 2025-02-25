@@ -13,13 +13,14 @@ export function History({ ...props }: React.ComponentProps<"div">) {
       className="grid grid-cols-10 flex-col md:flex-row gap-8"
       {...props}
     >
-      <div className="col-start-1 col-end-11 md:col-end-5 relative overflow-hidden">
+      <div className="flex col-start-1 col-end-11 md:col-end-6 xl:col-end-5 relative overflow-hidden">
         <AnimatedImageCover />
         <Image
           src="/images/landing/sugi_no_baba_1_2x.webp"
           alt="Akizuki in spring"
-          width={631}
-          height={962}
+          // width={631}
+          // height={962}
+          fill
           className="hidden md:block object-cover"
         />
       </div>

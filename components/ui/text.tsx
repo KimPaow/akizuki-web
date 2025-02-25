@@ -4,7 +4,9 @@ import { twMerge } from "tailwind-merge";
 const typographyVariants = cva([], {
   variants: {
     variant: {
-      display: ["font-mincho scroll-m-20 text-4xl md:text-[16rem]"],
+      display: [
+        "font-mincho scroll-m-20 text-4xl md:text-9xl lg:text-[10rem] xl:text-[16rem]",
+      ],
       h1: [
         "font-mincho",
         "scroll-m-20",

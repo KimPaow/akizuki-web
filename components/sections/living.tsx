@@ -30,7 +30,7 @@ export function Living({ ...props }: React.ComponentProps<"div">) {
           fill
         />
       </div>
-      <div className="aspect-10/4 hidden md:block row-start-2 col-start-1 col-end-11 md:col-end-7 relative">
+      <div className="aspect-10/4 md:aspect-[initial] hidden md:flex row-start-2 col-start-1 col-end-11 md:col-end-7 relative">
         <AnimatedImageCover direction="ttb" />
         <Image
           className="object-cover"

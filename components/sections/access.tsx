@@ -11,7 +11,7 @@ export function Access({ ...props }: React.ComponentProps<"div">) {
     >
       <Text
         variant="h2"
-        className="col-start-1 col-end-11 md:col-end-5 row-start-1 mt-0 sm:mt-10 text-4xl sm:text-8xl text-center sm:text-left"
+        className="col-start-1 col-end-11 md:col-end-5 row-start-1 mt-0 sm:mt-10 text-4xl sm:text-8xl text-center sm:text-left lg:mb-16"
         id="access-akizuki"
       >
         アクセス
@@ -23,8 +23,8 @@ export function Access({ ...props }: React.ComponentProps<"div">) {
             急行バス「福岡空港線」で「朝倉IC」の手前の「急行甘木(甘木甘木)」で下車し、秋月中心部までタクシーでお越しください。
           </Text>
           <Text variant="p">
-            バス: ¥1,400 <br />
-            タクシー: ¥3,000~¥4,000
+            <b>バス:</b> ¥1,400 <br />
+            <b>タクシー:</b> ¥3,000~¥4,000
           </Text>
         </div>
       </div>
@@ -35,8 +35,8 @@ export function Access({ ...props }: React.ComponentProps<"div">) {
             高速バス「日田営業所行き」に乗車し、「朝倉IC」の1つ手前の「高速天城」で下車し、タクシーで秋月中心部へ。
           </Text>
           <Text variant="p">
-            バス: ¥1,000 <br />
-            タクシー: ¥3,000-¥4,000
+            <b>バス:</b> ¥1,000 <br />
+            <b>タクシー:</b> ¥3,000-¥4,000
           </Text>
         </div>
       </div>

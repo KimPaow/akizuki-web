@@ -8,7 +8,7 @@ export function Container({
 }: React.ComponentProps<"div">) {
   return (
     <div
-      className={cn("w-full max-w-[1600px] px-4 sm:px-0 mx-8 my-8", className)}
+      className={cn("w-full max-w-[1600px] px-4 md:px-8 mx-8 my-8", className)}
       {...props}
     >
       {children}

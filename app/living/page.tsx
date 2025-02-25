@@ -15,17 +15,17 @@ export default function Page() {
         <Divider decorative />
         <ol className="list-disc list-inside flex flex-col gap-1">
           <li>
-            <Link underline href="#amenities">
+            <Link underline href="#amenities" variant="arrow">
               Amenities
             </Link>
           </li>
           <li>
-            <Link underline href="#incentives">
+            <Link underline href="#incentives" variant="arrow">
               Incentives
             </Link>
           </li>
           <li>
-            <Link underline href="#contact">
+            <Link underline href="#contact" variant="arrow">
               Contact
             </Link>
           </li>
