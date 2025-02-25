@@ -7,7 +7,7 @@ import Image from "next/image";
 export default function Page() {
   return (
     <div className="min-h-screen w-full max-w-[1280px] mx-auto flex flex-col gap-16 my-32 items-center">
-      <div className="flex flex-col gap-8 max-w-[60ch]">
+      <div className="flex flex-col gap-8 max-w-[60ch] mx-4 sm:mx-0">
         <Text variant="h1">Living</Text>
         <Text variant="lead" color="muted">
           Are you interested in joining the community?

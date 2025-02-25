@@ -74,7 +74,7 @@ export default function Page() {
           })}
         </div>
       </div>
-      <Accordion type="single" collapsible className="border-t">
+      <Accordion type="single" collapsible className="border-t border-history">
         {experiences.map((exp) => (
           <ListItem
             key={exp.title}
@@ -90,7 +90,7 @@ export default function Page() {
 
 const categoryColors: Record<
   Category,
-  "spring" | "summer" | "autumn" | "winter" | "water" | "sun"
+  "spring" | "summer" | "autumn" | "winter" | "water" | "sun" | "history"
 > = {
   Food: "spring",
   Shopping: "sun",

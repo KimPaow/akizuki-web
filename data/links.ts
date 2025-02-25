@@ -12,7 +12,7 @@ export const links = [
     text: "暮らし",
   },
   {
-    href: "/#access",
+    href: "/#access-akizuki",
     text: "アクセス",
   },
 ];

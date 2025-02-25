@@ -15,7 +15,7 @@ export function Living({ ...props }: React.ComponentProps<"div">) {
         <Text variant="h3" color="muted">
           暮らし
         </Text>
-        <Text variant="h2" className="mt-0 sm:mt-10 text-4xl sm:text-8xl">
+        <Text variant="h2" className="mt-0 sm:mt-2 text-4xl sm:text-8xl">
           伝統と新風が交わる街
         </Text>
       </div>
@@ -30,7 +30,7 @@ export function Living({ ...props }: React.ComponentProps<"div">) {
           fill
         />
       </div>
-      <div className="hidden md:block row-start-2 col-start-1 col-end-11 md:col-end-7 relative">
+      <div className="aspect-10/4 hidden md:block row-start-2 col-start-1 col-end-11 md:col-end-7 relative">
         <AnimatedImageCover direction="ttb" />
         <Image
           className="object-cover"
@@ -42,7 +42,7 @@ export function Living({ ...props }: React.ComponentProps<"div">) {
         />
       </div>
       <div className="row-start-3 md:row-start-2 col-start-1 md:col-start-8 col-end-11 flex flex-col gap-8 mt-4 sm:mt-16 items-start">
-        <Text variant="p">
+        <Text variant="p" className="mt-auto">
           秋月は文化、創造性、そしてコミュニティが息づく活気ある街です。おしゃれなカフェや職人の店が点在し、歴史の趣と現代のリラックスしたライフスタイルが見事に融合しています。アーティスト、リモートワーカー、若い家族にも最適な環境が整っています。都会の喧騒を離れ、自然と伝統、そして洗練された田舎暮らしを楽しんでみませんか？
         </Text>
         <Link href="/living" variant="arrow" underline>

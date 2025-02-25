@@ -14,9 +14,9 @@ const link = cva(["font-medium cursor-pointer inline-block"], {
       default: [""],
       arrow: ["pr-8 relative"],
       nav: [
-        "py-4 px-8 font-mincho text-4xl md:text-6xl text-background relativ hover:!text-background",
+        "text-history py-4 px-8 font-mincho text-4xl md:text-6xl hover:!text-background",
       ],
-      logo: ["py-2 px-2 font-mincho text-lg text-background"],
+      logo: ["py-2 px-2 font-mincho text-history text-lg text-background"],
     },
     underline: {
       true: ["relative"],
@@ -53,7 +53,7 @@ export const Link: React.FC<Props> = ({
     >
       {children}
       {variant === "arrow" && (
-        <span className="text-2xl absolute top-[50%] translate-y-[-60%] right-0">
+        <span className="text-history text-2xl absolute top-[50%] translate-y-[-60%] right-0">
           →
         </span>
       )}

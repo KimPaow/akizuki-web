@@ -74,9 +74,6 @@ function Header({
         href="/"
         variant="logo"
         className="z-50 mr-auto flex items-center gap-2"
-        animate={{
-          color: isOpen ? "var(--color-background)" : "var(--color-foreground)",
-        }}
         transition={{ duration: 0.2, delay: 0.2 }}
         onClick={() => setOpen(false)}
       >
@@ -84,11 +81,8 @@ function Header({
       </MotionLink>
       <MotionButton
         variant="ghost"
-        className="z-50 text-lg"
+        className="z-50 text-lg text-history"
         onClick={() => setOpen(!isOpen)}
-        animate={{
-          color: isOpen ? "var(--color-background)" : "var(--color-foreground)",
-        }}
         transition={{ duration: 0.2, delay: 0.2 }}
       >
         {isOpen ? "Close" : "Menu"}
@@ -110,11 +104,7 @@ function Header({
                 href={link.href}
                 variants={menuItem}
                 variant="nav"
-                className={cn(
-                  pathname !== link.href
-                    ? "!text-[#9c7443]"
-                    : "!text-background"
-                )}
+                className={cn(pathname === link.href && "!text-background")}
                 onClick={() => setOpen(false)}
                 // onHoverStart={() => setHoveredLinkIndex(i)}
                 // onHoverEnd={() => setHoveredLinkIndex(undefined)}

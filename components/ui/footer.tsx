@@ -19,6 +19,7 @@ function Footer({ ...props }: React.ComponentProps<"footer">) {
           {links.map((link) => (
             <Link
               key={link.href}
+              underline={true}
               href={link.href}
               className="invert font-mincho scroll-m-20 text-2xl tracking-tight mr-auto"
             >

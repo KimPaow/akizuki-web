@@ -25,7 +25,7 @@ export const AnimatedImageCover = ({
 
   return (
     <motion.div
-      className="absolute bg-background z-10"
+      className="absolute bg-background z-[1]"
       variants={variants}
       initial="hidden"
       whileInView={direction}
