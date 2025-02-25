@@ -33,42 +33,46 @@ export default function Page() {
 
   return (
     <div className="w-full max-w-[1280px] mx-auto flex flex-col gap-16 my-32">
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-8 mx-4 sm:mx-0">
         <Text variant="h1">Experience</Text>
         <Text variant="lead" color="muted">
           Akizuki offers a wide range of experiences, no matter the season.
         </Text>
       </div>
-      <div className="flex gap-4">
-        <Text variant="large">Filter:</Text>
-        {ALL_CATEGORIES.map((category) => {
-          return (
-            <Pill
-              key={category}
-              variant={categoryColors[category]}
-              outline={!filters.includes(category)}
-              onClick={() => {
-                // if all categories are already selected, choose only the clicked category
-                if (filters.length === ALL_CATEGORIES.length) {
-                  setFilters([category]);
-                  return;
-                }
-                // if the category is already in the filters, remove it
-                if (filters.includes(category)) {
-                  setFilters((prev) => prev.filter((c) => c !== category));
-                  return;
-                }
-                // if the category is not in the filters, add it
-                else {
-                  setFilters((prev) => [...prev, category]);
-                }
-              }}
-              className="cursor-pointer"
-            >
-              {category}
-            </Pill>
-          );
-        })}
+      <div className="flex flex-col sm:flex-col gap-4 mx-4 sm:mx-0">
+        <Text variant="large" className="sm:mr-auto">
+          Filter:
+        </Text>
+        <div className="flex flex-wrap justify-items-start gap-4">
+          {ALL_CATEGORIES.map((category) => {
+            return (
+              <Pill
+                key={category}
+                variant={categoryColors[category]}
+                outline={!filters.includes(category)}
+                onClick={() => {
+                  // if all categories are already selected, choose only the clicked category
+                  if (filters.length === ALL_CATEGORIES.length) {
+                    setFilters([category]);
+                    return;
+                  }
+                  // if the category is already in the filters, remove it
+                  if (filters.includes(category)) {
+                    setFilters((prev) => prev.filter((c) => c !== category));
+                    return;
+                  }
+                  // if the category is not in the filters, add it
+                  else {
+                    setFilters((prev) => [...prev, category]);
+                  }
+                }}
+                className="cursor-pointer"
+              >
+                {category}
+              </Pill>
+            );
+          })}
+        </div>
       </div>
       <Accordion type="single" collapsible className="border-t">
         {experiences.map((exp) => (
@@ -110,13 +114,15 @@ function ListItem({
   tags = [],
 }: ListItemProps) {
   return (
-    <AccordionItem value={title}>
+    <AccordionItem value={title} className="px-4 sm:px-0">
       <AccordionTrigger className="cursor-pointer">
-        <div className="flex flex-col items-start">
-          <Text variant="h3">{title}</Text>
-          {/* <Text variant="p" color="muted" className="!mt-2">
-            {content}
-          </Text> */}
+        <div className="flex flex-col items-start justify-items-start pr-4">
+          <Text
+            variant="h3"
+            className="text-base sm:text-lg md:text-2xl text-left"
+          >
+            {title}
+          </Text>
         </div>
         {tags.map((t) => (
           <Pill key={t} variant={categoryColors[t]}>
