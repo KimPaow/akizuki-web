@@ -34,7 +34,7 @@ export function Living({ ...props }: React.ComponentProps<"div">) {
         <AnimatedImageCover direction="ttb" />
         <Image
           className="object-cover"
-          src="/images/landing/stone_elevation_2x.webp"
+          src="/images/landing/meganebashi_spring.webp"
           alt="Streets of Akizuki"
           // width={954}
           // height={377}
