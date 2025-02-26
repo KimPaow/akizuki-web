@@ -15,10 +15,13 @@ export function Living({ ...props }: React.ComponentProps<"div">) {
         <Text variant="h3" color="muted">
           暮らし
         </Text>
-        <Text variant="h2" className="mt-0 sm:mt-2 text-4xl sm:text-8xl">
-          伝統と新風が
-          <br />
-          交わる街
+        <Text variant="h2" className="mt-0 sm:mt-2 text-4xl sm:text-8xl cjk">
+          伝統と
+          <wbr />
+          新風が
+          <wbr />
+          交わる
+          <wbr />街
         </Text>
       </div>
       <div className="aspect-3/2 md:aspect-[initial] row-start-1 col-start-1 col-end-11 md:col-start-7 md:col-end-11 relative">

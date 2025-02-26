@@ -26,10 +26,11 @@ export function Experience({ ...props }: React.ComponentProps<"div">) {
         <Text variant="h3" color="muted">
           体験
         </Text>
-        <Text variant="h2" className="mt-0 sm:mt-10 text-4xl sm:text-8xl">
+        <Text variant="h2" className="mt-0 sm:mt-10 text-4xl sm:text-8xl cjk">
           歴史を
           <wbr />
-          感じる旅
+          感じる
+          <wbr />旅
         </Text>
       </div>
       <div className="col-start-1 md:col-start-8 col-end-11 flex flex-col justify-between gap-4 sm:gap-8 md:gap-36">

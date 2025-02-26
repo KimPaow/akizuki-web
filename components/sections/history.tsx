@@ -29,9 +29,11 @@ export function History({ ...props }: React.ComponentProps<"div">) {
           <Text
             variant="h2"
             id="access"
-            className="mt-0 sm:mt-10 text-4xl sm:text-8xl"
+            className="mt-0 sm:mt-10 text-4xl sm:text-8xl cjk"
           >
-            秋月について
+            秋月に
+            <wbr />
+            ついて
           </Text>
           <Text
             variant="p"

@@ -9,15 +9,11 @@ export function Contact({ ...props }: React.ComponentProps<"div">) {
       <div className="row-start-2 md:row-start-1 col-start-1 col-end-11 md:col-end-5">
         <ContactForm />
       </div>
-      <div className="row-start-1 col-start-1 md:col-start-7 col-end-11 flex flex-col justify-start gap-4 sm:gap-8 mb-16">
+      <div className="row-start-1 col-start-1 md:col-start-6 col-end-11 flex flex-col justify-start gap-4 sm:gap-8 mb-16">
         <Text variant="h3" color="muted">
           コンタクト
         </Text>
-        <Text
-          variant="h2"
-          className="mt-0 sm:mt-10 text-4xl sm:text-8xl break-keep"
-          style={{ overflowWrap: "anywhere" }}
-        >
+        <Text variant="h2" className="mt-0 sm:mt-10 text-4xl sm:text-8xl cjk">
           旅を
           <wbr />
           始めましょう

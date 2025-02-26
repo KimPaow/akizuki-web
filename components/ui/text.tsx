@@ -1,7 +1,7 @@
 import { cva, VariantProps } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
 
-const typographyVariants = cva(["cjk"], {
+const typographyVariants = cva([""], {
   variants: {
     variant: {
       display: [
