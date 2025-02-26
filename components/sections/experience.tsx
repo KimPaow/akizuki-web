@@ -11,7 +11,7 @@ export function Experience({ ...props }: React.ComponentProps<"div">) {
       className="grid grid-cols-10 auto-rows-auto gap-y-4 sm:gap-8"
       {...props}
     >
-      <div className="aspect-square md:aspect-[initial] col-start-1 col-end-11 md:col-end-4 relative">
+      <div className="aspect-square md:aspect-[initial] col-start-1 col-end-11 md:col-end-5 relative">
         <AnimatedImageCover direction="rtl" />
         <Image
           className="object-cover"
@@ -27,15 +27,17 @@ export function Experience({ ...props }: React.ComponentProps<"div">) {
           体験
         </Text>
         <Text variant="h2" className="mt-0 sm:mt-10 text-4xl sm:text-8xl">
-          歴史を感じる旅
+          歴史を
+          <wbr />
+          感じる旅
         </Text>
       </div>
-      <div className="col-start-1 md:col-start-9 col-end-11 flex flex-col justify-between gap-4 sm:gap-8 md:gap-36">
+      <div className="col-start-1 md:col-start-8 col-end-11 flex flex-col justify-between gap-4 sm:gap-8 md:gap-36">
         <div className="relative aspect-square hidden sm:inline-block">
           <AnimatedImageCover direction="btt" />
           <Image
             className=""
-            src="/images/landing/washi_1_web_2x.webp"
+            src="/images/landing/washi_3_2x.webp"
             alt="The black gate of Akizuki"
             // width={310}
             // height={282}

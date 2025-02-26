@@ -35,8 +35,8 @@ export function Access({ ...props }: React.ComponentProps<"div">) {
             高速バス「日田営業所行き」に乗車し、「朝倉IC」の1つ手前の「高速天城」で下車し、タクシーで秋月中心部へ。
           </Text>
           <Text variant="p">
-            <b>バス:</b> ¥1,000 <br />
-            <b>タクシー:</b> ¥3,000-¥4,000
+            <b>バス:</b>　¥1,000 <br />
+            <b>タクシー:</b>　¥3,000-¥4,000
           </Text>
         </div>
       </div>

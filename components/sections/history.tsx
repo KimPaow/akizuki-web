@@ -13,10 +13,10 @@ export function History({ ...props }: React.ComponentProps<"div">) {
       className="grid grid-cols-10 flex-col md:flex-row gap-8"
       {...props}
     >
-      <div className="flex col-start-1 col-end-11 md:col-end-6 xl:col-end-5 relative overflow-hidden">
+      <div className="flex col-start-1 col-end-11 md:col-end-6 xl:col-end-6 relative overflow-hidden">
         <AnimatedImageCover />
         <Image
-          src="/images/landing/sugi_no_baba_1_2x.webp"
+          src="/images/landing/black_gate_fall_2x.webp"
           alt="Akizuki in spring"
           // width={631}
           // height={962}
@@ -58,7 +58,7 @@ export function History({ ...props }: React.ComponentProps<"div">) {
         <div className="relative mt-auto">
           <AnimatedImageCover direction="ttb" />
           <Image
-            src="/images/landing/wall_2x.webp"
+            src="/images/landing/drone_summer_2x.webp"
             alt="Drums in Akizuki"
             width={633}
             height={460}

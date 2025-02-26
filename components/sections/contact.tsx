@@ -13,8 +13,14 @@ export function Contact({ ...props }: React.ComponentProps<"div">) {
         <Text variant="h3" color="muted">
           コンタクト
         </Text>
-        <Text variant="h2" className="mt-0 sm:mt-10 text-4xl sm:text-8xl">
-          旅を始めましょう
+        <Text
+          variant="h2"
+          className="mt-0 sm:mt-10 text-4xl sm:text-8xl break-keep"
+          style={{ overflowWrap: "anywhere" }}
+        >
+          旅を
+          <wbr />
+          始めましょう
         </Text>
       </div>
     </Container>
