@@ -23,8 +23,8 @@ export function Access({ ...props }: React.ComponentProps<"div">) {
             急行バス「福岡空港線」で「朝倉IC」の手前の「急行甘木(甘木甘木)」で下車し、秋月中心部までタクシーでお越しください。
           </Text>
           <Text variant="p">
-            <b>バス:</b> ¥1,400 <br />
-            <b>タクシー:</b> ¥3,000~¥4,000
+            <b>バス:</b>　¥1,400 <br />
+            <b>タクシー:</b>　¥3,000~¥4,000
           </Text>
         </div>
       </div>
