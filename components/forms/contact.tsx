@@ -42,6 +42,8 @@ export function ContactForm(props: React.ComponentProps<"form">) {
     defaultValues: {
       name: "",
       email: "",
+      subject: undefined,
+      message: "",
     },
   });
 
@@ -58,22 +60,32 @@ export function ContactForm(props: React.ComponentProps<"form">) {
             to: receiver[values.subject] ?? "hello@bjorkman.kim",
             subject: `秋月 | ${subjectsJA[values.subject]} | ${values.name}`,
             message: `
-              <h2>Message</h2>
-              <p>${values.message}</p>
-              <hr/>
-              <ul>
-                <li><b>名前:</b> ${values.name}</li>
-                <li><b>メール:</b> ${values.email}</li>
-                <li><b>件名:</b> ${subjectsJA[values.subject]}</li>
-              </ul>
+              <h3>Message</h2>
+              ${values.message
+                .split("\n")
+                .map((line) => `<p>${line}</p>`)
+                .join("")}
+              <h3>Information</h2>
+              <p>
+                <b>名前:</b> ${values.name}
+              </p>
+              <p>
+                <b>メール:</b> ${values.email}
+              </p>
+              <p>
+                <b>件名:</b> ${subjectsJA[values.subject]}
+              </p>
               `,
           }),
         }),
         {
           loading: "送信中...",
-          success: {
-            message:
-              "メッセージが正常に送信されました。折り返しご連絡いたします！",
+          success: () => {
+            form.reset();
+            return {
+              message:
+                "メッセージが正常に送信されました。折り返しご連絡いたします！",
+            };
           },
           error: (res) => {
             console.error("Failed to submit contact form:", res);
