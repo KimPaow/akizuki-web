@@ -134,19 +134,21 @@ function ListItem({
   return (
     <AccordionItem value={title} className="px-4 sm:px-0">
       <AccordionTrigger className="cursor-pointer">
-        <div className="flex flex-col items-start justify-items-start pr-4">
+        <div className="flex items-center justify-items-end pr-4 w-full">
           <Text
             variant="h2"
-            className="text-base sm:text-lg md:text-3xl text-left"
+            className="text-base sm:text-lg md:text-3xl text-left mr-auto"
           >
             {title}
           </Text>
+          <div className="flex gap-4">
+            {tags.map((t) => (
+              <Pill key={t} variant={categoryColors[t]}>
+                {categoryJA[t]}
+              </Pill>
+            ))}
+          </div>
         </div>
-        {tags.map((t) => (
-          <Pill key={t} variant={categoryColors[t]}>
-            {categoryJA[t]}
-          </Pill>
-        ))}
       </AccordionTrigger>
       <AccordionContent>
         <Text variant="p" color="muted">

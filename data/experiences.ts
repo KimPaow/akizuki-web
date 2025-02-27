@@ -5,6 +5,14 @@ interface Experience {
   title: string;
   content: string;
   tags: Category[];
+  address?: string;
+  website?: string;
+  phone?: string;
+  hours?: string;
+  price?: string;
+  image?: string;
+  latitude?: number;
+  longitude?: number;
 }
 
 export const experiences: Experience[] = [
@@ -13,7 +21,7 @@ export const experiences: Experience[] = [
     title: "秋月城跡",
     content:
       "1624年に創建された秋月城には、秋月家・黒田家の双方が世代を跨いで居住し、秋月藩5万石は約400年にも渡りこの地を統治してきました。",
-    tags: ["Culture"],
+    tags: ["Culture", "Experience"],
   },
   {
     key: "akizuki-hachiman-shrine",
@@ -223,7 +231,7 @@ export const experiences: Experience[] = [
     key: "ryokan-seiryuan",
     title: "旅館 清流庵",
     content: "秋月でワンランク上の体験ができる温泉・高級料亭旅館。",
-    tags: ["Accommodation"],
+    tags: ["Accommodation", "Experience"],
   },
   {
     key: "niwa-house",
