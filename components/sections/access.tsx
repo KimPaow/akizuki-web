@@ -1,4 +1,3 @@
-import * as React from "react";
 import Text from "@/components/ui/text";
 import Link from "../ui/link";
 import { Container } from "@/components/ui/container";

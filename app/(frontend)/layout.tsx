@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Header } from "@/components/ui/header";
 import { Footer } from "@/components/ui/footer";
+import { Toaster } from "@/components/ui/sonner";
 
 const figtree = Figtree({
   variable: "--font-figtree",
@@ -44,6 +45,7 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

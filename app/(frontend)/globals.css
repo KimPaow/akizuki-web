@@ -112,7 +112,7 @@
   --muted-foreground: hsl(24 5.4% 63.9%);
   --accent: hsl(0, 0%, 20%);
   --accent-foreground: hsl(40, 80.5%, 92%);
-  --destructive: hsl(0 62.8% 30.6%);
+  --destructive: hsl(0 84.2% 60.2%);
   --destructive-foreground: hsl(40, 80.5%, 92%);
   --border: hsl(40, 80.5%, 92%);
   --input: hsl(40, 80.5%, 92%);
@@ -167,4 +167,8 @@
 .cjk {
   word-break: keep-all;
   overflow-wrap: anywhere;
+}
+
+[data-sonner-toaster] [data-description] {
+  color: var(--color-muted-foreground) !important;
 }

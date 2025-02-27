@@ -1,4 +1,3 @@
-import * as React from "react";
 import Text from "@/components/ui/text";
 import { ContactForm } from "@/components/forms/contact";
 import { Container } from "@/components/ui/container";

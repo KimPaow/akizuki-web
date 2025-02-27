@@ -1,4 +1,3 @@
-import * as React from "react";
 import Image from "next/image";
 import Text from "@/components/ui/text";
 import Container from "@/components/ui/container";
