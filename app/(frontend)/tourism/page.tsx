@@ -34,9 +34,9 @@ export default function Page() {
   return (
     <div className="w-full max-w-[1280px] mx-auto flex flex-col gap-16 my-32">
       <div className="flex flex-col gap-8 mx-4 sm:mx-0">
-        <Text variant="h1">Experience</Text>
+        <Text variant="h1">観光</Text>
         <Text variant="lead" color="muted">
-          Akizuki offers a wide range of experiences, no matter the season.
+          秋月は四季を通じて多彩な体験を提供します。
         </Text>
       </div>
       <div className="flex flex-col sm:flex-col gap-4 mx-4 sm:mx-0">
