@@ -32,7 +32,7 @@ export default function Page() {
   }, [filters]);
 
   return (
-    <div className="w-full max-w-[1280px] mx-auto flex flex-col gap-16 my-32">
+    <div className="w-full max-w-[1280px] px-4 md:px-8 mx-auto flex flex-col gap-16 my-32">
       <div className="flex flex-col gap-8 mx-4 sm:mx-0">
         <Text variant="h1">観光</Text>
         <Text variant="lead" color="muted">
