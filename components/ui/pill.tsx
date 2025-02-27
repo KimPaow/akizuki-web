@@ -8,7 +8,7 @@ const pill = cva(["rounded-full px-3 ring-2"], {
       winter: ["bg-winter ring-winter"],
       spring: ["bg-spring ring-spring"],
       autumn: ["bg-autumn ring-autumn"],
-      water: ["bg-water ring-winter"],
+      water: ["bg-water ring-water"],
       sun: ["bg-sun ring-sun"],
       history: ["bg-history ring-history"],
     },

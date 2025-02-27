@@ -12,7 +12,7 @@ export function Living({ ...props }: React.ComponentProps<"div">) {
     >
       <div className="row-start-2 sm:row-start-1 col-start-1 col-end-11 md:col-end-6 flex flex-col gap-4 sm:gap-8 mb-4 sm:mb-16">
         <Text variant="h3" color="muted">
-          暮らし
+          秋月の暮らし
         </Text>
         <Text variant="h2" className="mt-0 sm:mt-2 text-4xl sm:text-8xl cjk">
           伝統と

@@ -4,7 +4,7 @@ import { Link } from "@/components/ui/link";
 import { Container } from "@/components/ui/container";
 import AnimatedImageCover from "@/components/ui/animated-image-cover";
 
-export function Experience({ ...props }: React.ComponentProps<"div">) {
+export function Tourism({ ...props }: React.ComponentProps<"div">) {
   return (
     <Container
       className="grid grid-cols-10 auto-rows-auto gap-y-4 sm:gap-8"

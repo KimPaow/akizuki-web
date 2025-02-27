@@ -4,8 +4,8 @@ export const links = [
     text: "歴史",
   },
   {
-    href: "/experience",
-    text: "体験",
+    href: "/tourism",
+    text: "観光",
   },
   {
     href: "/living",

@@ -1,4 +1,4 @@
-import { Category } from "@/app/(frontend)/experience/page";
+import { Category } from "@/app/(frontend)/tourism/page";
 
 interface Experience {
   title: string;

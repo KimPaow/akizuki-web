@@ -40,8 +40,8 @@ export default function Page() {
         </Text>
       </div>
       <div className="flex flex-col sm:flex-col gap-4 mx-4 sm:mx-0">
-        <Text variant="large" className="sm:mr-auto">
-          Filter:
+        <Text variant="small" className="sm:mr-auto">
+          フィルター：
         </Text>
         <div className="flex flex-wrap justify-items-start gap-4">
           {ALL_CATEGORIES.map((category) => {
@@ -68,7 +68,7 @@ export default function Page() {
                 }}
                 className="cursor-pointer"
               >
-                {category}
+                {categoryJA[category]}
               </Pill>
             );
           })}
@@ -88,17 +88,14 @@ export default function Page() {
   );
 }
 
-const categoryColors: Record<
-  Category,
-  "spring" | "summer" | "autumn" | "winter" | "water" | "sun" | "history"
-> = {
-  Food: "spring",
-  Shopping: "sun",
-  Nature: "summer",
-  Culture: "autumn",
-};
-
-const ALL_CATEGORIES = ["Food", "Shopping", "Nature", "Culture"] as const;
+const ALL_CATEGORIES = [
+  "Food",
+  "Shopping",
+  "Nature",
+  "Culture",
+  "Accommodation",
+  "Experience",
+] as const;
 type CategoryTuple = typeof ALL_CATEGORIES;
 export type Category = CategoryTuple[number];
 
@@ -107,6 +104,27 @@ interface ListItemProps extends React.ComponentProps<"div"> {
   content: string;
   tags: Category[];
 }
+
+const categoryColors: Record<
+  Category,
+  "spring" | "summer" | "autumn" | "winter" | "water" | "sun" | "history"
+> = {
+  Food: "spring",
+  Shopping: "sun",
+  Nature: "summer",
+  Culture: "history",
+  Accommodation: "water",
+  Experience: "autumn",
+};
+
+const categoryJA: Record<Category, string> = {
+  Food: "食事",
+  Shopping: "買い物",
+  Nature: "自然",
+  Culture: "文化",
+  Accommodation: "民泊",
+  Experience: "体験",
+};
 
 function ListItem({
   title,
@@ -118,15 +136,15 @@ function ListItem({
       <AccordionTrigger className="cursor-pointer">
         <div className="flex flex-col items-start justify-items-start pr-4">
           <Text
-            variant="h3"
-            className="text-base sm:text-lg md:text-2xl text-left"
+            variant="h2"
+            className="text-base sm:text-lg md:text-3xl text-left"
           >
             {title}
           </Text>
         </div>
         {tags.map((t) => (
           <Pill key={t} variant={categoryColors[t]}>
-            {t}
+            {categoryJA[t]}
           </Pill>
         ))}
       </AccordionTrigger>

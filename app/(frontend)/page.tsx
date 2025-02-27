@@ -1,5 +1,5 @@
 import { History } from "@/components/sections/history";
-import { Experience } from "@/components/sections/experience";
+import { Tourism } from "@/components/sections/tourism";
 import { Living } from "@/components/sections/living";
 import { Contact } from "@/components/sections/contact";
 import { Access } from "@/components/sections/access";
@@ -11,7 +11,7 @@ export default function Home() {
       <div className="min-h-full flex flex-col gap-8 md:gap-64 items-center">
         <Landing />
         <History />
-        <Experience />
+        <Tourism />
         <Living />
         <Contact />
         <Access />
