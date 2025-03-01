@@ -34,7 +34,9 @@ export const Pill: React.FC<Props> = ({
 }) => {
   return (
     <div className={pill({ variant, outline, className })} {...props}>
-      <Text className="text-background text-sm font-medium">{children}</Text>
+      <Text className="text-background text-sm font-medium opacity-80">
+        {children}
+      </Text>
     </div>
   );
 };
