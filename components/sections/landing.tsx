@@ -12,7 +12,7 @@ export function Landing({ ...props }: React.ComponentProps<"div">) {
       <div className="mx-auto flex flex-col gap-8 sm:gap-16 items-center justify-center">
         <div className="px-8 sm:px-20 mr-auto flex flex-col items-center justify-items-center">
           <Text variant="display">AKIZUKI</Text>
-          <Text variant="lead" color="muted">
+          <Text variant="lead" color="muted" className="mt-4 md:mt-0">
             A hidden gem in Fukuoka, Japan |{" "}
             <Link underline href="https://maps.app.goo.gl/BEsHf75AnMdM8Tpp6">
               33°27 N, 130°41 E

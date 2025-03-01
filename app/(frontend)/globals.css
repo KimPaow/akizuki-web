@@ -14,13 +14,14 @@
   --text-8xl--line-height: 1.2;
   --text-9xl--line-height: 1.2;
 
-  --color-summer: #59B255;
+  --color-pill: hsl(0, 0%, 12.5%);
+  --color-summer: #7AA778;
   --color-winter: #DFE4E5;
-  --color-water: #BB98F2;
-  --color-spring: #FFC4C0;
-  --color-autumn: #DE696D;
-  --color-sun: #F9C114;
-  --color-history: #9c7443;
+  --color-water: #C8B2EA;
+  --color-spring: #F7D8D6;
+  --color-autumn: #DA7E81;
+  --color-sun: #F9DB7D;
+  --color-history: hsl(33, 39.9%, 43.7%);
 
   --animate-menu-close: menu-close 0.4s ease-in-out;
   --animate-menu-open: menu-open 0.4s ease-in-out;
@@ -76,7 +77,7 @@
   --card-foreground: hsl(20 14.3% 4.1%);
   --popover: hsl(0 0% 100%);
   --popover-foreground: hsl(20 14.3% 4.1%);
-  --primary: hsl(0, 0%, 12.5%);
+  --primary: var(--color-history);
   --primary-foreground: hsl(40, 80.5%, 92%);
   --secondary: hsl(60 4.8% 95.9%);
   --secondary-foreground: hsl(24 9.8% 10%);
@@ -104,8 +105,8 @@
   --card-foreground: hsl(40, 80.5%, 92%);
   --popover: hsl(0, 0%, 12.5%);
   --popover-foreground: hsl(40, 80.5%, 92%);
-  --primary: hsl(40, 80.5%, 92%);
-  --primary-foreground: hsl(24 9.8% 10%);
+  --primary: var(--color-history);
+  --primary-foreground: hsl(40, 80.5%, 92%);
   --secondary: hsl(12 6.5% 15.1%);
   --secondary-foreground: hsl(40, 80.5%, 92%);
   --muted: hsl(12 6.5% 15.1%);

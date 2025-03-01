@@ -1,7 +1,7 @@
 import { cva, VariantProps } from "class-variance-authority";
 import Text from "@/components/ui/text";
 
-const pill = cva(["rounded-full px-3 ring-2"], {
+const pill = cva(["rounded-full px-3 py-1 ring-1"], {
   variants: {
     variant: {
       summer: ["bg-summer ring-summer"],

@@ -7,29 +7,40 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { experiences as exps } from "@/data/experiences";
+import { experiences as data } from "@/data/experiences";
 import Pill from "@/components/ui/pill";
 import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 
-const sortedExperiences = exps.sort((a, b) => a.key.localeCompare(b.key));
+const sortedData = data.sort((a, b) => a.key.localeCompare(b.key));
 
 export default function Page() {
-  const [filters, setFilters] = useState<Category[]>(
-    ALL_CATEGORIES.map((c) => c)
-  );
-  const [experiences, setExperiences] = useState(sortedExperiences);
+  const searchParams = useSearchParams();
+
+  // get categories from the URL query params
+  const categories = searchParams.get("categories")?.split(",");
+  // if no valid categories are specified, default to showing all categories
+  const defaultFilters = categories?.every((c) =>
+    ALL_CATEGORIES.includes(c as Category)
+  )
+    ? (categories as Category[])
+    : ALL_CATEGORIES.map((c) => c);
+
+  const [filters, setFilters] = useState<Category[]>(defaultFilters);
+  const [listItems, setListItems] = useState(sortedData);
 
   useEffect(() => {
     if (filters.length === 0) {
-      setExperiences(sortedExperiences);
-      return;
+      setListItems(sortedData);
+    } else {
+      setListItems(
+        sortedData.filter((exp) => filters.some((f) => exp.tags.includes(f)))
+      );
     }
-    setExperiences(
-      sortedExperiences.filter((exp) =>
-        filters.some((f) => exp.tags.includes(f))
-      )
-    );
-  }, [filters]);
+
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("categories", filters.join(","));
+  }, [filters, searchParams]);
 
   return (
     <div className="w-full max-w-[1280px] px-4 md:px-8 mx-auto flex flex-col gap-16 my-32">
@@ -75,7 +86,7 @@ export default function Page() {
         </div>
       </div>
       <Accordion type="single" collapsible className="border-t border-history">
-        {experiences.map((exp) => (
+        {listItems.map((exp) => (
           <ListItem
             key={exp.title}
             title={exp.title}
@@ -105,7 +116,7 @@ interface ListItemProps extends React.ComponentProps<"div"> {
   tags: Category[];
 }
 
-const categoryColors: Record<
+export const categoryColors: Record<
   Category,
   "spring" | "summer" | "autumn" | "winter" | "water" | "sun" | "history"
 > = {
@@ -117,7 +128,7 @@ const categoryColors: Record<
   Experience: "autumn",
 };
 
-const categoryJA: Record<Category, string> = {
+export const categoryJA: Record<Category, string> = {
   Food: "食事",
   Shopping: "買い物",
   Nature: "自然",
