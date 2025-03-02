@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Header } from "@/components/ui/header";
 import { Footer } from "@/components/ui/footer";
 import { Toaster } from "@/components/ui/sonner";
+import { Suspense } from "react";
 
 const figtree = Figtree({
   variable: "--font-figtree",
@@ -42,10 +43,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
-          {children}
-          <Footer />
-          <Toaster />
+          <Suspense fallback={null}>
+            <Header />
+            {children}
+            <Footer />
+            <Toaster />
+          </Suspense>
         </ThemeProvider>
       </body>
     </html>
