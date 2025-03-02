@@ -9,7 +9,7 @@ export const links = [
   },
   {
     href: "/living",
-    text: "暮らし",
+    text: "秋月の暮らし",
   },
   {
     href: "/#access-akizuki",
