@@ -37,33 +37,59 @@ const slides: {
 
 const MotionLink = motion(Link);
 
-const showCoverDuration = 0.5;
-const hideTextDuration = 0.2;
+const coverDuration = 0.2;
+const textDuration = 0.2;
 
 const coverVariants: Variants = {
   hidden: {
-    top: "100%",
-    right: 0,
+    top: 0,
+    right: "100%",
+    bottom: 0,
     left: 0,
     transition: {
-      duration: showCoverDuration,
-      delay: hideTextDuration,
-    },
-  },
-  visible: { top: 0 },
-};
-
-const contentVariants: Variants = {
-  hidden: {
-    opacity: 0,
-    transition: {
-      duration: hideTextDuration,
+      duration: coverDuration,
+      delay: textDuration, // Delay the cover animation to match the text animation
     },
   },
   visible: {
+    right: "50%",
+    transition: {
+      duration: coverDuration,
+    },
+  },
+};
+
+const coverBottomVariants: Variants = {
+  hidden: {
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: "100%",
+    transition: {
+      duration: coverDuration,
+      delay: textDuration, // Delay the cover animation to match the text animation
+    },
+  },
+  visible: {
+    left: "50%",
+    transition: {
+      duration: coverDuration,
+    },
+  },
+};
+
+const contentVariants: Variants = {
+  hide: {
+    opacity: 0,
+    transition: {
+      duration: textDuration,
+    },
+  },
+  show: {
     opacity: 1,
     transition: {
-      delay: showCoverDuration - 0.1,
+      duration: textDuration,
+      delay: coverDuration + 0.1, // Delay the text animation to match the cover animation
     },
   },
 };
@@ -95,26 +121,31 @@ const Slide = ({
       onHoverEnd={() => setIsHovered(false)}
     >
       <motion.div
-        className={`absolute bg-${categoryColors[category]} z-[1] h-full rounded-full flex flex-col gap-4 items-start justify-center`}
+        className={`absolute bg-${categoryColors[category]} z-[1] h-full flex flex-col gap-4 items-start justify-center`}
         variants={coverVariants}
         initial="hidden"
         animate={isHovered ? "visible" : "hidden"}
-        transition={{ duration: 0.4 }}
         viewport={{ once: true }}
+      />
+      <motion.div
+        className={`absolute bg-${categoryColors[category]} z-[1] h-full flex flex-col gap-4 items-start justify-center`}
+        variants={coverBottomVariants}
+        initial="hidden"
+        animate={isHovered ? "visible" : "hidden"}
+        viewport={{ once: true }}
+      />
+      <motion.div
+        className={`absolute z-[2] left-0 flex flex-col items-center justify-center h-full w-full`}
+        variants={contentVariants}
+        initial="hide"
+        animate={isHovered ? "show" : "hide"}
       >
-        <motion.div
-          className={`absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[2] flex flex-col items-center justify-center h-full`}
-          variants={contentVariants}
-          initial="hidden"
-          animate={isHovered ? "visible" : "hidden"}
-        >
-          <Text variant="h3" className="text-pill text-6xl opacity-80">
-            {categoryJA[category]}
-          </Text>
-          {/* <Text variant="p" className="text-pill opacity-70 text-center">
-            {description}
-          </Text> */}
-        </motion.div>
+        <Text variant="h3" className="text-pill text-6xl">
+          {categoryJA[category]}
+        </Text>
+        <Text variant="p" className="text-pill opacity-70 text-center">
+          に関しての体験を見る
+        </Text>
       </motion.div>
       <Image className="object-cover" src={src} alt={alt} fill={true} />
     </MotionLink>
@@ -123,7 +154,7 @@ const Slide = ({
 
 export function TourismSlideshow({ ...props }: React.ComponentProps<"div">) {
   return (
-    <Container className="flex flex-col gap-8 lg:gap-24" {...props}>
+    <Container {...props}>
       <div className="flex flex-col justify-between gap-4 sm:gap-8 max-w-[70ch]">
         <Text variant="h3" color="muted">
           観光
@@ -139,19 +170,18 @@ export function TourismSlideshow({ ...props }: React.ComponentProps<"div">) {
             春の桜、秋の紅葉が美しい秋月。歴史ある城下町を散策し、象徴的な秋月城跡を訪れ、趣のあるカフェで地元の味を楽しめます。町の武士の歴史を物語る「黒門」は必見です。四季折々の魅力が溢れる秋月へ、ぜひお越しください！
           </Text>
           <Link href="/tourism" variant="arrow" underline>
-            体験を見る
+            すべての体験を見る
           </Link>
         </div>
       </div>
-      <div className="grid auto-rows-auto lg:grid-cols-9 gap-32">
+      <div className="flex gap-32 mt-16">
         {slides.map((slide, index) => {
-          const gap = 3;
-          const start = 1 + index * gap;
           return (
             <Slide
               key={index}
               {...slide}
-              className={`lg:col-start-${start} lg:col-span-3`}
+              // className={`lg:col-start-${start} lg:col-span-3`}
+              className="grow-1"
             />
           );
         })}
