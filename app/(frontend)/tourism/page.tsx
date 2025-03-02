@@ -1,52 +1,49 @@
-"use client";
-
 import Text from "@/components/ui/text";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { experiences as data } from "@/data/experiences";
-import Pill from "@/components/ui/pill";
-import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
-import {
-  ALL_CATEGORIES,
-  Category,
-  categoryColors,
-  categoryJA,
-} from "@/lib/domain/category";
+import { getPayload } from "payload";
+import buildConfig from "@/payload.config";
+import { ListItem } from "./list";
+import { Accordion } from "@/components/ui/accordion";
+import Filter from "./filter";
+import { ALL_CATEGORIES, Category } from "@/lib/domain/category";
 
-const sortedData = data.sort((a, b) => a.key.localeCompare(b.key));
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const categoryQueryParam = (await searchParams).categories;
+  let filters: Category[] = [];
 
-export default function Page() {
-  const searchParams = useSearchParams();
+  // Should be a comma-separated string of categories
+  if (typeof categoryQueryParam === "string") {
+    const separated = categoryQueryParam.split(",");
 
-  // get categories from the URL query params
-  const categories = searchParams.get("categories")?.split(",");
-  // if no valid categories are specified, default to showing all categories
-  const defaultFilters = categories?.every((c) =>
-    ALL_CATEGORIES.includes(c as Category)
-  )
-    ? (categories as Category[])
-    : ALL_CATEGORIES.map((c) => c);
-
-  const [filters, setFilters] = useState<Category[]>(defaultFilters);
-  const [listItems, setListItems] = useState(sortedData);
-
-  useEffect(() => {
-    if (filters.length === 0) {
-      setListItems(sortedData);
-    } else {
-      setListItems(
-        sortedData.filter((exp) => filters.some((f) => exp.tags.includes(f)))
-      );
+    // If all strings are valid categories, use them
+    if (separated?.every((c) => ALL_CATEGORIES.includes(c as Category))) {
+      filters = separated as Category[];
     }
+    // Otherwise, use all categories
+    else {
+      filters = ALL_CATEGORIES.map((c) => c);
+    }
+  }
+  // If there's something fishy with the queryparam, use all categories as a default
+  else {
+    filters = ALL_CATEGORIES.map((c) => c);
+  }
 
-    const params = new URLSearchParams(searchParams.toString());
-    params.set("categories", filters.join(","));
-  }, [filters, searchParams]);
+  const payload = await getPayload({ config: buildConfig });
+  const experiences = await payload.find({
+    collection: "experiences",
+    pagination: false,
+    depth: 2,
+    where: {
+      categories: {
+        in: filters,
+      },
+    },
+    sort: "title",
+  });
 
   return (
     <div className="w-full max-w-[1280px] px-4 md:px-8 mx-auto flex flex-col gap-16 my-32">
@@ -56,90 +53,12 @@ export default function Page() {
           秋月は四季を通じて多彩な体験を提供します。
         </Text>
       </div>
-      <div className="flex flex-col sm:flex-col gap-4 mx-4 sm:mx-0">
-        <Text variant="small" className="sm:mr-auto">
-          フィルター：
-        </Text>
-        <div className="flex flex-wrap justify-items-start gap-4">
-          {ALL_CATEGORIES.map((category) => {
-            return (
-              <Pill
-                key={category}
-                variant={categoryColors[category]}
-                outline={!filters.includes(category)}
-                onClick={() => {
-                  // if all categories are already selected, choose only the clicked category
-                  if (filters.length === ALL_CATEGORIES.length) {
-                    setFilters([category]);
-                    return;
-                  }
-                  // if the category is already in the filters, remove it
-                  if (filters.includes(category)) {
-                    setFilters((prev) => prev.filter((c) => c !== category));
-                    return;
-                  }
-                  // if the category is not in the filters, add it
-                  else {
-                    setFilters((prev) => [...prev, category]);
-                  }
-                }}
-                className="cursor-pointer"
-              >
-                {categoryJA[category]}
-              </Pill>
-            );
-          })}
-        </div>
-      </div>
+      <Filter />
       <Accordion type="single" collapsible className="border-t border-history">
-        {listItems.map((exp) => (
-          <ListItem
-            key={exp.title}
-            title={exp.title}
-            content={exp.content}
-            tags={exp.tags}
-          />
+        {experiences.docs.map((exp) => (
+          <ListItem key={exp.id} experience={exp} />
         ))}
       </Accordion>
     </div>
-  );
-}
-
-interface ListItemProps extends React.ComponentProps<"div"> {
-  title: string;
-  content: string;
-  tags: Category[];
-}
-
-function ListItem({
-  title,
-  content = "This experience doesn't have any detailed information yet.",
-  tags = [],
-}: ListItemProps) {
-  return (
-    <AccordionItem value={title} className="px-4 sm:px-0">
-      <AccordionTrigger className="cursor-pointer">
-        <div className="flex items-center justify-items-end pr-4 w-full">
-          <Text
-            variant="h2"
-            className="text-base sm:text-lg md:text-3xl text-left mr-auto"
-          >
-            {title}
-          </Text>
-          <div className="flex gap-4">
-            {tags.map((t) => (
-              <Pill key={t} variant={categoryColors[t]}>
-                {categoryJA[t]}
-              </Pill>
-            ))}
-          </div>
-        </div>
-      </AccordionTrigger>
-      <AccordionContent>
-        <Text variant="p" color="muted">
-          {content}
-        </Text>
-      </AccordionContent>
-    </AccordionItem>
   );
 }

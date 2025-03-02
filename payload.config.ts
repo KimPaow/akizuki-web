@@ -13,6 +13,7 @@ import { Users } from "./collections/Users";
 import { Media } from "./collections/Media";
 import { Pages } from "./collections/Pages";
 import { Nav } from "./collections/Nav";
+import { Experiences } from "./collections/Experiences";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -24,7 +25,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Pages],
+  collections: [Users, Media, Pages, Experiences],
   globals: [Nav],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
