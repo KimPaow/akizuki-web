@@ -1,4 +1,4 @@
-import { Category } from "@/app/(frontend)/tourism/page";
+import { Category } from "@/lib/domain/category";
 
 interface Experience {
   key: string;

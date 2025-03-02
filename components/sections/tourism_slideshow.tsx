@@ -7,11 +7,7 @@ import { Container } from "@/components/ui/container";
 import { motion, Variants } from "motion/react";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
-import {
-  Category,
-  categoryColors,
-  categoryJA,
-} from "@/app/(frontend)/tourism/page";
+import { Category, categoryColors, categoryJA } from "@/lib/domain/category";
 
 const slides: {
   src: string;
