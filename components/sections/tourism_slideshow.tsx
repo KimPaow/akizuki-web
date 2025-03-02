@@ -123,7 +123,7 @@ const Slide = ({
 
 export function TourismSlideshow({ ...props }: React.ComponentProps<"div">) {
   return (
-    <Container className="flex flex-col gap-24" {...props}>
+    <Container className="flex flex-col gap-8 lg:gap-24" {...props}>
       <div className="flex flex-col justify-between gap-4 sm:gap-8 max-w-[70ch]">
         <Text variant="h3" color="muted">
           観光
