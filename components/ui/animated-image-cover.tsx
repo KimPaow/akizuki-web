@@ -31,7 +31,7 @@ export const AnimatedImageCover = ({
       whileInView={direction}
       // viewport={{ once: true, margin: "10%" }}
       transition={{ duration: 0.8 }}
-      viewport={{ once: true }}
+      viewport={{ once: true, amount: "all" }}
     />
   );
 };
