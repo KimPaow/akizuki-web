@@ -4,7 +4,7 @@ import { Link } from "@/components/ui/link";
 import { Container } from "@/components/ui/container";
 import AnimatedImageCover from "@/components/ui/animated-image-cover";
 
-export function Living2({ ...props }: React.ComponentProps<"div">) {
+export function Living({ ...props }: React.ComponentProps<"div">) {
   return (
     <Container
       className="grid grid-cols-10 auto-rows-auto gap-y-4 sm:gap-8"
@@ -50,7 +50,7 @@ export function Living2({ ...props }: React.ComponentProps<"div">) {
           <Text variant="p">
             秋月は文化、創造性、そしてコミュニティが息づく活気ある街です。おしゃれなカフェや職人の店が点在し、歴史の趣と現代のリラックスしたライフスタイルが見事に融合しています。アーティスト、リモートワーカー、若い家族にも最適な環境が整っています。都会の喧騒を離れ、自然と伝統、そして洗練された田舎暮らしを楽しんでみませんか？
           </Text>
-          <Link href="/experience" variant="arrow" underline>
+          <Link href="/living" variant="arrow" underline>
             秋月の暮らしについて
           </Link>
         </div>
