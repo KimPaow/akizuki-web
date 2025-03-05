@@ -71,9 +71,10 @@ const typographyVariants = cva([""], {
   },
 });
 
+export type TypographyVariants = VariantProps<typeof typographyVariants>;
 export interface TypographyProps
   extends Omit<React.HTMLAttributes<HTMLHeadingElement>, "color">,
-    VariantProps<typeof typographyVariants> {}
+    TypographyVariants {}
 
 export const Text: React.FC<TypographyProps> = ({
   variant = "p",

@@ -12,9 +12,11 @@ import {
 import Image from "next/image";
 import React from "react";
 import Text from "@/components/ui/text";
+import type { TypographyVariants } from "@/components/ui/text";
 import Link from "@/components/ui/link";
 import { Divider } from "@/components/ui/divider";
 import { formatSlug } from "@/lib/utils";
+import { Media } from "@/payload-types";
 
 type NodeTypes = DefaultNodeTypes;
 
@@ -23,15 +25,15 @@ const CustomUploadComponent: React.FC<{
   node: SerializedUploadNode;
 }> = ({ node }) => {
   if (node.relationTo === "media") {
-    console.log("image node:", node);
     const uploadDoc = node.value;
-    if (typeof uploadDoc !== "object") {
+    if (typeof uploadDoc === "string" || typeof uploadDoc === "number") {
       return null;
     }
+    const media = uploadDoc as unknown as Media;
 
     // Handle PDFs
-    if (uploadDoc.mimeType === "application/pdf") {
-      const { alt, url, filename } = uploadDoc;
+    if (media.mimeType === "application/pdf") {
+      const { alt, url, filename } = media;
 
       if (!alt || !filename || !url) {
         return null;
@@ -51,8 +53,8 @@ const CustomUploadComponent: React.FC<{
     }
 
     // Handle images
-    if (uploadDoc.mimeType?.startsWith("image/")) {
-      const { alt, height, url, width } = uploadDoc;
+    if (media.mimeType?.startsWith("image/")) {
+      const { alt, height, url, width } = media;
 
       if (!height || !width || !url) {
         return null;
@@ -74,21 +76,7 @@ const CustomUploadComponent: React.FC<{
 };
 
 type Headings = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-type VariantProps =
-  | "h1"
-  | "h2"
-  | "h3"
-  | "h4"
-  | "h5"
-  | "h6"
-  | "small"
-  | "p"
-  | "display"
-  | "large"
-  | "lead"
-  | null
-  | undefined;
-const headingTags: Record<Headings, VariantProps> = {
+const headingTags: Record<Headings, TypographyVariants["variant"]> = {
   h1: "h2",
   h2: "h3",
   h3: "h4",
