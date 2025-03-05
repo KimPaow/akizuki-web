@@ -8,6 +8,7 @@ const typographyVariants = cva([""], {
         "font-mincho scroll-m-20 tracking-widest text-4xl md:text-9xl lg:text-[10rem] xl:text-[16rem]",
       ],
       h1: [
+        "[&:not(:first-child)]:mt-10",
         "font-mincho",
         "scroll-m-20",
         "text-4xl",
@@ -15,7 +16,7 @@ const typographyVariants = cva([""], {
         "lg:text-5xl",
       ],
       h2: [
-        "mt-10",
+        "[&:not(:first-child)]:mt-9",
         "font-mincho",
         "scroll-m-20",
         "text-3xl",
@@ -23,7 +24,7 @@ const typographyVariants = cva([""], {
         "first:mt-0",
       ],
       h3: [
-        "mt-8",
+        "[&:not(:first-child)]:mt-8",
         "font-mincho",
         "scroll-m-20",
         "text-2xl",
@@ -31,10 +32,26 @@ const typographyVariants = cva([""], {
         "first:mt-0",
       ],
       h4: [
-        "mt-6",
+        "[&:not(:first-child)]:mt-8",
         "font-mincho",
         "scroll-m-20",
         "text-xl",
+        "tracking-tight",
+        "first:mt-0",
+      ],
+      h5: [
+        "[&:not(:first-child)]:mt-8",
+        "font-mincho",
+        "scroll-m-20",
+        "text-lg",
+        "tracking-tight",
+        "first:mt-0",
+      ],
+      h6: [
+        "[&:not(:first-child)]:mt-8",
+        "font-mincho",
+        "scroll-m-20",
+        "text-base",
         "tracking-tight",
         "first:mt-0",
       ],
@@ -80,6 +97,14 @@ export const Text: React.FC<TypographyProps> = ({
 
   if (variant === "h4") {
     return <h4 className={cn} {...rest} />;
+  }
+
+  if (variant === "h5") {
+    return <h5 className={cn} {...rest} />;
+  }
+
+  if (variant === "h6") {
+    return <h6 className={cn} {...rest} />;
   }
 
   return <p className={cn} {...rest} />;

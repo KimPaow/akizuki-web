@@ -21,6 +21,11 @@ const link = cva(["font-medium cursor-pointer inline-block"], {
     underline: {
       true: ["relative"],
     },
+    color: {
+      default: ["text-current"],
+      primary: ["text-primary"],
+      secondary: ["text-secondary"],
+    },
   },
   compoundVariants: [
     {
@@ -40,13 +45,20 @@ export const Link: React.FC<Props> = ({
   variant = "default",
   className,
   underline,
+  color = "default",
   children,
   ...rest
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   return (
     <NextLink
-      className={link({ hover: isHovered, variant, underline, className })}
+      className={link({
+        hover: isHovered,
+        variant,
+        underline,
+        color,
+        className,
+      })}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       {...rest}

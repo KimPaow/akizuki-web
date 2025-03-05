@@ -173,3 +173,33 @@
 [data-sonner-toaster] [data-description] {
   color: var(--color-muted-foreground) !important;
 }
+
+ol, ul {
+  list-style-position: inside;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing)* 2);
+
+  &:not(:first-child) {
+    margin-top: calc(var(--spacing)* 4);
+}
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+ul {
+  list-style-type: disc;
+}
+
+/* Nested lists */
+.nestedListItem, .list-check {
+  list-style-type: none;
+}
+
+li {
+  > ul, > ol {
+    margin-left: calc(var(--spacing)* 6);
+  }
+}
