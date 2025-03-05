@@ -66,11 +66,12 @@ const CustomUploadComponent: React.FC<{
 
       return (
         <Image
-          src={`${NEXT_PUBLIC_SERVER_URL ?? ""}${url}`}
+          src={url}
           alt={alt}
           className="my-4"
           height={height}
           width={width}
+          unoptimized
         />
       );
     }
