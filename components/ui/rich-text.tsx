@@ -62,7 +62,7 @@ const CustomUploadComponent: React.FC<{
       console.log("image url", url);
       return (
         <Image
-          src={process.env.WEBSITE_URL + url}
+          src={`${process.env.WEBSITE_URL ?? ""}${url}`}
           alt={alt ?? ""}
           className="my-4"
           height={height ?? 500}
