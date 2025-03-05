@@ -20,10 +20,6 @@ import { Media } from "@/payload-types";
 
 type NodeTypes = DefaultNodeTypes;
 
-const NEXT_PUBLIC_SERVER_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
-  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-  : process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000";
-
 // Custom upload converter component that uses next/image
 const CustomUploadComponent: React.FC<{
   node: SerializedUploadNode;
