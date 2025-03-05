@@ -20,6 +20,10 @@ import { Media } from "@/payload-types";
 
 type NodeTypes = DefaultNodeTypes;
 
+const NEXT_PUBLIC_SERVER_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
+  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+  : process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000";
+
 // Custom upload converter component that uses next/image
 const CustomUploadComponent: React.FC<{
   node: SerializedUploadNode;
@@ -59,14 +63,14 @@ const CustomUploadComponent: React.FC<{
       if (!height || !width || !url) {
         return null;
       }
-      console.log("image url", url);
+
       return (
         <Image
-          src={`${process.env.WEBSITE_URL ?? ""}${url}`}
-          alt={alt ?? ""}
+          src={`${NEXT_PUBLIC_SERVER_URL ?? ""}${url}`}
+          alt={alt}
           className="my-4"
-          height={height ?? 500}
-          width={width ?? 1000}
+          height={height}
+          width={width}
         />
       );
     }
