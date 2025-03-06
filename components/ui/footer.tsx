@@ -12,7 +12,7 @@ function Footer({ ...props }: React.ComponentProps<"footer">) {
           <Link
             underline
             href="/"
-            className="text-background font-mincho scroll-m-20 text-2xl tracking-tight mr-auto"
+            className="!text-background font-mincho scroll-m-20 text-2xl tracking-tight mr-auto"
           >
             ホーム
           </Link>
@@ -21,7 +21,7 @@ function Footer({ ...props }: React.ComponentProps<"footer">) {
               key={link.href}
               underline={true}
               href={link.href}
-              className="text-background font-mincho scroll-m-20 text-2xl tracking-tight mr-auto"
+              className="!text-background font-mincho scroll-m-20 text-2xl tracking-tight mr-auto"
             >
               {link.text}
             </Link>
@@ -36,7 +36,7 @@ function Footer({ ...props }: React.ComponentProps<"footer">) {
               key={social.text}
               underline
               href={social.href}
-              className="text-background mr-auto"
+              className="!text-background mr-auto"
             >
               {social.text}
             </Link>
