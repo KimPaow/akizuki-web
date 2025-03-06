@@ -25,25 +25,18 @@ export default async function Page({
     }
     // Otherwise, use all categories
     else {
-      console.log(
-        "Invalid category in queryparam, using all categories",
-        separated
-      );
       filters = ALL_CATEGORIES.map((c) => c);
     }
   }
   // If there's something fishy with the queryparam, use all categories as a default
   else {
-    console.log("No category in queryparam, using all categories");
     filters = ALL_CATEGORIES.map((c) => c);
   }
-  console.log("filters", filters);
 
   const { data: page } = await sanityFetch({
     query: experiencePageQuery,
     params: { filters: filters },
   });
-  console.log("page", page);
   const experiences = page as Experience[];
 
   return (
