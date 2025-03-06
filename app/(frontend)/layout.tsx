@@ -6,6 +6,7 @@ import { Header } from "@/components/ui/header";
 import { Footer } from "@/components/ui/footer";
 import { Toaster } from "@/components/ui/sonner";
 import { Suspense } from "react";
+import { SanityLive } from "@/sanity/live";
 
 const figtree = Figtree({
   variable: "--font-figtree",
@@ -50,6 +51,7 @@ export default function RootLayout({
             <Toaster />
           </Suspense>
         </ThemeProvider>
+        <SanityLive />
       </body>
     </html>
   );

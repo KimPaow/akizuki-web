@@ -5,16 +5,25 @@ import {
 } from "@/components/ui/accordion";
 import Text from "@/components/ui/text";
 import Pill from "@/components/ui/pill";
-import { categoryColors, categoryJA } from "@/lib/domain/category";
-import { Experience } from "@/payload-types";
+import {
+  ALL_CATEGORIES,
+  Category,
+  categoryColors,
+  categoryJA,
+} from "@/lib/domain/category";
+import { Experience } from "@/sanity/types";
 
 interface ListItemProps extends React.ComponentProps<"div"> {
   experience: Experience;
 }
 
+function isCategory(category: string): category is Category {
+  return ALL_CATEGORIES.includes(category as Category);
+}
+
 export function ListItem({ experience }: ListItemProps) {
   return (
-    <AccordionItem value={experience.id.toString()} className="">
+    <AccordionItem value={experience._id} className="">
       <AccordionTrigger className="cursor-pointer">
         <div className="flex items-center justify-items-end pr-4 w-full">
           <div className="flex flex-col mr-auto items-start">
@@ -22,15 +31,16 @@ export function ListItem({ experience }: ListItemProps) {
               variant="h2"
               className="text-base sm:text-lg md:text-3xl text-left"
             >
-              {experience.title}
+              {experience.name}
             </Text>
           </div>
           <div className="flex gap-4">
-            {experience.categories.map((category) => (
-              <Pill key={category} variant={categoryColors[category]}>
-                {categoryJA[category]}
-              </Pill>
-            ))}
+            {experience.categories?.every((c) => isCategory(c)) &&
+              experience.categories?.map((category) => (
+                <Pill key={category} variant={categoryColors[category]}>
+                  {categoryJA[category]}
+                </Pill>
+              ))}
           </div>
         </div>
       </AccordionTrigger>
@@ -60,13 +70,13 @@ export function ListItem({ experience }: ListItemProps) {
                 </Text>
               </div>
             )}
-            {experience.location?.address && (
+            {experience.address && (
               <div className="flex flex-col">
                 <Text variant="p" color="foreground">
                   住所:
                 </Text>
                 <Text variant="p" color="muted" className="!mt-0">
-                  {experience.location?.address}
+                  {experience.address}
                 </Text>
               </div>
             )}
@@ -80,13 +90,13 @@ export function ListItem({ experience }: ListItemProps) {
                 </Text>
               </div>
             )}
-            {experience.contact?.phone && (
+            {experience.phone && (
               <div className="flex flex-col">
                 <Text variant="p" color="foreground">
                   携帯電話:
                 </Text>
                 <Text variant="p" color="muted" className="!mt-0">
-                  {experience.contact?.phone}
+                  {experience.phone}
                 </Text>
               </div>
             )}
