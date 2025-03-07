@@ -16,7 +16,7 @@ export function Access({ ...props }: React.ComponentProps<"div">) {
         アクセス
       </Text>
       <div className="col-start-1 col-end-11 md:col-end-4 md:row-start-2 flex flex-col gap-8">
-        <Text variant="h3">福岡空港から</Text>
+        <Text variant="h4">福岡空港から</Text>
         <div>
           <Text variant="p">
             急行バス「福岡空港線」で「朝倉IC」の手前の「急行甘木(甘木甘木)」で下車し、秋月中心部までタクシーでお越しください。

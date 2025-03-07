@@ -7,7 +7,7 @@ import { email, links, phone, socials } from "@/data/links";
 function Footer({ ...props }: React.ComponentProps<"footer">) {
   return (
     <footer className="bg-foreground px-4 py-16 sm:p-8 md:p-16" {...props}>
-      <div className="w-full max-w-[1280px] mx-auto flex flex-col md:flex-row gap-16 md:gap-16 justify-start">
+      <div className="w-full max-w-[1600px] px-4 md:px-8 mx-auto flex flex-col md:flex-row gap-16 md:gap-16 justify-start">
         <div className="flex-2 flex flex-col gap-4">
           <Link
             underline

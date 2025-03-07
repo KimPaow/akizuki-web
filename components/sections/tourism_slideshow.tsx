@@ -156,10 +156,10 @@ export function TourismSlideshow({ ...props }: React.ComponentProps<"div">) {
   return (
     <Container {...props}>
       <div className="flex flex-col justify-between gap-4 sm:gap-8 max-w-[70ch]">
-        <Text variant="h3" color="muted">
+        <Text variant="h4" color="muted">
           観光
         </Text>
-        <Text variant="h2" className="mt-0 text-4xl sm:text-8xl cjk">
+        <Text variant="h2" className="!mt-0 text-4xl sm:text-8xl cjk">
           歴史を
           <wbr />
           感じる

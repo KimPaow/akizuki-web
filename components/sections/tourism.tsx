@@ -22,7 +22,7 @@ export function Tourism({ ...props }: React.ComponentProps<"div">) {
         />
       </div>
       <div className="col-start-1 md:col-start-5 col-end-11 md:col-end-8 flex flex-col justify-between gap-4 sm:gap-8">
-        <Text variant="h3" color="muted">
+        <Text variant="h4" color="muted">
           観光
         </Text>
         <Text variant="h2" className="mt-0 sm:mt-10 text-4xl sm:text-8xl cjk">
