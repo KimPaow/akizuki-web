@@ -21,8 +21,6 @@ const config = {
   name: "default",
   title: "akizuki",
   basePath: "/admin",
-
-  // This is fine since we're more concerned about flexibility than security in this case
   projectId,
   dataset,
   plugins,
