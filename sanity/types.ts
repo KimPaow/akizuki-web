@@ -215,7 +215,7 @@ export type Slug = {
 
 export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | Page | SanityFileAsset | Experience | Geopoint | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug;
 export declare const internalGroqTypeReferenceTo: unique symbol;
-// Source: /Users/kimbjorkman/dev/personal/akizuki/sanity/lib/queries.ts
+// Source: sanity/lib/queries.ts
 // Variable: contentPageQuery
 // Query: *[  _type == "page"  && slug.current == $slug][0]{  ...,  "headings": content[style in ["h1", "h2", "h3", "h4", "h5", "h6"]],  content[]{    ...,    _type == "image" => {      ...,      asset->    },    _type == "file" => {      ...,      asset->    }  }}
 export type ContentPageQueryResult = {
