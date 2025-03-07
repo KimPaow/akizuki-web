@@ -5,7 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  sanity: ^3.78.0
+  sanity: ^3.78.1
 
 importers:
 
@@ -87,7 +87,7 @@ importers:
         specifier: ^4.1.2
         version: 4.1.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       sanity:
-        specifier: ^3.78.0
+        specifier: ^3.78.1
         version: 3.78.1(@emotion/is-prop-valid@1.2.2)(@types/babel__core@7.20.5)(@types/node@20.17.23)(@types/react@19.0.10)(jiti@2.4.2)(lightningcss@1.29.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(styled-components@6.1.15(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(terser@5.39.0)(typescript@5.7.3)(yaml@2.7.0)
       sharp:
         specifier: ^0.33.5
@@ -2379,12 +2379,12 @@ packages:
   '@sanity/locale-es-es@1.2.18':
     resolution: {integrity: sha512-w/BpWw1YKLl2+DVzWJiCbkkGybb2XE9EURbqPtjnRcQq9L2c4XPde8Y6kUTa1HYsG0WAoOa67i9ospq/llByjQ==}
     peerDependencies:
-      sanity: ^3.78.0
+      sanity: ^3.78.1
 
   '@sanity/locale-ja-jp@1.1.17':
     resolution: {integrity: sha512-lHk58w7K+qKnwiwOXVKSzWGjBRR4fWmp5XmDmgHyRk02W20CZskgsr8ZPaqIDzUa3XHa7pmuOpnSnZU1D2eLUw==}
     peerDependencies:
-      sanity: ^3.78.0
+      sanity: ^3.78.1
 
   '@sanity/logos@2.1.13':
     resolution: {integrity: sha512-PKAbPbM4zn+6wHYjCVwuhmlZnFqyZ9lT/O7OT3BVd2SGAqXoZTimfBOHrVPifytuazdoQ1T2M5eYJTtW/VXLyA==}
@@ -4954,7 +4954,7 @@ packages:
       '@sanity/ui': ^2.15.2
       next: ^14.2 || ^15.0.0-0
       react: ^18.3 || ^19.0.0-0
-      sanity: ^3.78.0
+      sanity: ^3.78.1
       styled-components: ^6.1
 
   next-themes@0.4.4:
