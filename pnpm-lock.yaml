@@ -4,6 +4,9 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  sanity: ^3.78.0
+
 importers:
 
   .:
@@ -2376,12 +2379,12 @@ packages:
   '@sanity/locale-es-es@1.2.18':
     resolution: {integrity: sha512-w/BpWw1YKLl2+DVzWJiCbkkGybb2XE9EURbqPtjnRcQq9L2c4XPde8Y6kUTa1HYsG0WAoOa67i9ospq/llByjQ==}
     peerDependencies:
-      sanity: ^3.22.0
+      sanity: ^3.78.0
 
   '@sanity/locale-ja-jp@1.1.17':
     resolution: {integrity: sha512-lHk58w7K+qKnwiwOXVKSzWGjBRR4fWmp5XmDmgHyRk02W20CZskgsr8ZPaqIDzUa3XHa7pmuOpnSnZU1D2eLUw==}
     peerDependencies:
-      sanity: ^3.22.0
+      sanity: ^3.78.0
 
   '@sanity/logos@2.1.13':
     resolution: {integrity: sha512-PKAbPbM4zn+6wHYjCVwuhmlZnFqyZ9lT/O7OT3BVd2SGAqXoZTimfBOHrVPifytuazdoQ1T2M5eYJTtW/VXLyA==}
