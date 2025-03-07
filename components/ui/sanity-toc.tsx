@@ -1,28 +1,9 @@
 import slugify from "slugify";
 import { Link } from "./link";
+import { ContentPageQueryResult } from "@/sanity/types";
 
 // Define the type for the Headings
-type Headings = NonNullable<Header[]>;
-
-// Because typegen won't generate query types for the `page` query, we need to
-// define the type for the `Header` type manually
-interface Header {
-  children?: Array<{
-    marks?: Array<string>;
-    text?: string;
-    _type: "span";
-    _key: string;
-  }>;
-  markDefs?: Array<{
-    href?: string;
-    _type: "link";
-    _key: string;
-  }>;
-  level?: number;
-  _type: "block";
-  _key: string;
-  style: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-}
+export type Headings = NonNullable<ContentPageQueryResult>["headings"];
 
 // Define the type for each node in the tree structure
 type TreeNode = {
@@ -35,7 +16,7 @@ export function nestHeadings(headings: Headings): TreeNode[] {
   const treeNodes: TreeNode[] = [];
   const stack: { node: TreeNode; level: number }[] = [];
 
-  headings.forEach((block) => {
+  headings?.forEach((block) => {
     if (!block.style || !block.children) return;
 
     const level = parseInt(block.style.replace("h", ""), 10);

@@ -1,8 +1,8 @@
 import { defineQuery } from "next-sanity";
 
-export const livingPageQuery = defineQuery(`*[
+export const contentPageQuery = defineQuery(`*[
   _type == "page"
-  && slug.current == "living"
+  && slug.current == $slug
 ][0]{
   ...,
   "headings": content[style in ["h1", "h2", "h3", "h4", "h5", "h6"]],
