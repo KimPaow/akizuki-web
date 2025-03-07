@@ -1,4 +1,4 @@
-import { defineConfig } from "sanity";
+import { Config, defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
 import { visionTool } from "@sanity/vision";
 import { schema } from "./sanity/schemas";
@@ -21,6 +21,6 @@ const config = {
     jaJPLocale(),
   ],
   schema,
-};
+} satisfies Config;
 
 export default defineConfig(config);
