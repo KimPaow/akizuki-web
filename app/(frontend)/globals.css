@@ -15,12 +15,12 @@
   --text-9xl--line-height: 1.2;
 
   --color-pill: hsl(0, 0%, 12.5%);
-  --color-summer: #7AA778;
-  --color-winter: #DFE4E5;
-  --color-water: #C8B2EA;
-  --color-spring: #F7D8D6;
-  --color-autumn: #DA7E81;
-  --color-sun: #F9DB7D;
+  --color-summer: #7aa778;
+  --color-winter: #dfe4e5;
+  --color-water: #c8b2ea;
+  --color-spring: #f7d8d6;
+  --color-autumn: #da7e81;
+  --color-sun: #f9db7d;
   --color-history: hsl(33, 39.9%, 43.7%);
 
   --animate-menu-close: menu-close 0.4s ease-in-out;
@@ -174,9 +174,10 @@
   color: var(--color-muted-foreground) !important;
 }
 
-ol, ul {
+ol,
+ul {
   list-style-position: inside;
-  margin: calc(var(--spacing)* 2) 0 0 0;
+  margin: calc(var(--spacing) * 2) 0 0 0;
 }
 
 ol {
@@ -188,15 +189,17 @@ ul {
 }
 
 /* Nested lists */
-.nestedListItem, .list-check {
+.nestedListItem,
+.list-check {
   list-style-type: none;
 }
 
 li {
-  margin-top: calc(var(--spacing)* 2);
+  margin-top: calc(var(--spacing) * 2);
 
-  > ul, > ol {
-    margin-bottom: calc(var(--spacing)* 2);
-    margin-left: calc(var(--spacing)* 6);
+  > ul,
+  > ol {
+    margin-bottom: calc(var(--spacing) * 2);
+    margin-left: calc(var(--spacing) * 6);
   }
 }

@@ -3,7 +3,11 @@ import { contentPageQuery } from "@/sanity/lib/queries";
 import ContentPage from "@/components/pages/content-page";
 import { UnderConstruction } from "@/components/ui/under-construction";
 
-export default async function Page({ params }: { params: { slug: string } }) {
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   console.log("now were in a dynamic route", slug);
 

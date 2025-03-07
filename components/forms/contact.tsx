@@ -35,6 +35,33 @@ const formSchema = z.object({
   }),
 });
 
+// Define the subject options.
+enum Subject {
+  Business = "business",
+  House = "house",
+  Volunteering = "volunteering",
+  TownMaking = "townmaking",
+  Other = "other",
+}
+
+// Define the Japanese translation for each subject.
+const subjectsJA: Record<Subject, string> = {
+  [Subject.Business]: "開業",
+  [Subject.House]: "住まい",
+  [Subject.Volunteering]: "ボランティア",
+  [Subject.TownMaking]: "町作り",
+  [Subject.Other]: "その他",
+};
+
+// Define the receiver email address for each subject.
+const receiver: Record<Subject, string> = {
+  [Subject.Business]: "hello@bjorkman.kim",
+  [Subject.House]: "aki@akiaki.co.jp",
+  [Subject.Volunteering]: "hello@bjorkman.kim",
+  [Subject.TownMaking]: "aki@akiaki.co.jp",
+  [Subject.Other]: "hello@bjorkman.kim",
+};
+
 export function ContactForm(props: React.ComponentProps<"form">) {
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
@@ -191,30 +218,3 @@ export function ContactForm(props: React.ComponentProps<"form">) {
     </Form>
   );
 }
-
-// Define the subject options.
-enum Subject {
-  Business = "business",
-  House = "house",
-  Volunteering = "volunteering",
-  TownMaking = "townmaking",
-  Other = "other",
-}
-
-// Define the Japanese translation for each subject.
-const subjectsJA: Record<Subject, string> = {
-  [Subject.Business]: "開業",
-  [Subject.House]: "住まい",
-  [Subject.Volunteering]: "ボランティア",
-  [Subject.TownMaking]: "町作り",
-  [Subject.Other]: "その他",
-};
-
-// Define the receiver email address for each subject.
-const receiver: Record<Subject, string> = {
-  [Subject.Business]: "hello@bjorkman.kim",
-  [Subject.House]: "aki@akiaki.co.jp",
-  [Subject.Volunteering]: "hello@bjorkman.kim",
-  [Subject.TownMaking]: "aki@akiaki.co.jp",
-  [Subject.Other]: "hello@bjorkman.kim",
-};
