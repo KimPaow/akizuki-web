@@ -5,6 +5,7 @@ import { schema } from "./sanity/schemas";
 import { jaJPLocale } from "@sanity/locale-ja-jp";
 import { esESLocale } from "@sanity/locale-es-es";
 import { apiVersion, dataset, projectId } from "./sanity/env";
+import { presentationTool } from "sanity/presentation";
 
 const plugins: PluginOptions[] = [
   structureTool(),
@@ -15,6 +16,13 @@ const plugins: PluginOptions[] = [
   visionTool({ defaultApiVersion: apiVersion }),
   esESLocale(),
   jaJPLocale(),
+  presentationTool({
+    previewUrl: {
+      previewMode: {
+        enable: "/api/draft-mode/enable",
+      },
+    },
+  }),
 ];
 
 const config = {

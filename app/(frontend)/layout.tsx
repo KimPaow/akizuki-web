@@ -7,6 +7,9 @@ import { Footer } from "@/components/ui/footer";
 import { Toaster } from "@/components/ui/sonner";
 import { Suspense } from "react";
 import { SanityLive } from "@/sanity/live";
+import { DisableDraftMode } from "@/components/disable-draft-mode";
+import { VisualEditing } from "next-sanity";
+import { draftMode } from "next/headers";
 
 const figtree = Figtree({
   variable: "--font-figtree",
@@ -24,7 +27,7 @@ export const metadata: Metadata = {
   description: "歴史を感じる旅",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -50,6 +53,12 @@ export default function RootLayout({
             <Footer />
             <Toaster />
           </Suspense>
+          {(await draftMode()).isEnabled && (
+            <>
+              <VisualEditing />
+              <DisableDraftMode />
+            </>
+          )}
         </ThemeProvider>
         <SanityLive />
       </body>
