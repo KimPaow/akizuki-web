@@ -16,6 +16,10 @@ const config = {
   dataset,
   plugins: [
     structureTool(),
+    // Vision is a tool that lets you query your content with GROQ in the studio
+    // https://www.sanity.io/docs/the-vision-plugin
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore This is complaining that "Types of property 'schema' are incompatible."
     visionTool({ defaultApiVersion: apiVersion }),
     esESLocale(),
     jaJPLocale(),
