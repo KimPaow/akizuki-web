@@ -14,12 +14,17 @@ export const AnimatedIntro = () => {
       <Text variant="display">
         <AnimatedText text="AKIZUKI" />
       </Text>
-      <Text variant="lead" color="muted" className="mt-4 lg:mt-10">
+      <Text
+        variant="lead"
+        color="muted"
+        className="mt-4 lg:mt-10 text-center text-lg md:text-xl lg:text-3xl"
+      >
         <AnimatedText
-          text="A hidden gem in Fukuoka, Japan |"
+          text="福岡に隠された宝石　|"
           duration={1}
           stagger={0.05}
-        />{" "}
+        />
+        {"　"}
         <Link underline href="https://maps.app.goo.gl/BEsHf75AnMdM8Tpp6">
           <AnimatedText text="33°27 N, 130°41 E" duration={1} stagger={0.1} />
         </Link>

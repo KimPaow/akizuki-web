@@ -174,7 +174,7 @@ export function TourismSlideshow({ ...props }: React.ComponentProps<"div">) {
           </Link>
         </div>
       </div>
-      <div className="flex gap-32 mt-16">
+      <div className="hidden md:flex gap-8 lg:gap-32 mt-16">
         {slides.map((slide, index) => {
           return (
             <Slide
