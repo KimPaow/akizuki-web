@@ -80,35 +80,64 @@ export const Text: React.FC<TypographyProps> = ({
   variant = "p",
   color = "foreground",
   className,
+  children,
   ...rest
 }) => {
   const cn = twMerge(typographyVariants({ variant, color, className }));
 
   if (variant === "display" || variant === "h1") {
-    return <h1 className={cn} {...rest} />;
+    return (
+      <h1 className={cn} {...rest}>
+        {children}
+      </h1>
+    );
   }
 
   if (variant === "h2") {
-    return <h2 className={cn} {...rest} />;
+    return (
+      <h2 className={cn} {...rest}>
+        {children}
+      </h2>
+    );
   }
 
   if (variant === "h3") {
-    return <h3 className={cn} {...rest} />;
+    return (
+      <h3 className={cn} {...rest}>
+        {children}
+      </h3>
+    );
   }
 
   if (variant === "h4") {
-    return <h4 className={cn} {...rest} />;
+    return (
+      <h4 className={cn} {...rest}>
+        {children}
+      </h4>
+    );
   }
 
   if (variant === "h5") {
-    return <h5 className={cn} {...rest} />;
+    return (
+      <h5 className={cn} {...rest}>
+        {children}
+      </h5>
+    );
   }
 
   if (variant === "h6") {
-    return <h6 className={cn} {...rest} />;
+    return (
+      <h6 className={cn} {...rest}>
+        {children}
+      </h6>
+    );
   }
 
-  return <p className={cn} {...rest} />;
+  return (
+    <p className={cn} {...rest}>
+      {children}
+    </p>
+  );
 };
 
 export default Text;
