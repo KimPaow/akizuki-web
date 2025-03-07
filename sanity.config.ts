@@ -6,9 +6,14 @@ import { jaJPLocale } from "@sanity/locale-ja-jp";
 import { esESLocale } from "@sanity/locale-es-es";
 import { apiVersion, dataset, projectId } from "./sanity/env";
 import { presentationTool } from "sanity/presentation";
+import {
+  singletonActions,
+  singletonTypes,
+  structure,
+} from "./sanity/structure";
 
 const plugins: PluginOptions[] = [
-  structureTool(),
+  structureTool(structure),
   // Vision is a tool that lets you query your content with GROQ in the studio
   // https://www.sanity.io/docs/the-vision-plugin
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -33,6 +38,14 @@ const config = {
   dataset,
   plugins,
   schema,
+  document: {
+    // For singleton types, filter out actions that are not explicitly included
+    // in the `singletonActions` list defined above
+    actions: (input, context) =>
+      singletonTypes.has(context.schemaType)
+        ? input.filter(({ action }) => action && singletonActions.has(action))
+        : input,
+  },
 } satisfies SingleWorkspace;
 
 export default defineConfig(config);
