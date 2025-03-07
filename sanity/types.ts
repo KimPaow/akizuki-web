@@ -64,6 +64,8 @@ export type Settings = {
     _type: "externalLink";
     _key: string;
   }>;
+  email?: string;
+  phone?: string;
 };
 
 export type Page = {
@@ -348,6 +350,35 @@ export type ContentPageQueryResult = {
 // Variable: experiencePageQuery
 // Query: *[  _type == "experience" && array::intersects(categories, $filters)][]{  ...,}
 export type ExperiencePageQueryResult = Array<never>;
+// Variable: layoutQuery
+// Query: *[  _type == "settings" && _id == "settings"][0]{  ...,  menu[]{    ...,    _type == 'internalLink' => @->{slug, _id, name},    _type != 'internalLink' => @  }}
+export type LayoutQueryResult = {
+  _id: string;
+  _type: "settings";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  menu: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+  } | {
+    title?: string;
+    url?: string;
+    blank?: boolean;
+    _type: "externalLink";
+    _key: string;
+  }> | null;
+  socials?: Array<{
+    title?: string;
+    url?: string;
+    _type: "externalLink";
+    _key: string;
+  }>;
+  email?: string;
+  phone?: string;
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
@@ -355,5 +386,6 @@ declare module "@sanity/client" {
   interface SanityQueries {
     "*[\n  _type == \"page\"\n  && slug.current == $slug\n][0]{\n  ...,\n  \"headings\": content[style in [\"h1\", \"h2\", \"h3\", \"h4\", \"h5\", \"h6\"]],\n  content[]{\n    ...,\n    _type == \"image\" => {\n      ...,\n      asset->\n    },\n    _type == \"file\" => {\n      ...,\n      asset->\n    }\n  }\n}": ContentPageQueryResult;
     "*[\n  _type == \"experience\" && array::intersects(categories, $filters)\n][]{\n  ...,\n}": ExperiencePageQueryResult;
+    "*[\n  _type == \"settings\" && _id == \"settings\"\n][0]{\n  ...,\n  menu[]{\n    ...,\n    _type == 'internalLink' => @->{slug, _id, name},\n    _type != 'internalLink' => @\n  }\n}": LayoutQueryResult;
   }
 }

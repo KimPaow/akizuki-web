@@ -1,10 +1,20 @@
 import * as React from "react";
-// import { ModeToggle } from "@/components/ui/mode-toggle";
 import Link from "@/components/ui/link";
 import Text from "@/components/ui/text";
-import { email, links, phone, socials } from "@/data/links";
+import { LayoutQueryResult } from "@/sanity/types";
 
-function Footer({ ...props }: React.ComponentProps<"footer">) {
+function Footer({
+  socials,
+  menu,
+  phone,
+  email,
+  ...props
+}: React.ComponentProps<"footer"> & {
+  socials?: NonNullable<LayoutQueryResult>["socials"];
+  menu?: NonNullable<LayoutQueryResult>["menu"];
+  phone?: string;
+  email?: string;
+}) {
   return (
     <footer className="bg-foreground px-4 py-16 sm:p-8 md:p-16" {...props}>
       <div className="w-full max-w-[1600px] px-4 md:px-8 mx-auto flex flex-col md:flex-row gap-16 md:gap-16 justify-start">
@@ -16,32 +26,54 @@ function Footer({ ...props }: React.ComponentProps<"footer">) {
           >
             ホーム
           </Link>
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              underline={true}
-              href={link.href}
-              className="!text-background font-mincho scroll-m-20 text-2xl tracking-tight mr-auto"
-            >
-              {link.text}
-            </Link>
-          ))}
+          {menu?.map((link) => {
+            if (link._type === "externalLink") {
+              return (
+                <Link
+                  key={link._key}
+                  underline={true}
+                  href={link.url ?? ""}
+                  className="!text-background font-mincho scroll-m-20 text-2xl tracking-tight mr-auto"
+                >
+                  {link.title}
+                </Link>
+              );
+            } else {
+              const internalLink = link as unknown as {
+                slug: { current: string };
+                name: string;
+                _id: string;
+              };
+              return (
+                <Link
+                  key={internalLink._id}
+                  underline={true}
+                  href={`/${internalLink.slug?.current}`}
+                  className="!text-background font-mincho scroll-m-20 text-2xl tracking-tight mr-auto"
+                >
+                  {internalLink.name}
+                </Link>
+              );
+            }
+          })}
         </div>
-        <div className="flex-2 flex flex-col gap-4">
-          <Text variant="h3" className="text-background">
-            Social
-          </Text>
-          {socials.map((social) => (
-            <Link
-              key={social.text}
-              underline
-              href={social.href}
-              className="!text-background mr-auto"
-            >
-              {social.text}
-            </Link>
-          ))}
-        </div>
+        {socials && (
+          <div className="flex-2 flex flex-col gap-4">
+            <Text variant="h3" className="text-background">
+              Social
+            </Text>
+            {socials.map((social) => (
+              <Link
+                key={social._key}
+                underline
+                href={social.url ?? ""}
+                className="!text-background mr-auto"
+              >
+                {social.title}
+              </Link>
+            ))}
+          </div>
+        )}
         <div className="flex-2 flex flex-col gap-8">
           {email && (
             <div className="flex flex-col gap-4">

@@ -1,7 +1,6 @@
 import Image from "next/image";
-import Text from "@/components/ui/text";
 import Container from "@/components/ui/container";
-import Link from "../ui/link";
+import { AnimatedIntro } from "../ui/animated-intro";
 
 export function Landing({ ...props }: React.ComponentProps<"div">) {
   return (
@@ -10,15 +9,7 @@ export function Landing({ ...props }: React.ComponentProps<"div">) {
       {...props}
     >
       <div className="mx-auto flex flex-col gap-8 sm:gap-16 items-center justify-center">
-        <div className="px-8 sm:px-20 mr-auto flex flex-col items-center justify-items-center">
-          <Text variant="display">AKIZUKI</Text>
-          <Text variant="lead" color="muted" className="mt-4 md:mt-0">
-            A hidden gem in Fukuoka, Japan |{" "}
-            <Link underline href="https://maps.app.goo.gl/BEsHf75AnMdM8Tpp6">
-              33°27 N, 130°41 E
-            </Link>
-          </Text>
-        </div>
+        <AnimatedIntro />
       </div>
       <Image
         src="/images/drawing.jpg"

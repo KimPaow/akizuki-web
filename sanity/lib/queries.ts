@@ -24,3 +24,14 @@ export const experiencePageQuery = defineQuery(`*[
 ][]{
   ...,
 }`);
+
+export const layoutQuery = defineQuery(`*[
+  _type == "settings" && _id == "settings"
+][0]{
+  ...,
+  menu[]{
+    ...,
+    _type == 'internalLink' => @->{slug, _id, name},
+    _type != 'internalLink' => @
+  }
+}`);

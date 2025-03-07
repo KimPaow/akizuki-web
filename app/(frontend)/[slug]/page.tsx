@@ -9,8 +9,6 @@ export default async function Page({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  console.log("now were in a dynamic route", slug);
-
   const { data } = await sanityFetch({
     query: contentPageQuery,
     params: { slug },

@@ -6,10 +6,11 @@ import { Header } from "@/components/ui/header";
 import { Footer } from "@/components/ui/footer";
 import { Toaster } from "@/components/ui/sonner";
 import { Suspense } from "react";
-import { SanityLive } from "@/sanity/live";
+import { sanityFetch, SanityLive } from "@/sanity/live";
 import { DisableDraftMode } from "@/components/disable-draft-mode";
 import { VisualEditing } from "next-sanity";
 import { draftMode } from "next/headers";
+import { layoutQuery } from "@/sanity/lib/queries";
 
 const figtree = Figtree({
   variable: "--font-figtree",
@@ -32,6 +33,10 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { data } = await sanityFetch({
+    query: layoutQuery,
+  });
+
   return (
     <html
       lang="ja"
@@ -48,9 +53,14 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           <Suspense fallback={null}>
-            <Header />
+            <Header data={data?.menu} />
             {children}
-            <Footer />
+            <Footer
+              socials={data?.socials}
+              menu={data?.menu}
+              phone={data?.phone}
+              email={data?.email}
+            />
             <Toaster />
           </Suspense>
           {(await draftMode()).isEnabled && (

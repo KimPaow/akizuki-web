@@ -49,5 +49,15 @@ export const settings = defineType({
         },
       ],
     }),
+    defineField({
+      title: "メールアドレス",
+      name: "email",
+      type: "email",
+    }),
+    defineField({
+      title: "電話番号",
+      name: "phone",
+      type: "string",
+    }),
   ],
 });

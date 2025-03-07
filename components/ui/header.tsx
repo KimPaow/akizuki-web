@@ -4,13 +4,12 @@ import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 // import { ModeToggle } from "@/components/ui/mode-toggle";
 import Link from "@/components/ui/link";
-import { links } from "@/data/links";
 import { usePathname } from "next/navigation";
 import { Button } from "./button";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { motion, Variants } from "motion/react";
-// import Image from "next/image";
+import { LayoutQueryResult } from "@/sanity/types";
 
 const MotionLink = motion.create(Link);
 const MotionButton = motion.create(Button);
@@ -53,9 +52,11 @@ const menuItem: Variants = {
 
 function Header({
   asChild = false,
+  data,
   ...props
 }: React.ComponentProps<"header"> & {
   asChild?: boolean;
+  data?: NonNullable<LayoutQueryResult>["menu"];
 }) {
   const Comp = asChild ? Slot : "header";
   const pathname = usePathname();
@@ -98,20 +99,43 @@ function Header({
           )}
         >
           <div className="absolute left-[50%] md:left-[100%] top-[50%] translate-y-[-50%] translate-x-[-25%] md:translate-x-[-50%] flex flex-col gap-8 w-[200%] max-w-[200%] md:max-w-[100%]">
-            {links.map((link) => (
-              <MotionLink
-                key={link.href}
-                href={link.href}
-                variants={menuItem}
-                variant="nav"
-                className={cn(pathname === link.href && "!text-background")}
-                onClick={() => setOpen(false)}
-                // onHoverStart={() => setHoveredLinkIndex(i)}
-                // onHoverEnd={() => setHoveredLinkIndex(undefined)}
-              >
-                {link.text}
-              </MotionLink>
-            ))}
+            {data?.map((link) => {
+              if (link._type === "externalLink") {
+                return (
+                  <MotionLink
+                    key={link._key}
+                    href={link.url}
+                    variants={menuItem}
+                    variant="nav"
+                    className={cn(pathname === link.url && "!text-background")}
+                    onClick={() => setOpen(false)}
+                  >
+                    {link.title}
+                  </MotionLink>
+                );
+              } else {
+                const internalLink = link as unknown as {
+                  slug: { current: string };
+                  name: string;
+                  _id: string;
+                };
+                return (
+                  <MotionLink
+                    key={internalLink._id}
+                    href={`/${internalLink.slug?.current}`}
+                    variants={menuItem}
+                    variant="nav"
+                    className={cn(
+                      pathname === `/${internalLink.slug?.current}` &&
+                        "!text-background"
+                    )}
+                    onClick={() => setOpen(false)}
+                  >
+                    {internalLink.name}
+                  </MotionLink>
+                );
+              }
+            })}
           </div>
         </motion.div>
         <motion.div
