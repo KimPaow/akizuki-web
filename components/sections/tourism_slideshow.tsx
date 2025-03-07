@@ -35,7 +35,7 @@ const slides: {
   },
 ];
 
-const MotionLink = motion(Link);
+const MotionLink = motion.create(Link);
 
 const coverDuration = 0.2;
 const textDuration = 0.2;
