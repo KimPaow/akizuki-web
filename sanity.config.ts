@@ -1,4 +1,4 @@
-import { defineConfig } from "sanity";
+import { Config, defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
 import { visionTool } from "@sanity/vision";
 import { schemaTypes } from "./sanity/schemaTypes";
@@ -6,7 +6,7 @@ import { jaJPLocale } from "@sanity/locale-ja-jp";
 import { esESLocale } from "@sanity/locale-es-es";
 // import {defineDocuments, presentationTool} from 'sanity/presentation'
 
-export default defineConfig({
+const config: Config = {
   name: "default",
   title: "akizuki",
   basePath: "/admin",
@@ -42,4 +42,6 @@ export default defineConfig({
   schema: {
     types: schemaTypes,
   },
-});
+};
+
+export default defineConfig(config);
