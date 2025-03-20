@@ -14,7 +14,7 @@ export function Living({ ...props }: React.ComponentProps<"div">) {
         <Text variant="h4" color="muted">
           秋月の暮らし
         </Text>
-        <Text variant="h2" className="mt-0 sm:mt-2 text-4xl sm:text-8xl cjk">
+        <Text variant="h2" className="mt-0 sm:mt-2 text-3xl sm:text-6xl cjk">
           伝統と
           <wbr />
           新風が

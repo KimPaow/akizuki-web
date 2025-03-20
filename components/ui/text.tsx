@@ -5,7 +5,7 @@ const typographyVariants = cva([""], {
   variants: {
     variant: {
       display: [
-        "font-mincho scroll-m-20 tracking-widest text-4xl md:text-9xl lg:text-[10rem] xl:text-[16rem]",
+        "font-mincho scroll-m-20 tracking-widest text-4xl md:text-9xl lg:text-[8rem] xl:text-[12rem]",
       ],
       h1: [
         "[&:not(:first-child)]:mt-10",

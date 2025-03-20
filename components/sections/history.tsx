@@ -26,7 +26,7 @@ export function History({ ...props }: React.ComponentProps<"div">) {
           <Text
             variant="h2"
             id="access"
-            className="mt-0 sm:mt-10 text-4xl sm:text-8xl cjk"
+            className="mt-0 sm:mt-10 text-3xl sm:text-6xl cjk"
           >
             秋月に
             <wbr />

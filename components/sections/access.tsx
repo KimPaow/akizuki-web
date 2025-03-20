@@ -10,7 +10,7 @@ export function Access({ ...props }: React.ComponentProps<"div">) {
     >
       <Text
         variant="h2"
-        className="col-start-1 col-end-11 md:col-end-5 row-start-1 mt-0 sm:mt-10 text-4xl sm:text-8xl text-center sm:text-left lg:mb-16"
+        className="col-start-1 col-end-11 md:col-end-5 row-start-1 mt-0 sm:mt-10 text-3xl sm:text-6xl text-center sm:text-left lg:mb-16"
         id="access-akizuki"
       >
         アクセス

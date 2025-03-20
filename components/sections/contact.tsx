@@ -12,7 +12,7 @@ export function Contact({ ...props }: React.ComponentProps<"div">) {
         <Text variant="h4" color="muted">
           コンタクト
         </Text>
-        <Text variant="h2" className="mt-0 sm:mt-10 text-4xl sm:text-8xl cjk">
+        <Text variant="h2" className="mt-0 sm:mt-10 text-3xl sm:text-6xl cjk">
           旅を
           <wbr />
           始めましょう

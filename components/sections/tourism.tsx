@@ -25,7 +25,7 @@ export function Tourism({ ...props }: React.ComponentProps<"div">) {
         <Text variant="h4" color="muted">
           観光
         </Text>
-        <Text variant="h2" className="mt-0 sm:mt-10 text-4xl sm:text-8xl cjk">
+        <Text variant="h2" className="mt-0 sm:mt-10 text-3xl sm:text-6xl cjk">
           歴史を
           <wbr />
           感じる
