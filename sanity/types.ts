@@ -68,6 +68,99 @@ export type Settings = {
   phone?: string;
 };
 
+export type Experience = {
+  _id: string;
+  _type: "experience";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  wip?: boolean;
+  name?: string;
+  slug?: Slug;
+  introduction?: string;
+  content?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      reference?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "page";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "experience";
+      };
+      _type: "internalLink";
+      _key: string;
+    } | {
+      href?: string;
+      blank?: boolean;
+      _type: "externalLink";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  } | {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.fileAsset";
+    };
+    title?: string;
+    _type: "file";
+    _key: string;
+  }>;
+  categories?: Array<string>;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  website?: string;
+  email?: string;
+  phone?: string;
+  hours?: string;
+  pricerange?: string;
+  address?: string;
+  location?: Geopoint;
+};
+
+export type Geopoint = {
+  _type: "geopoint";
+  lat?: number;
+  lng?: number;
+  alt?: number;
+};
+
 export type Page = {
   _id: string;
   _type: "page";
@@ -89,8 +182,23 @@ export type Page = {
     style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
     listItem?: "bullet" | "number";
     markDefs?: Array<{
+      reference?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "page";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "experience";
+      };
+      _type: "internalLink";
+      _key: string;
+    } | {
       href?: string;
-      _type: "link";
+      blank?: boolean;
+      _type: "externalLink";
       _key: string;
     }>;
     level?: number;
@@ -141,43 +249,6 @@ export type SanityFileAsset = {
   path?: string;
   url?: string;
   source?: SanityAssetSourceData;
-};
-
-export type Experience = {
-  _id: string;
-  _type: "experience";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  name?: string;
-  slug?: Slug;
-  introduction?: string;
-  categories?: Array<string>;
-  image?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-  website?: string;
-  email?: string;
-  phone?: string;
-  hours?: string;
-  pricerange?: string;
-  address?: string;
-  location?: Geopoint;
-};
-
-export type Geopoint = {
-  _type: "geopoint";
-  lat?: number;
-  lng?: number;
-  alt?: number;
 };
 
 export type SanityImageCrop = {
@@ -243,22 +314,21 @@ export type Slug = {
   source?: string;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | Settings | Page | SanityFileAsset | Experience | Geopoint | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | Settings | Experience | Geopoint | Page | SanityFileAsset | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: sanity/lib/queries.ts
-// Variable: contentPageQuery
-// Query: *[  _type == "page"  && slug.current == $slug][0]{  ...,  "headings": content[style in ["h1", "h2", "h3", "h4", "h5", "h6"]],  content[]{    ...,    _type == "image" => {      ...,      asset->    },    _type == "file" => {      ...,      asset->    }  }}
-export type ContentPageQueryResult = {
+// Variable: tourismPageQuery
+// Query: *[  _type == "experience"  && slug.current == $slug][0]{  ...,  "headings": content[style in ["h1", "h2", "h3", "h4", "h5", "h6"]],  content[]{    ...,    markDefs[]{      ...,      _type == "internalLink" => {        ...,        "type": @.reference->_type,        "slug": @.reference->slug      }    },    _type == "image" => {      ...,      asset->    },    _type == "file" => {      ...,      asset->    }  }}
+export type TourismPageQueryResult = {
   _id: string;
-  _type: "page";
+  _type: "experience";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
   wip?: boolean;
-  contact_form?: boolean;
   name?: string;
   slug?: Slug;
-  preamble?: string;
+  introduction?: string;
   content: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -268,11 +338,28 @@ export type ContentPageQueryResult = {
     }>;
     style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
     listItem?: "bullet" | "number";
-    markDefs?: Array<{
+    markDefs: Array<{
       href?: string;
-      _type: "link";
+      blank?: boolean;
+      _type: "externalLink";
       _key: string;
-    }>;
+    } | {
+      reference?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "experience";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "page";
+      };
+      _type: "internalLink";
+      _key: string;
+      type: "experience" | "page" | null;
+      slug: Slug | null;
+    }> | null;
     level?: number;
     _type: "block";
     _key: string;
@@ -301,6 +388,7 @@ export type ContentPageQueryResult = {
     title?: string;
     _type: "file";
     _key: string;
+    markDefs: null;
   } | {
     asset: {
       _id: string;
@@ -329,6 +417,163 @@ export type ContentPageQueryResult = {
     alt?: string;
     _type: "image";
     _key: string;
+    markDefs: null;
+  }> | null;
+  categories?: Array<string>;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  website?: string;
+  email?: string;
+  phone?: string;
+  hours?: string;
+  pricerange?: string;
+  address?: string;
+  location?: Geopoint;
+  headings: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      blank?: boolean;
+      _type: "externalLink";
+      _key: string;
+    } | {
+      reference?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "experience";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "page";
+      };
+      _type: "internalLink";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }> | null;
+} | null;
+// Variable: contentPageQuery
+// Query: *[  _type == "page"  && slug.current == $slug][0]{  ...,  "headings": content[style in ["h1", "h2", "h3", "h4", "h5", "h6"]],  content[]{    ...,    markDefs[]{      ...,      _type == "internalLink" => {        ...,        "type": @.reference->_type,        "slug": @.reference->slug      }    },    _type == "image" => {      ...,      asset->    },    _type == "file" => {      ...,      asset->    }  }}
+export type ContentPageQueryResult = {
+  _id: string;
+  _type: "page";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  wip?: boolean;
+  contact_form?: boolean;
+  name?: string;
+  slug?: Slug;
+  preamble?: string;
+  content: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs: Array<{
+      href?: string;
+      blank?: boolean;
+      _type: "externalLink";
+      _key: string;
+    } | {
+      reference?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "experience";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "page";
+      };
+      _type: "internalLink";
+      _key: string;
+      type: "experience" | "page" | null;
+      slug: Slug | null;
+    }> | null;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
+    asset: {
+      _id: string;
+      _type: "sanity.fileAsset";
+      _createdAt: string;
+      _updatedAt: string;
+      _rev: string;
+      originalFilename?: string;
+      label?: string;
+      title?: string;
+      description?: string;
+      altText?: string;
+      sha1hash?: string;
+      extension?: string;
+      mimeType?: string;
+      size?: number;
+      assetId?: string;
+      uploadId?: string;
+      path?: string;
+      url?: string;
+      source?: SanityAssetSourceData;
+    } | null;
+    title?: string;
+    _type: "file";
+    _key: string;
+    markDefs: null;
+  } | {
+    asset: {
+      _id: string;
+      _type: "sanity.imageAsset";
+      _createdAt: string;
+      _updatedAt: string;
+      _rev: string;
+      originalFilename?: string;
+      label?: string;
+      title?: string;
+      description?: string;
+      altText?: string;
+      sha1hash?: string;
+      extension?: string;
+      mimeType?: string;
+      size?: number;
+      assetId?: string;
+      uploadId?: string;
+      path?: string;
+      url?: string;
+      metadata?: SanityImageMetadata;
+      source?: SanityAssetSourceData;
+    } | null;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+    markDefs: null;
   }> | null;
   headings: Array<{
     children?: Array<{
@@ -341,7 +586,22 @@ export type ContentPageQueryResult = {
     listItem?: "bullet" | "number";
     markDefs?: Array<{
       href?: string;
-      _type: "link";
+      blank?: boolean;
+      _type: "externalLink";
+      _key: string;
+    } | {
+      reference?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "experience";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "page";
+      };
+      _type: "internalLink";
       _key: string;
     }>;
     level?: number;
@@ -386,7 +646,8 @@ export type LayoutQueryResult = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[\n  _type == \"page\"\n  && slug.current == $slug\n][0]{\n  ...,\n  \"headings\": content[style in [\"h1\", \"h2\", \"h3\", \"h4\", \"h5\", \"h6\"]],\n  content[]{\n    ...,\n    _type == \"image\" => {\n      ...,\n      asset->\n    },\n    _type == \"file\" => {\n      ...,\n      asset->\n    }\n  }\n}": ContentPageQueryResult;
+    "*[\n  _type == \"experience\"\n  && slug.current == $slug\n][0]{\n  ...,\n  \"headings\": content[style in [\"h1\", \"h2\", \"h3\", \"h4\", \"h5\", \"h6\"]],\n  content[]{\n    ...,\n    markDefs[]{\n      ...,\n      _type == \"internalLink\" => {\n        ...,\n        \"type\": @.reference->_type,\n        \"slug\": @.reference->slug\n      }\n    },\n    _type == \"image\" => {\n      ...,\n      asset->\n    },\n    _type == \"file\" => {\n      ...,\n      asset->\n    }\n  }\n}": TourismPageQueryResult;
+    "*[\n  _type == \"page\"\n  && slug.current == $slug\n][0]{\n  ...,\n  \"headings\": content[style in [\"h1\", \"h2\", \"h3\", \"h4\", \"h5\", \"h6\"]],\n  content[]{\n    ...,\n    markDefs[]{\n      ...,\n      _type == \"internalLink\" => {\n        ...,\n        \"type\": @.reference->_type,\n        \"slug\": @.reference->slug\n      }\n    },\n    _type == \"image\" => {\n      ...,\n      asset->\n    },\n    _type == \"file\" => {\n      ...,\n      asset->\n    }\n  }\n}": ContentPageQueryResult;
     "*[\n  _type == \"experience\" && array::intersects(categories, $filters)\n][]{\n  ...,\n}": ExperiencePageQueryResult;
     "*[\n  _type == \"settings\" && _id == \"settings\"\n][0]{\n  ...,\n  menu[]{\n    ...,\n    _type == 'internalLink' => @->{slug, _id, name},\n    _type != 'internalLink' => @\n  }\n}": LayoutQueryResult;
   }

@@ -56,9 +56,9 @@ const typographyVariants = cva([""], {
         "first:mt-0",
       ],
       p: ["leading-7 [&:not(:first-child)]:mt-6"],
-      large: ["text-lg"],
+      large: ["leading-7 text-lg"],
       small: ["text-sm leading-none"],
-      lead: ["text-xl text-muted-foreground"],
+      lead: ["text-lg text-muted-foreground leading-8"],
     },
     color: {
       foreground: ["text-foreground"],

@@ -12,6 +12,7 @@ import {
   categoryJA,
 } from "@/lib/domain/category";
 import { Experience } from "@/sanity/types";
+import Link from "@/components/ui/link";
 
 interface ListItemProps extends React.ComponentProps<"div"> {
   experience: Experience;
@@ -98,6 +99,16 @@ export function ListItem({ experience }: ListItemProps) {
                 <Text variant="p" color="muted" className="!mt-0">
                   {experience.phone}
                 </Text>
+              </div>
+            )}
+            {experience.content && (
+              <div className="flex flex-col">
+                <Link
+                  color="primary"
+                  href={`/tourism/${experience.slug?.current}`}
+                >
+                  詳細
+                </Link>
               </div>
             )}
           </div>

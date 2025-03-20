@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import richText from "./rich-text";
 
 export const page = defineType({
   name: "page",
@@ -38,38 +39,6 @@ export const page = defineType({
       name: "preamble",
       type: "text",
     }),
-    defineField({
-      title: "コンテンツ",
-      description: "ページの本文",
-      name: "content",
-      type: "array",
-      of: [
-        {
-          type: "block",
-        },
-        {
-          name: "image",
-          type: "image",
-          fields: [
-            {
-              name: "alt",
-              type: "string",
-              validation: (Rule) => Rule.required(),
-            },
-          ],
-        },
-        {
-          name: "file",
-          type: "file",
-          fields: [
-            {
-              name: "title",
-              type: "string",
-              validation: (Rule) => Rule.required(),
-            },
-          ],
-        },
-      ],
-    }),
+    richText,
   ],
 });

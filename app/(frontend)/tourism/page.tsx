@@ -49,9 +49,10 @@ export default async function Page({
       </div>
       <Filter />
       <Accordion type="single" collapsible className="border-t border-history">
-        {experiences.map((exp) => (
-          <ListItem key={exp._id} experience={exp} />
-        ))}
+        {experiences.map((exp) => {
+          if (exp.wip) return null;
+          return <ListItem key={exp._id} experience={exp} />;
+        })}
       </Accordion>
     </div>
   );

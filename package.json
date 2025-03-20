@@ -21,6 +21,7 @@
     "@radix-ui/react-separator": "^1.1.2",
     "@radix-ui/react-slot": "^1.1.2",
     "@sanity/client": "^6.28.3",
+    "@sanity/icons": "^3.7.0",
     "@sanity/image-url": "^1.1.0",
     "@sanity/locale-es-es": "^1.2.18",
     "@sanity/locale-ja-jp": "^1.1.17",

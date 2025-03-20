@@ -71,13 +71,40 @@ const components: Partial<PortableTextReactComponents> = {
     },
   },
   marks: {
+    internalLink: ({ value, children }) => {
+      console.log("internallink value:", value);
+      if (!value?.reference || !value.slug?.current) return null;
+
+      let prefix = "";
+
+      if (value.type === "experience") {
+        prefix = "/tourism";
+      }
+
+      return (
+        <Link color={"primary"} href={`${prefix}/${value.slug.current}`}>
+          {children}
+        </Link>
+      );
+    },
+    externalLink: ({ value, children }) => {
+      const { blank, href } = value;
+      return (
+        <Link
+          color={"primary"}
+          href={href}
+          {...(blank ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+        >
+          {children}
+        </Link>
+      );
+    },
     link: ({ value, children }) => {
       const { blank, href } = value;
       return (
         <Link
-          className="text-primary"
+          color={"primary"}
           href={href}
-          underline
           {...(blank ? { target: "_blank", rel: "noopener noreferrer" } : {})}
         >
           {children}

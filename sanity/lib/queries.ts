@@ -1,5 +1,32 @@
 import { defineQuery } from "next-sanity";
 
+export const tourismPageQuery = defineQuery(`*[
+  _type == "experience"
+  && slug.current == $slug
+][0]{
+  ...,
+  "headings": content[style in ["h1", "h2", "h3", "h4", "h5", "h6"]],
+  content[]{
+    ...,
+    markDefs[]{
+      ...,
+      _type == "internalLink" => {
+        ...,
+        "type": @.reference->_type,
+        "slug": @.reference->slug
+      }
+    },
+    _type == "image" => {
+      ...,
+      asset->
+    },
+    _type == "file" => {
+      ...,
+      asset->
+    }
+  }
+}`);
+
 export const contentPageQuery = defineQuery(`*[
   _type == "page"
   && slug.current == $slug
@@ -8,6 +35,14 @@ export const contentPageQuery = defineQuery(`*[
   "headings": content[style in ["h1", "h2", "h3", "h4", "h5", "h6"]],
   content[]{
     ...,
+    markDefs[]{
+      ...,
+      _type == "internalLink" => {
+        ...,
+        "type": @.reference->_type,
+        "slug": @.reference->slug
+      }
+    },
     _type == "image" => {
       ...,
       asset->
