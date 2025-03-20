@@ -31,12 +31,17 @@ export default async function ContentPage({
             <PortableText value={page?.content} />
           </div>
         )}
-        <Text id="contact" variant="h2">
-          Contact
-        </Text>
-        <div className="mt-10 max-w-[60ch]">
-          <ContactForm />
-        </div>
+        {page?.contact_form && (
+          <>
+            <Text id="contact" variant="h2">
+              Contact
+            </Text>
+
+            <div className="mt-10 max-w-[60ch]">
+              <ContactForm />
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

@@ -75,6 +75,7 @@ export type Page = {
   _updatedAt: string;
   _rev: string;
   wip?: boolean;
+  contact_form?: boolean;
   name?: string;
   slug?: Slug;
   preamble?: string;
@@ -254,6 +255,7 @@ export type ContentPageQueryResult = {
   _updatedAt: string;
   _rev: string;
   wip?: boolean;
+  contact_form?: boolean;
   name?: string;
   slug?: Slug;
   preamble?: string;

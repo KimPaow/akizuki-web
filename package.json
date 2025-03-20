@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "sanity:schema": "sanity schema extract",
-    "sanity:typegen": "sanity typegen generate"
+    "sanity:typegen": "sanity typegen generate",
+    "sanity:generate": "pnpm run sanity:schema && pnpm run sanity:typegen"
   },
   "dependencies": {
     "@hookform/resolvers": "^4.1.1",

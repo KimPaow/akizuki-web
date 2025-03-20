@@ -382,6 +382,13 @@
         },
         "optional": true
       },
+      "contact_form": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "boolean"
+        },
+        "optional": true
+      },
       "name": {
         "type": "objectAttribute",
         "value": {
