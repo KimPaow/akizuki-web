@@ -36,7 +36,10 @@ const link = cva(["font-medium cursor-pointer inline-block"], {
   ],
 });
 
-export interface Props extends LinkProps, VariantProps<typeof link> {
+export interface Props
+  extends LinkProps,
+    VariantProps<typeof link>,
+    Omit<React.ComponentProps<"a">, "href" | "color"> {
   className?: string;
   children?: React.ReactNode;
 }

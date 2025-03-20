@@ -25,7 +25,11 @@ export const AnimatedIntro = () => {
           stagger={0.05}
         />
         {"　"}
-        <Link underline href="https://maps.app.goo.gl/BEsHf75AnMdM8Tpp6">
+        <Link
+          underline
+          href="https://maps.app.goo.gl/BEsHf75AnMdM8Tpp6"
+          target="_blank"
+        >
           <AnimatedText text="33°27 N, 130°41 E" duration={1} stagger={0.1} />
         </Link>
       </Text>
