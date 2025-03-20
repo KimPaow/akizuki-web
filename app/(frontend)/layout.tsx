@@ -46,12 +46,7 @@ export default async function RootLayout({
       <body
         className={`${figtree.variable} ${zenOldMincho.variable} font-[family-name:var(--font-figtree)] antialiased h-full w-full`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Suspense fallback={null}>
             <Header data={data?.menu} />
             {children}
