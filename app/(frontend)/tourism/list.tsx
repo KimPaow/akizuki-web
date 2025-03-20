@@ -47,7 +47,7 @@ export function ListItem({ experience }: ListItemProps) {
       </AccordionTrigger>
       <AccordionContent>
         <div className="flex flex-col gap-4">
-          <Text variant="p" color="muted">
+          <Text variant="p" color="muted" className="max-w-[80ch]">
             {experience.introduction}
           </Text>
           <div className="flex flex-col gap-2">
