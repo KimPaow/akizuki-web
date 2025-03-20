@@ -160,17 +160,16 @@ export function TourismSlideshow({ ...props }: React.ComponentProps<"div">) {
           観光
         </Text>
         <Text variant="h2" className="!mt-0 text-3xl sm:text-6xl cjk">
-          歴史を
-          <wbr />
-          感じる
-          <wbr />旅
+          筑前
+          <wbr />の<wbr />
+          小京都
         </Text>
         <div className="flex flex-col gap-8 items-start">
           <Text variant="p">
-            春の桜、秋の紅葉が美しい秋月。歴史ある城下町を散策し、象徴的な秋月城跡を訪れ、趣のあるカフェで地元の味を楽しめます。町の武士の歴史を物語る「黒門」は必見です。四季折々の魅力が溢れる秋月へ、ぜひお越しください！
+            秋月のまちは全国でも数少ない「重要伝統的建造物群保存地区」に選ばれ、城下町の街並みが今も大切に保存されています。明治時代の廃藩後、近代化の波から取り残されたことで、歴史的景観や伝統工芸が色濃く残る貴重な場所となりました。福岡市街や太宰府天満宮などからのアクセスもよく、春の桜や秋の紅葉シーズンには多くの観光客が訪れます。また、秋月ならではの趣のあるお店や、歴史を感じさせる名所も訪れるたびに新たな魅力を発見させてくれます。
           </Text>
           <Link href="/tourism" variant="arrow" underline>
-            すべての体験を見る
+            秋月を体験する
           </Link>
         </div>
       </div>

@@ -19,11 +19,7 @@ export const AnimatedIntro = () => {
         color="muted"
         className="mt-4 lg:mt-10 text-center text-lg md:text-xl lg:text-3xl"
       >
-        <AnimatedText
-          text="福岡に隠された宝石　|"
-          duration={1}
-          stagger={0.05}
-        />
+        <AnimatedText text="筑前の小京都　|" duration={1} stagger={0.05} />
         {"　"}
         <Link
           underline

@@ -37,13 +37,7 @@ export function History({ ...props }: React.ComponentProps<"div">) {
             color="foreground"
             className="leading-8 !mt-8 sm:!mt-16"
           >
-            秋月を発見 - 福岡の隠れた名所。
-          </Text>
-          <Text variant="p" color="foreground" className="leading-8">
-            福岡の山間に佇む秋月は、「九州の小京都」として知られる歴史ある町です。
-          </Text>
-          <Text variant="p" color="foreground" className="leading-8">
-            武士時代の風情が残る町並み、美しい自然、豊かな文化遺産が魅力で、都会の喧騒から離れた静かなひとときを楽しめます。観光でも移住でも、秋月はあなたを温かく迎えてくれます。
+            福岡県朝倉市の北部に位置する秋月は、「筑前の小京都」とも呼ばれる歴史ある城下町です。約800年の歴史を持ち、鎌倉時代の秋月氏、江戸時代の黒田氏によって形成されました。標高859.5mの古処山の麓に広がるこの町は、三方を山に囲まれた盆地で、自然と調和した美しい町並みが特徴です。福岡市から車で約1時間とアクセスも良く、都会の喧騒を離れて歴史と自然を満喫できる秋月は、観光地や移住先としても注目されています。
           </Text>
           <Link
             href="/history"
@@ -51,7 +45,7 @@ export function History({ ...props }: React.ComponentProps<"div">) {
             underline
             className="mr-auto mt-6"
           >
-            歴史を知る
+            秋月を知る
           </Link>
         </div>
         <div className="relative mt-auto">

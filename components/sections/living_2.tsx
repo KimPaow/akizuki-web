@@ -26,15 +26,14 @@ export function Living({ ...props }: React.ComponentProps<"div">) {
           秋月の暮らし
         </Text>
         <Text variant="h2" className="mt-0 sm:mt-10 text-3xl sm:text-6xl cjk">
-          伝統と
+          せせらぎ
+          <wbr />が<wbr />
+          響く
           <wbr />
-          新風が
-          <wbr />
-          交わる
-          <wbr />街
+          まち
         </Text>
       </div>
-      <div className="col-start-1 md:col-start-8 col-end-11 flex flex-col justify-between gap-4 sm:gap-8 md:gap-36">
+      <div className="col-start-1 md:col-start-8 col-end-11 flex flex-col justify-between gap-4 sm:gap-8 md:gap-16">
         <div className="relative aspect-square hidden sm:inline-block">
           <AnimatedImageCover direction="btt" />
           <Image
@@ -48,10 +47,10 @@ export function Living({ ...props }: React.ComponentProps<"div">) {
         </div>
         <div className="flex flex-col gap-8 items-start">
           <Text variant="p">
-            秋月は文化、創造性、そしてコミュニティが息づく活気ある街です。おしゃれなカフェや職人の店が点在し、歴史の趣と現代のリラックスしたライフスタイルが見事に融合しています。アーティスト、リモートワーカー、若い家族にも最適な環境が整っています。都会の喧騒を離れ、自然と伝統、そして洗練された田舎暮らしを楽しんでみませんか？
+            秋月は、歴史ある町並みと豊かな自然が調和する美しいまちです。せせらぎの音が心地よく響く中、子どもたちは川で遊び、夏には蛍が舞う幻想的な風景が広がります。武家屋敷や町屋が残る伝統的な景観が大切に守られる一方で、歴史に根ざした催しに加え、新しい文化・クリエイティブな流れも生まれています。地域住民の手による文化活動や環境保全の取り組みも活発で、自然と共生しながら新しい価値を生み出す暮らしが息づいています。また、秋月は福岡空港から車で45分の距離にあり、九州各地へのアクセスも良好で、教育環境や社会福祉などの生活基盤も充実しています。四季折々の美しさと歴史、そして未来へつながる創造の息吹を感じながら、秋月で新たな生活をはじめてみませんか？
           </Text>
           <Link href="/living" variant="arrow" underline>
-            秋月の暮らしについて
+            秋月でくらす
           </Link>
         </div>
       </div>
