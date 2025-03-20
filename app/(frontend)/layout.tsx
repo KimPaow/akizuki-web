@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Figtree, Shippori_Mincho } from "next/font/google";
+import { Zen_Old_Mincho, Figtree } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Header } from "@/components/ui/header";
@@ -12,14 +12,14 @@ import { VisualEditing } from "next-sanity";
 import { draftMode } from "next/headers";
 import { layoutQuery } from "@/sanity/lib/queries";
 
-const figtree = Figtree({
-  variable: "--font-figtree",
+const zenOldMincho = Zen_Old_Mincho({
+  variable: "--font-mincho",
+  weight: "400",
   subsets: ["latin"],
 });
 
-const mincho = Shippori_Mincho({
-  variable: "--font-mincho",
-  weight: "400",
+const figtree = Figtree({
+  variable: "--font-figtree",
   subsets: ["latin"],
 });
 
@@ -44,7 +44,7 @@ export default async function RootLayout({
       className="h-full w-full scroll-smooth"
     >
       <body
-        className={`${figtree.variable} ${mincho.variable} font-[family-name:var(--font-figtree)] antialiased h-full w-full`}
+        className={`${figtree.variable} ${zenOldMincho.variable} font-[family-name:var(--font-figtree)] antialiased h-full w-full`}
       >
         <ThemeProvider
           attribute="class"
