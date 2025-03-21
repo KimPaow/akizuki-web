@@ -48,4 +48,11 @@ export const page = defineType({
       initialValue: true,
     }),
   ],
+  preview: {
+    select: {
+      title: "name",
+      subtitle: "slug.current",
+      media: "image",
+    },
+  },
 });
