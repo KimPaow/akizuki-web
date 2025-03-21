@@ -43,6 +43,14 @@ export const experience = defineType({
     }),
     richText,
     defineField({
+      title: "目次",
+      description: "ページに目次を表示するかどうか",
+      name: "toc",
+      type: "boolean",
+      initialValue: true,
+      group: "editorial",
+    }),
+    defineField({
       title: "カテゴリー",
       name: "categories",
       type: "array",
@@ -55,7 +63,7 @@ export const experience = defineType({
           { title: "自然", value: "Nature" },
           { title: "食事", value: "Food" },
           { title: "買い物", value: "Shopping" },
-          { title: "民泊", value: "Accommodation" },
+          { title: "宿泊", value: "Accommodation" },
           { title: "体験", value: "Experience" },
         ],
       },

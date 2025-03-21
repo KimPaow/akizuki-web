@@ -133,6 +133,7 @@ export type Experience = {
     _type: "file";
     _key: string;
   }>;
+  toc?: boolean;
   categories?: Array<string>;
   image?: {
     asset?: {
@@ -227,6 +228,7 @@ export type Page = {
     _type: "file";
     _key: string;
   }>;
+  toc?: boolean;
 };
 
 export type SanityFileAsset = {
@@ -419,6 +421,7 @@ export type TourismPageQueryResult = {
     _key: string;
     markDefs: null;
   }> | null;
+  toc?: boolean;
   categories?: Array<string>;
   image?: {
     asset?: {
@@ -575,6 +578,7 @@ export type ContentPageQueryResult = {
     _key: string;
     markDefs: null;
   }> | null;
+  toc?: boolean;
   headings: Array<{
     children?: Array<{
       marks?: Array<string>;

@@ -19,7 +19,7 @@ export default async function ContentPage({
             {page.preamble}
           </Text>
         )}
-        {page?.headings && (
+        {page?.headings && page.toc && (
           <>
             <Divider decorative />
             <TableOfContents elements={nestHeadings(page.headings)} />

@@ -820,6 +820,13 @@
         },
         "optional": true
       },
+      "toc": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "boolean"
+        },
+        "optional": true
+      },
       "categories": {
         "type": "objectAttribute",
         "value": {
@@ -1465,6 +1472,13 @@
               }
             ]
           }
+        },
+        "optional": true
+      },
+      "toc": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "boolean"
         },
         "optional": true
       }

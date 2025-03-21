@@ -19,7 +19,7 @@ export default async function TourismPage({
             {page.introduction}
           </Text>
         )}
-        {page?.headings && (
+        {page?.headings && page.toc && (
           <>
             <Divider decorative />
             <TableOfContents elements={nestHeadings(page.headings)} />

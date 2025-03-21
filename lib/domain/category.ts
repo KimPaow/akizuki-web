@@ -26,6 +26,6 @@ export const categoryJA: Record<Category, string> = {
   Shopping: "買い物",
   Nature: "自然",
   Culture: "文化",
-  Accommodation: "民泊",
+  Accommodation: "宿泊",
   Experience: "体験",
 };

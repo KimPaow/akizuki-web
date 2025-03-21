@@ -40,5 +40,12 @@ export const page = defineType({
       type: "text",
     }),
     richText,
+    defineField({
+      title: "目次",
+      description: "ページに目次を表示するかどうか",
+      name: "toc",
+      type: "boolean",
+      initialValue: true,
+    }),
   ],
 });
