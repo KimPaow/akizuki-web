@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-sans: var(--font-figtree);
+  --font-sans: var(--font-mincho);
   --font-mincho: var(--font-mincho);
 
   --text-5xl--line-height: 1.2;

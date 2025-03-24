@@ -44,7 +44,7 @@ export default async function RootLayout({
       className="h-full w-full scroll-smooth"
     >
       <body
-        className={`${figtree.variable} ${zenOldMincho.variable} font-[family-name:var(--font-figtree)] antialiased h-full w-full`}
+        className={`${figtree.variable} ${zenOldMincho.variable} font-[family-name:var(--font-mincho)] antialiased h-full w-full`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Suspense fallback={null}>
