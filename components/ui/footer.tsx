@@ -18,7 +18,7 @@ function Footer({
 }) {
   return (
     <footer className="bg-foreground px-4 py-16 sm:p-8 md:p-16" {...props}>
-      <div className="w-full max-w-[1600px] px-4 md:px-8 mx-auto flex flex-col gap-16">
+      <div className="w-full max-w-[1600px] mx-auto flex flex-col gap-16">
         <div className="flex flex-col md:flex-row gap-16 md:gap-16 justify-start">
           <div className="flex-2 flex flex-col gap-4">
             <Link
@@ -76,28 +76,31 @@ function Footer({
               ))}
             </div>
           )}
-          <div className="flex-2 flex flex-col gap-8">
-            {email && (
-              <div className="flex flex-col gap-4">
-                <Text variant="h3" className="text-background">
-                  Email
-                </Text>
-                <Text variant="small" className="text-background">
-                  {email}
-                </Text>
+          {email ||
+            (phone && (
+              <div className="flex-2 flex flex-col gap-8">
+                {email && (
+                  <div className="flex flex-col gap-4">
+                    <Text variant="h3" className="text-background">
+                      Email
+                    </Text>
+                    <Text variant="small" className="text-background">
+                      {email}
+                    </Text>
+                  </div>
+                )}
+                {phone && (
+                  <div className="flex flex-col gap-4">
+                    <Text variant="h3" className="text-background">
+                      Phone
+                    </Text>
+                    <Text variant="small" className="text-background">
+                      {phone}
+                    </Text>
+                  </div>
+                )}
               </div>
-            )}
-            {phone && (
-              <div className="flex flex-col gap-4">
-                <Text variant="h3" className="text-background">
-                  Phone
-                </Text>
-                <Text variant="small" className="text-background">
-                  {phone}
-                </Text>
-              </div>
-            )}
-          </div>
+            ))}
           <div className="hidden flex-4 sm:flex flex-col mb-auto gap-8">
             <Text
               variant="display"

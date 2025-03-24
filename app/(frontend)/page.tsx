@@ -8,7 +8,7 @@ import { TourismSlideshow } from "@/components/sections/tourism_slideshow";
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <div className="min-h-full flex flex-col gap-8 md:gap-64 items-center px-0 lg:px-8">
+      <div className="min-h-full flex flex-col gap-8 md:gap-32 items-center">
         <Landing />
         <History />
         <TourismSlideshow />

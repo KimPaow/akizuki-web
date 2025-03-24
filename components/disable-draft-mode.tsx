@@ -16,7 +16,7 @@ export function DisableDraftMode() {
     // eslint-disable-next-line @next/next/no-html-link-for-pages
     <a
       href="/api/draft-mode/disable"
-      className="fixed bottom-4 right-4 bg-black px-4 py-2 color-foreground rounded-md hover:bg-gray-900 cursor-pointer"
+      className="fixed bottom-4 right-4 bg-black px-4 py-2 color-white rounded-md hover:bg-gray-900 cursor-pointer"
     >
       Exit edit mode
     </a>

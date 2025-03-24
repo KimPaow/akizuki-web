@@ -33,6 +33,12 @@ const slides: {
     category: "Nature",
     link: "/tourism?categories=Nature",
   },
+  {
+    src: "/images/landing/stairs.webp",
+    alt: "Renovated historical building in Akizuki",
+    category: "Experience",
+    link: "/tourism?categories=Experience",
+  },
 ];
 
 const MotionLink = motion.create(Link);
@@ -140,7 +146,7 @@ const Slide = ({
         initial="hide"
         animate={isHovered ? "show" : "hide"}
       >
-        <Text variant="h3" className="text-pill text-6xl">
+        <Text variant="h3" className="text-pill text-3xl">
           {categoryJA[category]}
         </Text>
         <Text variant="p" className="text-pill opacity-70 text-center">
@@ -155,16 +161,13 @@ const Slide = ({
 export function TourismSlideshow({ ...props }: React.ComponentProps<"div">) {
   return (
     <Container {...props}>
-      <div className="flex flex-col justify-between gap-4 sm:gap-8 max-w-[70ch]">
-        <Text variant="h4" color="muted">
-          観光
-        </Text>
-        <Text variant="h2" className="!mt-0 text-3xl sm:text-6xl cjk">
+      <div className="flex flex-col justify-between items-center gap-4 sm:gap-8 max-w-[70ch] mx-auto text-center">
+        <Text variant="h2" className="!mt-0 text-xl cjk">
           筑前
           <wbr />の<wbr />
           小京都
         </Text>
-        <div className="flex flex-col gap-8 items-start">
+        <div className="flex flex-col gap-8 items-center">
           <Text variant="p">
             秋月のまちは全国でも数少ない「重要伝統的建造物群保存地区」に選ばれ、城下町の街並みが今も大切に保存されています。明治時代の廃藩後、近代化の波から取り残されたことで、歴史的景観や伝統工芸が色濃く残る貴重な場所となりました。福岡市街や太宰府天満宮などからのアクセスもよく、春の桜や秋の紅葉シーズンには多くの観光客が訪れます。また、秋月ならではの趣のあるお店や、歴史を感じさせる名所も訪れるたびに新たな魅力を発見させてくれます。
           </Text>
@@ -173,16 +176,9 @@ export function TourismSlideshow({ ...props }: React.ComponentProps<"div">) {
           </Link>
         </div>
       </div>
-      <div className="hidden md:flex gap-8 lg:gap-32 mt-16">
+      <div className="hidden md:flex gap-8 lg:gap-8 mt-16">
         {slides.map((slide, index) => {
-          return (
-            <Slide
-              key={index}
-              {...slide}
-              // className={`lg:col-start-${start} lg:col-span-3`}
-              className="grow-1"
-            />
-          );
+          return <Slide key={index} {...slide} className="grow-1" />;
         })}
       </div>
     </Container>

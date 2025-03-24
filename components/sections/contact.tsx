@@ -4,20 +4,11 @@ import { Container } from "@/components/ui/container";
 
 export function Contact({ ...props }: React.ComponentProps<"div">) {
   return (
-    <Container className="grid grid-cols-10 auto-rows-auto gap-x-8" {...props}>
-      <div className="row-start-2 md:row-start-1 col-start-1 col-end-11 md:col-end-5">
-        <ContactForm />
-      </div>
-      <div className="row-start-1 col-start-1 md:col-start-6 col-end-11 flex flex-col justify-start gap-4 sm:gap-8 mb-16">
-        <Text variant="h4" color="muted">
-          コンタクト
-        </Text>
-        <Text variant="h2" className="mt-0 sm:mt-10 text-3xl sm:text-6xl cjk">
-          旅を
-          <wbr />
-          始めましょう
-        </Text>
-      </div>
+    <Container className="flex flex-col max-w-[60ch] gap-16" {...props}>
+      <Text variant="h2" className="text-xl cjk">
+        コンタクト
+      </Text>
+      <ContactForm />
     </Container>
   );
 }

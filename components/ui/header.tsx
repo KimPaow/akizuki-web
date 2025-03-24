@@ -78,7 +78,9 @@ function Header({
         transition={{ duration: 0.2, delay: 0.2 }}
         onClick={() => setOpen(false)}
       >
-        <span className="text-4xl">●</span>
+        <span className="text-4xl flex items-center gap-2">
+          ● <span className="text-lg">Akizuki</span>
+        </span>
       </MotionLink>
       <MotionButton
         variant="ghost"
