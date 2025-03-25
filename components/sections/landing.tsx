@@ -17,7 +17,7 @@ export function Landing({ ...props }: React.ComponentProps<"div">) {
         // width={1648}
         // height={1540}
         fill
-        className="h-full object-cover absolute -z-20 dark:invert"
+        className="h-full object-cover absolute -z-20"
       />
     </Container>
   );
