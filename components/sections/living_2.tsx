@@ -14,7 +14,7 @@ export function Living({ ...props }: React.ComponentProps<"div">) {
         {/* <Text variant="h4" color="muted">
           秋月の暮らし
         </Text> */}
-        <Text variant="h2" className="!mt-0 text-xl cjk">
+        <Text variant="h2" className="!mt-0 text-2xl cjk">
           せせらぎ
           <wbr />が<wbr />
           響く
@@ -34,7 +34,7 @@ export function Living({ ...props }: React.ComponentProps<"div">) {
         <AnimatedImageCover direction="btt" />
         <Image
           className="object-cover"
-          src="/images/landing/hunui.webp"
+          src="/images/landing/Akizuki_4.webp"
           alt="Elementary school in Akizuki"
           // width={310}
           // height={282}

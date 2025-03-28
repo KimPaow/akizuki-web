@@ -34,7 +34,7 @@ const slides: {
     link: "/tourism?categories=Nature",
   },
   {
-    src: "/images/landing/stairs.webp",
+    src: "/images/landing/washi.webp",
     alt: "Renovated historical building in Akizuki",
     category: "Experience",
     link: "/tourism?categories=Experience",
@@ -162,7 +162,7 @@ export function TourismSlideshow({ ...props }: React.ComponentProps<"div">) {
   return (
     <Container {...props}>
       <div className="flex flex-col justify-between items-center gap-4 sm:gap-8 max-w-[70ch] mx-auto text-center">
-        <Text variant="h2" className="!mt-0 text-xl cjk">
+        <Text variant="h2" className="!mt-0 text-2xl cjk">
           筑前
           <wbr />の<wbr />
           小京都

@@ -55,11 +55,11 @@ const subjectsJA: Record<Subject, string> = {
 
 // Define the receiver email address for each subject.
 const receiver: Record<Subject, string> = {
-  [Subject.Business]: "hello@bjorkman.kim",
-  [Subject.House]: "aki@akiaki.co.jp",
-  [Subject.Volunteering]: "hello@bjorkman.kim",
-  [Subject.TownMaking]: "aki@akiaki.co.jp",
-  [Subject.Other]: "hello@bjorkman.kim",
+  [Subject.Business]: "projectakizuki@gmail.com",
+  [Subject.House]: "projectakizuki@gmail.com",
+  [Subject.Volunteering]: "projectakizuki@gmail.com",
+  [Subject.TownMaking]: "projectakizuki@gmail.com",
+  [Subject.Other]: "projectakizuki@gmail.com",
 };
 
 export function ContactForm(props: React.ComponentProps<"form">) {
