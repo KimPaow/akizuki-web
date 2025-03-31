@@ -3,6 +3,7 @@ import Text from "@/components/ui/text";
 import { Link } from "@/components/ui/link";
 import { Container } from "@/components/ui/container";
 import { AnimatedImageCover } from "@/components/ui/animated-image-cover";
+import { Map } from "../ui/svgs/map";
 
 export function History({ ...props }: React.ComponentProps<"div">) {
   return (
@@ -11,23 +12,7 @@ export function History({ ...props }: React.ComponentProps<"div">) {
       {...props}
     >
       <div className="hidden md:flex col-start-1 col-end-11 md:col-end-6 relative overflow-hidden aspect-square my-auto">
-        {/* <AnimatedImageCover />
-        <Image
-          src="/images/landing/black_gate_fall_2x.webp"
-          alt="Akizuki in spring"
-          // width={631}
-          // height={962}
-          fill
-          className="hidden md:block object-cover"
-        /> */}
-        <Image
-          src="/images/landing/map.svg"
-          alt="Akizuki in spring"
-          // width={631}
-          // height={962}
-          fill
-          className="hidden md:block object-cover"
-        />
+        <Map />
       </div>
       <div className="col-start-1 md:col-start-6 col-end-11 flex flex-col-reverse sm:flex-col gap-8">
         <div className="relative mb-auto width-full aspect-16/9">
@@ -35,8 +20,8 @@ export function History({ ...props }: React.ComponentProps<"div">) {
           <Image
             src="/images/landing/town.webp"
             alt="Drums in Akizuki"
-            // width={633}
             fill
+            // width={633}
             // height={460}
             className="object-cover"
           />

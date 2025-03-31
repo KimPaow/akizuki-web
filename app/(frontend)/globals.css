@@ -205,3 +205,57 @@ li {
     margin-left: calc(var(--spacing) * 6);
   }
 }
+
+#map {
+  .circle {
+    fill: var(--foreground);
+  }
+
+  .japan {
+    fill: var(--color-muted-foreground);
+    opacity: 0.5;
+  }
+
+  .localtext {
+    fill: var(--foreground);
+  }
+
+  .prefecturetext {
+    fill: purple;
+    /* fill: var(--color-history); */
+  }
+
+  .timeline {
+    stroke-dasharray: 2.99 2.99;
+    stroke-width: 1px;
+    stroke: var(--foreground);
+  }
+
+  .fukuoka {
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1px;
+    stroke: var(--color-foreground);
+    fill: none;
+
+    &.small {
+      fill: var(--color-background);
+    }
+  
+    &.big {
+      /* fill: var(--color-history); */
+      opacity: 0.5;
+    }
+
+    &.markerline {
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 1px;
+      stroke: var(--color-foreground);
+    }
+  }
+
+  .akizuki {
+    fill: var(--color-history);
+  }
+}

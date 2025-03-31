@@ -35,7 +35,7 @@ export function Landing({ ...props }: React.ComponentProps<"div">) {
         </svg>
       </div>
       <Image
-        src="/images/landing/Akizuki_1.jpg"
+        src="/images/landing/mountains.webp"
         alt="An old castle drawing"
         fill
         className="h-full object-cover absolute -z-20"
