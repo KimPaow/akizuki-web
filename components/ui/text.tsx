@@ -1,5 +1,6 @@
 import { cva, VariantProps } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
+import reactNodeToString from "react-node-to-string";
 
 const typographyVariants = cva([""], {
   variants: {
@@ -87,7 +88,7 @@ export const Text: React.FC<TypographyProps> = ({
 
   if (variant === "display" || variant === "h1") {
     return (
-      <h1 className={cn} {...rest}>
+      <h1 className={cn} id={reactNodeToString(children)} {...rest}>
         {children}
       </h1>
     );
@@ -95,7 +96,7 @@ export const Text: React.FC<TypographyProps> = ({
 
   if (variant === "h2") {
     return (
-      <h2 className={cn} {...rest}>
+      <h2 className={cn} id={reactNodeToString(children)} {...rest}>
         {children}
       </h2>
     );
@@ -103,7 +104,7 @@ export const Text: React.FC<TypographyProps> = ({
 
   if (variant === "h3") {
     return (
-      <h3 className={cn} {...rest}>
+      <h3 className={cn} id={reactNodeToString(children)} {...rest}>
         {children}
       </h3>
     );
@@ -111,7 +112,7 @@ export const Text: React.FC<TypographyProps> = ({
 
   if (variant === "h4") {
     return (
-      <h4 className={cn} {...rest}>
+      <h4 className={cn} id={reactNodeToString(children)} {...rest}>
         {children}
       </h4>
     );
@@ -119,7 +120,7 @@ export const Text: React.FC<TypographyProps> = ({
 
   if (variant === "h5") {
     return (
-      <h5 className={cn} {...rest}>
+      <h5 className={cn} id={reactNodeToString(children)} {...rest}>
         {children}
       </h5>
     );
@@ -127,7 +128,7 @@ export const Text: React.FC<TypographyProps> = ({
 
   if (variant === "h6") {
     return (
-      <h6 className={cn} {...rest}>
+      <h6 className={cn} id={reactNodeToString(children)} {...rest}>
         {children}
       </h6>
     );

@@ -1,4 +1,3 @@
-import slugify from "slugify";
 import { Link } from "./link";
 import { ContentPageQueryResult } from "@/sanity/types";
 
@@ -22,10 +21,10 @@ export function nestHeadings(headings: Headings): TreeNode[] {
     const level = parseInt(block.style.replace("h", ""), 10);
 
     const text =
-      block.children.map((child) => child.text || "").join(" ") || "Untitled";
+      block.children.map((child) => child.text || "").join("-") || "Untitled";
 
     const treeNode: TreeNode = {
-      slug: slugify(text),
+      slug: text,
       text,
       children: [],
     };

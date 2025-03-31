@@ -36,21 +36,39 @@ export function Access({ ...props }: React.ComponentProps<"div">) {
         <div className="flex-2 flex flex-col gap-8 max-w-[35ch]">
           <Text variant="h5">時刻表</Text>
           <div className="flex flex-col gap-4 items-start">
-            <Link href="/" variant="arrow" underline>
+            <Link href="http://www.nishitetsu.jp/" variant="arrow" underline>
               西鉄電車・バス 時刻表
             </Link>
-            <Link href="/" variant="arrow" underline>
-              西鉄電車・バス 時刻表
+            <Link
+              href="https://www.jrkyushu-timetable.jp/jr-k_time/top.html"
+              variant="arrow"
+              underline
+            >
+              JR時刻表
             </Link>
-            <Link href="/" variant="arrow" underline>
-              西鉄電車・バス 時刻表
+            <Link
+              href="https://www.navitime.co.jp/diagram/bus/00495557/00078113/1/"
+              variant="arrow"
+              underline
+            >
+              秋月路線バス 時刻表
             </Link>
-            <Link href="/" variant="arrow" underline>
-              西鉄電車・バス 時刻表
+            <Link
+              href="https://en.tabirai.net/car/fukuoka/"
+              variant="arrow"
+              underline
+            >
+              レンタカー
             </Link>
-            <Link href="/" variant="arrow" underline>
-              西鉄電車・バス 時刻表
-            </Link>
+            {/* <Text variant="p">
+              <b>タクシー</b>
+              <br />
+              矢野タクシー:　0946-22-2600
+              <br />
+              甘木観光タクシー:　0946-52-0101
+              <br />
+              甘木タクシー:　0946-22-5503
+            </Text> */}
           </div>
         </div>
       </div>

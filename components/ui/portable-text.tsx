@@ -72,7 +72,6 @@ const components: Partial<PortableTextReactComponents> = {
   },
   marks: {
     internalLink: ({ value, children }) => {
-      console.log("internallink value:", value);
       if (!value?.reference || !value.slug?.current) return null;
 
       let prefix = "";
