@@ -53,12 +53,15 @@ export function ListItem({ experience }: ListItemProps) {
           <div className="flex flex-col gap-2">
             {experience.website && (
               <div className="flex flex-col">
-                <Text variant="p" color="foreground">
+                {/* <Text variant="p" color="foreground">
                   ウェブサイト:
                 </Text>
                 <Text variant="p" color="muted" className="!mt-0">
                   {experience.website}
-                </Text>
+                </Text> */}
+                <Link href={experience.website} color="primary" target="_blank">
+                  ウェブサイトを開く
+                </Link>
               </div>
             )}
             {experience.hours && (

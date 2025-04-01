@@ -42,9 +42,12 @@ export default async function Page({
   return (
     <div className="w-full max-w-[1280px] px-4 md:px-8 mx-auto flex flex-col gap-16 my-32">
       <div className="flex flex-col gap-8 mx-4 sm:mx-0">
-        <Text variant="h1">観光</Text>
-        <Text variant="lead" color="muted">
-          秋月は四季を通じて多彩な体験を提供します。
+        <Text variant="h1">観光案内</Text>
+        <Text variant="lead" color="muted" className="max-w-[80ch]">
+          秋月は福岡市街や太宰府天満宮からのアクセスも良好で、年間約60万人が訪
+          れます。春と秋には、桜や紅葉が城下町を彩り、風情ある街並みを楽しめま
+          す。歴史的な町家や庭園が点在し、地元の特産品や伝統文化にも触れること
+          ができる魅力的な観光地です。
         </Text>
       </div>
       <Filter />

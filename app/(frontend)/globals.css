@@ -71,14 +71,14 @@
 }
 
 :root {
-  --background: hsl(40, 80.5%, 92%);
+  --background: hsl(40, 100%, 97.6%);
   --foreground: hsl(0, 0%, 12.5%);
   --card: hsl(0 0% 100%);
   --card-foreground: hsl(20 14.3% 4.1%);
   --popover: hsl(0 0% 100%);
   --popover-foreground: hsl(20 14.3% 4.1%);
   --primary: var(--color-history);
-  --primary-foreground: hsl(40, 80.5%, 92%);
+  --primary-foreground: hsl(40, 100%, 97.6%);
   --secondary: hsl(60 4.8% 95.9%);
   --secondary-foreground: hsl(24 9.8% 10%);
   --muted: hsl(60 4.8% 95.9%);
@@ -96,33 +96,35 @@
   --chart-4: hsl(43 74% 66%);
   --chart-5: hsl(27 87% 67%);
   --radius: 0.6rem;
+  --foreground-more-muted: hsl(22, 9%, 82%);
 }
 
 .dark {
   --background: hsl(0, 0%, 12.5%);
-  --foreground: hsl(40, 80.5%, 92%);
+  --foreground: hsl(40, 100%, 97.6%);
   --card: hsl(20 14.3% 4.1%);
-  --card-foreground: hsl(40, 80.5%, 92%);
+  --card-foreground: hsl(40, 100%, 97.6%);
   --popover: hsl(0, 0%, 12.5%);
-  --popover-foreground: hsl(40, 80.5%, 92%);
+  --popover-foreground: hsl(40, 100%, 97.6%);
   --primary: var(--color-history);
-  --primary-foreground: hsl(40, 80.5%, 92%);
-  --secondary: hsl(12 6.5% 15.1%);
-  --secondary-foreground: hsl(40, 80.5%, 92%);
+  --primary-foreground: hsl(40, 100%, 97.6%);
+  --secondary: hsl(13, 14%, 13%);
+  --secondary-foreground: hsl(40, 100%, 97.6%);
   --muted: hsl(12 6.5% 15.1%);
   --muted-foreground: hsl(24 5.4% 63.9%);
   --accent: hsl(0, 0%, 20%);
-  --accent-foreground: hsl(40, 80.5%, 92%);
+  --accent-foreground: hsl(40, 100%, 97.6%);
   --destructive: hsl(0 84.2% 60.2%);
-  --destructive-foreground: hsl(40, 80.5%, 92%);
-  --border: hsl(40, 80.5%, 92%);
-  --input: hsl(40, 80.5%, 92%);
-  --ring: hsl(40, 80.5%, 92%);
+  --destructive-foreground: hsl(40, 100%, 97.6%);
+  --border: hsl(40, 100%, 97.6%);
+  --input: hsl(40, 100%, 97.6%);
+  --ring: hsl(40, 100%, 97.6%);
   --chart-1: hsl(220 70% 50%);
   --chart-2: hsl(160 60% 45%);
   --chart-3: hsl(30 80% 55%);
   --chart-4: hsl(280 65% 60%);
   --chart-5: hsl(340 75% 55%);
+  --foreground-more-muted: hsl(27, 4%, 52%);
 }
 
 @theme inline {
@@ -212,7 +214,8 @@ li {
   }
 
   .japan {
-    fill: var(--color-muted-foreground);
+    /* fill: hsl(22, 9%, 82%); */
+    fill: var(--foreground-more-muted);
     opacity: 0.5;
   }
 
@@ -256,6 +259,7 @@ li {
   }
 
   .akizuki {
-    fill: var(--color-history);
+    /* fill:  hsl(22, 9%, 82%); */
+    fill: var(--foreground-more-muted);
   }
 }

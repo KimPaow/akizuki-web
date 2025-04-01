@@ -8,13 +8,14 @@ export function Landing({ ...props }: React.ComponentProps<"div">) {
       {...props}
     >
       <div className="mx-auto flex flex-col gap-8 sm:gap-16 items-center justify-center">
+        {/* Make smaller on mobile (120) and on laptops (150) */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           version="1.1"
           viewBox="0 0 160 160"
           fill="currentColor"
-          width={230}
-          height={230}
+          width={120}
+          height={120}
           className="text-dark"
         >
           <g>
