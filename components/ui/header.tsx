@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
-import { ModeToggle } from "@/components/ui/mode-toggle";
+// import { ModeToggle } from "@/components/ui/mode-toggle";
 import Link from "@/components/ui/link";
 import { usePathname } from "next/navigation";
 import { Button } from "./button";
@@ -111,7 +111,7 @@ function Header({
           <Menu size={48} className="scale-150" />
         )}
       </MotionButton>
-      <ModeToggle />
+      {/* <ModeToggle /> */}
       <div className=" fixed w-[100vw] h-screen left-0 right-0 top-0 pointer-events-none">
         <motion.div
           variants={menu}
