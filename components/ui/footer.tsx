@@ -113,8 +113,8 @@ function Footer({
         <Divider className="bg-background" />
         <div className="flex flex-col md:flex-row gap-16 md:gap-16 justify-between">
           <Text variant="small" className="text-background">
-            ©{new Date().getFullYear().toString().substr(-2)} AKIZUKI – All
-            rights reserved
+            ©{new Date().getFullYear().toString()} AKIZUKI – All rights
+            reserved
           </Text>
           <div>
             <Text className="text-background">KEZZA株式会社</Text>
