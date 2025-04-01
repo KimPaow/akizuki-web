@@ -58,7 +58,75 @@ export function ListItem({ experience }: ListItemProps) {
         </div>
       </AccordionTrigger>
       <AccordionContent>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col-reverse lg:flex-row gap-8 mt-4">
+          <div className="flex flex-col gap-4">
+            <Text variant="p" color="muted" className="max-w-[80ch]">
+              {experience.introduction}
+            </Text>
+            <div className="flex flex-col gap-2">
+              {experience.website && (
+                <div className="flex flex-col">
+                  <Link
+                    href={experience.website}
+                    color="primary"
+                    target="_blank"
+                  >
+                    ウェブサイトを開く
+                  </Link>
+                </div>
+              )}
+              {experience.hours && (
+                <div className="flex flex-col">
+                  <Text variant="p" color="foreground">
+                    営業時間:
+                  </Text>
+                  <Text variant="p" color="muted" className="!mt-0">
+                    {experience.hours}
+                  </Text>
+                </div>
+              )}
+              {experience.address && (
+                <div className="flex flex-col">
+                  <Text variant="p" color="foreground">
+                    住所:
+                  </Text>
+                  <Text variant="p" color="muted" className="!mt-0">
+                    {experience.address}
+                  </Text>
+                </div>
+              )}
+              {experience.pricerange && (
+                <div className="flex flex-col">
+                  <Text variant="p" color="foreground">
+                    値幅:
+                  </Text>
+                  <Text variant="p" color="muted" className="!mt-0">
+                    {experience.pricerange}
+                  </Text>
+                </div>
+              )}
+              {experience.phone && (
+                <div className="flex flex-col">
+                  <Text variant="p" color="foreground">
+                    携帯電話:
+                  </Text>
+                  <Text variant="p" color="muted" className="!mt-0">
+                    {experience.phone}
+                  </Text>
+                </div>
+              )}
+              {experience.content && (
+                <div className="flex flex-col">
+                  <Link
+                    color="primary"
+                    href={`/tourism/${experience.slug?.current}`}
+                  >
+                    詳細
+                  </Link>
+                </div>
+              )}
+            </div>
+          </div>
           {imageUrl && (
             <Image
               src={imageUrl}
@@ -68,68 +136,6 @@ export function ListItem({ experience }: ListItemProps) {
               className="max-w-[500px]"
             />
           )}
-          <Text variant="p" color="muted" className="max-w-[80ch]">
-            {experience.introduction}
-          </Text>
-          <div className="flex flex-col gap-2">
-            {experience.website && (
-              <div className="flex flex-col">
-                <Link href={experience.website} color="primary" target="_blank">
-                  ウェブサイトを開く
-                </Link>
-              </div>
-            )}
-            {experience.hours && (
-              <div className="flex flex-col">
-                <Text variant="p" color="foreground">
-                  営業時間:
-                </Text>
-                <Text variant="p" color="muted" className="!mt-0">
-                  {experience.hours}
-                </Text>
-              </div>
-            )}
-            {experience.address && (
-              <div className="flex flex-col">
-                <Text variant="p" color="foreground">
-                  住所:
-                </Text>
-                <Text variant="p" color="muted" className="!mt-0">
-                  {experience.address}
-                </Text>
-              </div>
-            )}
-            {experience.pricerange && (
-              <div className="flex flex-col">
-                <Text variant="p" color="foreground">
-                  値幅:
-                </Text>
-                <Text variant="p" color="muted" className="!mt-0">
-                  {experience.pricerange}
-                </Text>
-              </div>
-            )}
-            {experience.phone && (
-              <div className="flex flex-col">
-                <Text variant="p" color="foreground">
-                  携帯電話:
-                </Text>
-                <Text variant="p" color="muted" className="!mt-0">
-                  {experience.phone}
-                </Text>
-              </div>
-            )}
-            {experience.content && (
-              <div className="flex flex-col">
-                <Link
-                  color="primary"
-                  href={`/tourism/${experience.slug?.current}`}
-                >
-                  詳細
-                </Link>
-              </div>
-            )}
-          </div>
         </div>
       </AccordionContent>
     </AccordionItem>

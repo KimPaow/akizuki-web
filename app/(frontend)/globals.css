@@ -101,24 +101,24 @@
 
 .dark {
   --background: hsl(0, 0%, 12.5%);
-  --foreground: hsl(40, 100%, 97.6%);
+  --foreground: hsl(40, 21%, 89%);
   --card: hsl(20 14.3% 4.1%);
-  --card-foreground: hsl(40, 100%, 97.6%);
+  --card-foreground: hsl(40, 21%, 89%);
   --popover: hsl(0, 0%, 12.5%);
-  --popover-foreground: hsl(40, 100%, 97.6%);
+  --popover-foreground: hsl(40, 21%, 89%);
   --primary: var(--color-history);
-  --primary-foreground: hsl(40, 100%, 97.6%);
+  --primary-foreground: hsl(40, 21%, 89%);
   --secondary: hsl(13, 14%, 13%);
-  --secondary-foreground: hsl(40, 100%, 97.6%);
+  --secondary-foreground: hsl(40, 21%, 89%);
   --muted: hsl(12 6.5% 15.1%);
   --muted-foreground: hsl(24 5.4% 63.9%);
   --accent: hsl(0, 0%, 20%);
-  --accent-foreground: hsl(40, 100%, 97.6%);
+  --accent-foreground: hsl(40, 21%, 89%);
   --destructive: hsl(0 84.2% 60.2%);
-  --destructive-foreground: hsl(40, 100%, 97.6%);
-  --border: hsl(40, 100%, 97.6%);
-  --input: hsl(40, 100%, 97.6%);
-  --ring: hsl(40, 100%, 97.6%);
+  --destructive-foreground: hsl(40, 21%, 89%);
+  --border: hsl(40, 21%, 89%);
+  --input: hsl(40, 21%, 89%);
+  --ring: hsl(40, 21%, 89%);
   --chart-1: hsl(220 70% 50%);
   --chart-2: hsl(160 60% 45%);
   --chart-3: hsl(30 80% 55%);

@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
-// import { ModeToggle } from "@/components/ui/mode-toggle";
+import { ModeToggle } from "@/components/ui/mode-toggle";
 import Link from "@/components/ui/link";
 import { usePathname } from "next/navigation";
 import { Button } from "./button";
@@ -10,6 +10,7 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { motion, Variants } from "motion/react";
 import { LayoutQueryResult } from "@/sanity/types";
+import { Menu, X } from "lucide-react";
 
 const MotionLink = motion.create(Link);
 const MotionButton = motion.create(Button);
@@ -61,9 +62,6 @@ function Header({
   const Comp = asChild ? Slot : "header";
   const pathname = usePathname();
   const [isOpen, setOpen] = useState(false);
-  // const [hoveredLinkIndex, setHoveredLinkIndex] = useState<number | undefined>(
-  //   undefined
-  // );
 
   return (
     <Comp
@@ -83,7 +81,7 @@ function Header({
           version="1.1"
           viewBox="0 0 200.4 56.7"
           fill="currentColor"
-          className="text-history"
+          className="text-foreground"
           width={150}
           // height={56}
         >
@@ -101,14 +99,19 @@ function Header({
         </svg>
       </MotionLink>
       <MotionButton
-        variant="ghost"
-        className="z-50 text-lg text-history"
+        variant="inverted"
+        size="iconlg"
+        className="z-50 rounded-full"
         onClick={() => setOpen(!isOpen)}
         transition={{ duration: 0.2, delay: 0.2 }}
       >
-        {isOpen ? "Close" : "Menu"}
+        {isOpen ? (
+          <X size={48} className="scale-150" />
+        ) : (
+          <Menu size={48} className="scale-150" />
+        )}
       </MotionButton>
-      {/* <ModeToggle /> */}
+      <ModeToggle />
       <div className=" fixed w-[100vw] h-screen left-0 right-0 top-0 pointer-events-none">
         <motion.div
           variants={menu}
@@ -166,15 +169,6 @@ function Header({
             "z-40 fixed right-0 w-0 top-0 bottom-0 bg-foreground flex justify-center items-center"
           )}
         />
-        {/* <Image
-            src={`/images/menu/${
-              hoveredLinkIndex ? hoveredLinkIndex + 1 : "default"
-            }.webp`}
-            alt="Akizuki in spring"
-            width={631}
-            height={962}
-            className="z-50 object-cover my-auto hidden md:inline-block pr-32"
-          /> */}
       </div>
     </Comp>
   );
