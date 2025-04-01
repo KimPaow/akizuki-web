@@ -58,6 +58,11 @@ export const experiencePageQuery = defineQuery(`*[
   _type == "experience" && array::intersects(categories, $filters)
 ][]{
   ...,
+  image {
+    asset->{
+      ...,
+    }
+  }
 }`);
 
 export const layoutQuery = defineQuery(`*[

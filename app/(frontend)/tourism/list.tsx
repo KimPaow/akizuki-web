@@ -11,8 +11,9 @@ import {
   categoryColors,
   categoryJA,
 } from "@/lib/domain/category";
-import { Experience } from "@/sanity/types";
+import { Experience, SanityImageDimensions } from "@/sanity/types";
 import Link from "@/components/ui/link";
+import Image from "next/image";
 
 interface ListItemProps extends React.ComponentProps<"div"> {
   experience: Experience;
@@ -23,6 +24,17 @@ function isCategory(category: string): category is Category {
 }
 
 export function ListItem({ experience }: ListItemProps) {
+  if (experience.image) console.log(experience);
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const imageUrl: string | undefined = experience.image?.asset?.[
+    "url"
+  ] as string;
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const imageDimensions: SanityImageDimensions = experience.image?.asset?.[
+    "metadata"
+  ]?.dimensions as SanityImageDimensions;
   return (
     <AccordionItem value={experience._id} className="">
       <AccordionTrigger className="cursor-pointer">
@@ -47,18 +59,21 @@ export function ListItem({ experience }: ListItemProps) {
       </AccordionTrigger>
       <AccordionContent>
         <div className="flex flex-col gap-4">
+          {imageUrl && (
+            <Image
+              src={imageUrl}
+              width={imageDimensions.width ?? 200}
+              height={imageDimensions.height ?? 200}
+              alt={experience.name ?? "Untitled experience"}
+              className="max-w-[500px]"
+            />
+          )}
           <Text variant="p" color="muted" className="max-w-[80ch]">
             {experience.introduction}
           </Text>
           <div className="flex flex-col gap-2">
             {experience.website && (
               <div className="flex flex-col">
-                {/* <Text variant="p" color="foreground">
-                  ウェブサイト:
-                </Text>
-                <Text variant="p" color="muted" className="!mt-0">
-                  {experience.website}
-                </Text> */}
                 <Link href={experience.website} color="primary" target="_blank">
                   ウェブサイトを開く
                 </Link>

@@ -614,7 +614,7 @@ export type ContentPageQueryResult = {
   }> | null;
 } | null;
 // Variable: experiencePageQuery
-// Query: *[  _type == "experience" && array::intersects(categories, $filters)][]{  ...,}
+// Query: *[  _type == "experience" && array::intersects(categories, $filters)][]{  ...,  image {    asset->{      ...,    }  }}
 export type ExperiencePageQueryResult = Array<never>;
 // Variable: layoutQuery
 // Query: *[  _type == "settings" && _id == "settings"][0]{  ...,  menu[]{    ...,    _type == 'internalLink' => @->{slug, _id, name},    _type != 'internalLink' => @  }}
@@ -652,7 +652,7 @@ declare module "@sanity/client" {
   interface SanityQueries {
     "*[\n  _type == \"experience\"\n  && slug.current == $slug\n][0]{\n  ...,\n  \"headings\": content[style in [\"h1\", \"h2\", \"h3\", \"h4\", \"h5\", \"h6\"]],\n  content[]{\n    ...,\n    markDefs[]{\n      ...,\n      _type == \"internalLink\" => {\n        ...,\n        \"type\": @.reference->_type,\n        \"slug\": @.reference->slug\n      }\n    },\n    _type == \"image\" => {\n      ...,\n      asset->\n    },\n    _type == \"file\" => {\n      ...,\n      asset->\n    }\n  }\n}": TourismPageQueryResult;
     "*[\n  _type == \"page\"\n  && slug.current == $slug\n][0]{\n  ...,\n  \"headings\": content[style in [\"h1\", \"h2\", \"h3\", \"h4\", \"h5\", \"h6\"]],\n  content[]{\n    ...,\n    markDefs[]{\n      ...,\n      _type == \"internalLink\" => {\n        ...,\n        \"type\": @.reference->_type,\n        \"slug\": @.reference->slug\n      }\n    },\n    _type == \"image\" => {\n      ...,\n      asset->\n    },\n    _type == \"file\" => {\n      ...,\n      asset->\n    }\n  }\n}": ContentPageQueryResult;
-    "*[\n  _type == \"experience\" && array::intersects(categories, $filters)\n][]{\n  ...,\n}": ExperiencePageQueryResult;
+    "*[\n  _type == \"experience\" && array::intersects(categories, $filters)\n][]{\n  ...,\n  image {\n    asset->{\n      ...,\n    }\n  }\n}": ExperiencePageQueryResult;
     "*[\n  _type == \"settings\" && _id == \"settings\"\n][0]{\n  ...,\n  menu[]{\n    ...,\n    _type == 'internalLink' => @->{slug, _id, name},\n    _type != 'internalLink' => @\n  }\n}": LayoutQueryResult;
   }
 }
