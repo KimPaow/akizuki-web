@@ -58,6 +58,18 @@ export type Settings = {
     _type: "externalLink";
     _key: string;
   }>;
+  slideshow_images?: Array<{
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+    _key: string;
+  }>;
   socials?: Array<{
     title?: string;
     url?: string;
@@ -636,6 +648,18 @@ export type LayoutQueryResult = {
     _type: "externalLink";
     _key: string;
   }> | null;
+  slideshow_images?: Array<{
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+    _key: string;
+  }>;
   socials?: Array<{
     title?: string;
     url?: string;
@@ -644,6 +668,38 @@ export type LayoutQueryResult = {
   }>;
   email?: string;
   phone?: string;
+} | null;
+// Variable: slideshowQuery
+// Query: *[  _type == "settings" && _id == "settings"][0]{  slideshow_images[]{    ...,    asset->  }}
+export type SlideshowQueryResult = {
+  slideshow_images: Array<{
+    asset: {
+      _id: string;
+      _type: "sanity.imageAsset";
+      _createdAt: string;
+      _updatedAt: string;
+      _rev: string;
+      originalFilename?: string;
+      label?: string;
+      title?: string;
+      description?: string;
+      altText?: string;
+      sha1hash?: string;
+      extension?: string;
+      mimeType?: string;
+      size?: number;
+      assetId?: string;
+      uploadId?: string;
+      path?: string;
+      url?: string;
+      metadata?: SanityImageMetadata;
+      source?: SanityAssetSourceData;
+    } | null;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+    _key: string;
+  }> | null;
 } | null;
 
 // Query TypeMap
@@ -654,5 +710,6 @@ declare module "@sanity/client" {
     "*[\n  _type == \"page\"\n  && slug.current == $slug\n][0]{\n  ...,\n  \"headings\": content[style in [\"h1\", \"h2\", \"h3\", \"h4\", \"h5\", \"h6\"]],\n  content[]{\n    ...,\n    markDefs[]{\n      ...,\n      _type == \"internalLink\" => {\n        ...,\n        \"type\": @.reference->_type,\n        \"slug\": @.reference->slug\n      }\n    },\n    _type == \"image\" => {\n      ...,\n      asset->\n    },\n    _type == \"file\" => {\n      ...,\n      asset->\n    }\n  }\n}": ContentPageQueryResult;
     "*[\n  _type == \"experience\" && array::intersects(categories, $filters)\n][]{\n  ...,\n  image {\n    asset->{\n      ...,\n    }\n  }\n}": ExperiencePageQueryResult;
     "*[\n  _type == \"settings\" && _id == \"settings\"\n][0]{\n  ...,\n  menu[]{\n    ...,\n    _type == 'internalLink' => @->{slug, _id, name},\n    _type != 'internalLink' => @\n  }\n}": LayoutQueryResult;
+    "*[\n  _type == \"settings\" && _id == \"settings\"\n][0]{\n  slideshow_images[]{\n    ...,\n    asset->\n  }\n}": SlideshowQueryResult;
   }
 }

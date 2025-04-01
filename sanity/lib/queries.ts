@@ -75,3 +75,12 @@ export const layoutQuery = defineQuery(`*[
     _type != 'internalLink' => @
   }
 }`);
+
+export const slideshowQuery = defineQuery(`*[
+  _type == "settings" && _id == "settings"
+][0]{
+  slideshow_images[]{
+    ...,
+    asset->
+  }
+}`);

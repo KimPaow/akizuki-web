@@ -34,6 +34,12 @@ export const settings = defineType({
       ],
     }),
     defineField({
+      title: "スライドショーの画像",
+      type: "array",
+      name: "slideshow_images",
+      of: [{ type: "image" }],
+    }),
+    defineField({
       title: "ソーシャルリンク",
       name: "socials",
       type: "array",

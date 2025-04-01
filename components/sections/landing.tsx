@@ -1,7 +1,52 @@
-import Image from "next/image";
+// import Image from "next/image";
 import Container from "@/components/ui/container";
+import { Slide, Slideshow } from "../ui/carousel/time";
+import { sanityFetch } from "@/sanity/live";
+import { slideshowQuery } from "@/sanity/lib/queries";
 
-export function Landing({ ...props }: React.ComponentProps<"div">) {
+const defaultSlides: Slide[] = [
+  {
+    src: "/images/slideshow/1.webp",
+    alt: "Slide 1",
+    id: "1",
+  },
+  {
+    src: "/images/slideshow/2.webp",
+    alt: "Slide 2",
+    id: "2",
+  },
+  {
+    src: "/images/slideshow/3.webp",
+    alt: "Slide 3",
+    id: "3",
+  },
+  {
+    src: "/images/slideshow/4.webp",
+    alt: "Slide 4",
+    id: "4",
+  },
+] satisfies Slide[];
+
+export async function Landing({ ...props }: React.ComponentProps<"div">) {
+  const { data } = await sanityFetch({
+    query: slideshowQuery,
+  });
+
+  console.log("data:", data);
+  const slides: Slide[] | undefined = data?.slideshow_images
+    ?.map((image) => {
+      console.log("image:", image);
+      if (!image || !image.asset || !image.asset.url || !image.asset._id) {
+        return undefined;
+      }
+      return {
+        src: image.asset.url,
+        alt: image.asset.altText ?? "Image of Akizuki",
+        id: image.asset._id,
+      };
+    })
+    .filter((slide) => slide !== undefined);
+
   return (
     <Container
       className="min-h-screen flex flex-col justify-center items-center relative m-0 max-w-none"
@@ -13,7 +58,7 @@ export function Landing({ ...props }: React.ComponentProps<"div">) {
           version="1.1"
           viewBox="0 0 160 160"
           fill="currentColor"
-          className="text-dark w-[120px] h-[120px] md:w-[150px] md:h-[150px]"
+          className="text-light w-[120px] h-[120px] md:w-[150px] md:h-[150px]"
         >
           <g>
             <path d="M107.4,73.89c1.1,11.53-.56,24.23.76,35.45,1.16,9.83,8.52,11.89,9.69.59.94-9.11-.11-22.19-.78-31.54-.38-5.27-.79-16.74-3.34-21.11-.71-1.21-2.08-2.74-3.39-3.62-9.71-6.56-37.92-2.53-50.93-3.68-8.62-.76-7.38-11.15-7.04-16.05.36-5.24,3.19-13.08,2.18-17.98s-5.39-4.96-7.75-.3c-3.44,6.79-5.1,26.41-2.41,33.32,1.6,4.11,6.39,7.68,12.13,8.27,11.27,1.16,25.48-.74,37.12.06,2.95.2,8.57,1.31,10.57,2.98,2.19,1.82,2.93,10.75,3.2,13.62ZM23.55,16.07c-3.58,8.17-2.62,22.65-2.41,31.34.23,9.57-2.62,24.45,14.54,26.15,13.57,1.34,29.67-1.33,43.5.86,7.1,1.12,8.33,6.39,6.26,10.99-3.35,7.46-18.82,13.08-27.9,16.04-7.56,2.46-28.47,6.39-33.09,9.3-3.78,2.37-2.14,5.21,2.34,5.45,4.35.24,24.26-5.17,29.49-6.7,13.97-4.08,39.1-13.71,39.7-26.7.44-9.56-5.66-14.8-18.04-15.88-12.61-1.09-27.6.57-39.27-.68-3.95-.42-6.46-2.37-7.07-5.34-2.09-10.13-1.58-22.34-.8-32.59.24-3.2,4.07-15.46-2.73-15.92-2.55-.18-3.86,2.21-4.51,3.69ZM137.82,111.53c2.28-15.56,2.01-51.95-4.16-66.5-6.84-16.13-38.71-9.31-55.62-10.83-5.56-.78-3.73-7.33,1.82-8.73,7.27-1.83,28.84-.98,37.62-.85,3.71.05,15.04,2.09,17.08-1.1,1.9-2.97-1.91-3.94-4.99-4.68-9.73-2.32-45.19-2.53-54.44.24-5.54,1.66-9.08,4.84-9.95,9.36-3.58,18.56,20.59,12.27,35.92,12.49,3.16.05,8.68.35,11.78.66,12.74,1.26,13.04,5.88,14.51,14.35,2.89,16.69,1.44,33.88.84,50.59-.09,2.57.05,14.73,7.22,10.24,1.36-.85,2.15-3.87,2.35-5.25Z" />
@@ -32,12 +77,13 @@ export function Landing({ ...props }: React.ComponentProps<"div">) {
           </g>
         </svg>
       </div>
-      <Image
+      <Slideshow slides={slides ?? defaultSlides} />
+      {/* <Image
         src="/images/landing/mountains.webp"
         alt="An old castle drawing"
         fill
         className="h-full object-cover absolute -z-20"
-      />
+      /> */}
     </Container>
   );
 }
