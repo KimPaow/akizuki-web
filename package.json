@@ -26,6 +26,7 @@
     "@sanity/locale-es-es": "^1.2.18",
     "@sanity/locale-ja-jp": "^1.1.17",
     "@sanity/vision": "3.78.0",
+    "@vercel/analytics": "^1.6.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "graphql": "^16.10.0",
