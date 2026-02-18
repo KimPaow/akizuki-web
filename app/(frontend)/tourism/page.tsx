@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Text from "@/components/ui/text";
 import { ListItem } from "./list";
 import { Accordion } from "@/components/ui/accordion";
@@ -6,6 +7,30 @@ import { ALL_CATEGORIES, Category } from "@/lib/domain/category";
 import { sanityFetch } from "@/sanity/live";
 import { experiencePageQuery } from "@/sanity/lib/queries";
 import { Experience } from "@/sanity/types";
+import { getDefaultOpenGraphImage, withEnglishSeoSuffix } from "@/lib/seo";
+
+const title = "観光案内 / Things to Do";
+const description =
+  "秋月の観光スポット、体験、食事、買い物情報をカテゴリ別に紹介しています。Find top attractions, food, shopping, and local experiences in Akizuki, Fukuoka.";
+
+export const metadata: Metadata = {
+  title,
+  description,
+  alternates: {
+    canonical: "/tourism",
+  },
+  openGraph: {
+    title: `${title} | Akizuki, Fukuoka`,
+    description: withEnglishSeoSuffix(description),
+    url: "/tourism",
+    images: [getDefaultOpenGraphImage()],
+  },
+  twitter: {
+    title: `${title} | Akizuki, Fukuoka`,
+    description: withEnglishSeoSuffix(description),
+    images: [getDefaultOpenGraphImage().url],
+  },
+};
 
 export default async function Page({
   searchParams,
