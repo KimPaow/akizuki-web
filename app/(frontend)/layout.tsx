@@ -11,6 +11,7 @@ import { DisableDraftMode } from "@/components/disable-draft-mode";
 import { VisualEditing } from "next-sanity";
 import { draftMode } from "next/headers";
 import { layoutQuery } from "@/sanity/lib/queries";
+import { Analytics } from "@vercel/analytics/next";
 
 const zenOldMincho = Zen_Old_Mincho({
   variable: "--font-mincho",
@@ -66,6 +67,7 @@ export default async function RootLayout({
           )}
         </ThemeProvider>
         <SanityLive />
+        <Analytics />
       </body>
     </html>
   );
