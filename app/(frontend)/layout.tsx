@@ -19,6 +19,7 @@ import {
   getDefaultOpenGraphImage,
   withEnglishSeoSuffix,
 } from "@/lib/seo";
+import { Analytics } from "@vercel/analytics/next";
 
 const zenOldMincho = Zen_Old_Mincho({
   variable: "--font-mincho",
@@ -123,6 +124,7 @@ export default async function RootLayout({
           )}
         </ThemeProvider>
         <SanityLive />
+        <Analytics />
       </body>
     </html>
   );
