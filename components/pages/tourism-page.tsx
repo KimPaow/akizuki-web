@@ -9,7 +9,6 @@ export default async function TourismPage({
 }: {
   page: TourismPageQueryResult;
 }) {
-  console.log(page);
   return (
     <div className="min-h-screen w-full max-w-[1280px] mx-auto flex flex-col gap-16 my-32 items-center">
       <div className="flex flex-col gap-8 max-w-[60ch] mx-4 sm:mx-0">

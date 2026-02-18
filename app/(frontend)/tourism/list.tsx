@@ -24,7 +24,6 @@ function isCategory(category: string): category is Category {
 }
 
 export function ListItem({ experience }: ListItemProps) {
-  if (experience.image) console.log(experience);
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const imageUrl: string | undefined = experience.image?.asset?.[

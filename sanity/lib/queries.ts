@@ -65,6 +65,24 @@ export const experiencePageQuery = defineQuery(`*[
   }
 }`);
 
+export const pageSlugsQuery = defineQuery(`*[
+  _type == "page"
+  && defined(slug.current)
+  && coalesce(wip, false) == false
+][]{
+  "slug": slug.current,
+  _updatedAt
+}`);
+
+export const experienceSlugsQuery = defineQuery(`*[
+  _type == "experience"
+  && defined(slug.current)
+  && coalesce(wip, false) == false
+][]{
+  "slug": slug.current,
+  _updatedAt
+}`);
+
 export const layoutQuery = defineQuery(`*[
   _type == "settings" && _id == "settings"
 ][0]{
