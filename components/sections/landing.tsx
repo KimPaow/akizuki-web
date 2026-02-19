@@ -27,14 +27,24 @@ const defaultSlides: Slide[] = [
   },
 ] satisfies Slide[];
 
+type SlideshowImage = {
+  asset?: {
+    url?: string | null;
+    _id?: string | null;
+    altText?: string | null;
+  } | null;
+} | null;
+
 export async function Landing({ ...props }: React.ComponentProps<"div">) {
   const { data } = await sanityFetch({
     query: slideshowQuery,
   });
 
   console.log("data:", data);
-  const slides: Slide[] | undefined = data?.slideshow_images
-    ?.map((image) => {
+  const slides: Slide[] | undefined = (data?.slideshow_images as
+    | SlideshowImage[]
+    | undefined)
+    ?.map((image: SlideshowImage) => {
       console.log("image:", image);
       if (!image || !image.asset || !image.asset.url || !image.asset._id) {
         return undefined;
@@ -45,7 +55,7 @@ export async function Landing({ ...props }: React.ComponentProps<"div">) {
         id: image.asset._id,
       };
     })
-    .filter((slide) => slide !== undefined);
+    .filter((slide): slide is Slide => slide !== undefined);
 
   return (
     <Container

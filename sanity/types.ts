@@ -13,30 +13,18 @@
  */
 
 // Source: schema.json
-export type SanityImagePaletteSwatch = {
-  _type: "sanity.imagePaletteSwatch";
-  background?: string;
-  foreground?: string;
-  population?: number;
-  title?: string;
+export type PageReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "page";
 };
 
-export type SanityImagePalette = {
-  _type: "sanity.imagePalette";
-  darkMuted?: SanityImagePaletteSwatch;
-  lightVibrant?: SanityImagePaletteSwatch;
-  darkVibrant?: SanityImagePaletteSwatch;
-  vibrant?: SanityImagePaletteSwatch;
-  dominant?: SanityImagePaletteSwatch;
-  lightMuted?: SanityImagePaletteSwatch;
-  muted?: SanityImagePaletteSwatch;
-};
-
-export type SanityImageDimensions = {
-  _type: "sanity.imageDimensions";
-  height?: number;
-  width?: number;
-  aspectRatio?: number;
+export type SanityImageAssetReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
 };
 
 export type Settings = {
@@ -45,26 +33,21 @@ export type Settings = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  menu?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "page";
-  } | {
-    title?: string;
-    url?: string;
-    blank?: boolean;
-    _type: "externalLink";
-    _key: string;
-  }>;
+  menu?: Array<
+    | ({
+        _key: string;
+      } & PageReference)
+    | {
+        title?: string;
+        url?: string;
+        blank?: boolean;
+        _type: "externalLink";
+        _key: string;
+      }
+  >;
   slideshow_images?: Array<{
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
@@ -80,6 +63,36 @@ export type Settings = {
   phone?: string;
 };
 
+export type SanityImageCrop = {
+  _type: "sanity.imageCrop";
+  top?: number;
+  bottom?: number;
+  left?: number;
+  right?: number;
+};
+
+export type SanityImageHotspot = {
+  _type: "sanity.imageHotspot";
+  x?: number;
+  y?: number;
+  height?: number;
+  width?: number;
+};
+
+export type ExperienceReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "experience";
+};
+
+export type SanityFileAssetReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "sanity.fileAsset";
+};
+
 export type Experience = {
   _id: string;
   _type: "experience";
@@ -90,70 +103,63 @@ export type Experience = {
   name?: string;
   slug?: Slug;
   introduction?: string;
-  content?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
-    listItem?: "bullet" | "number";
-    markDefs?: Array<{
-      reference?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "page";
-      } | {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "experience";
-      };
-      _type: "internalLink";
-      _key: string;
-    } | {
-      href?: string;
-      blank?: boolean;
-      _type: "externalLink";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.fileAsset";
-    };
-    title?: string;
-    _type: "file";
-    _key: string;
-  }>;
+  content?: Array<
+    | {
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?:
+          | "normal"
+          | "h1"
+          | "h2"
+          | "h3"
+          | "h4"
+          | "h5"
+          | "h6"
+          | "blockquote";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<
+          | {
+              reference?: PageReference | ExperienceReference;
+              _type: "internalLink";
+              _key: string;
+            }
+          | {
+              href?: string;
+              blank?: boolean;
+              _type: "externalLink";
+              _key: string;
+            }
+        >;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }
+    | {
+        asset?: SanityImageAssetReference;
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+        _key: string;
+      }
+    | {
+        asset?: SanityFileAssetReference;
+        media?: unknown;
+        title?: string;
+        _type: "file";
+        _key: string;
+      }
+  >;
   toc?: boolean;
   categories?: Array<string>;
   image?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
@@ -185,62 +191,103 @@ export type Page = {
   name?: string;
   slug?: Slug;
   preamble?: string;
-  content?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
-    listItem?: "bullet" | "number";
-    markDefs?: Array<{
-      reference?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "page";
-      } | {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "experience";
-      };
-      _type: "internalLink";
-      _key: string;
-    } | {
-      href?: string;
-      blank?: boolean;
-      _type: "externalLink";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.fileAsset";
-    };
-    title?: string;
-    _type: "file";
-    _key: string;
-  }>;
+  content?: Array<
+    | {
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?:
+          | "normal"
+          | "h1"
+          | "h2"
+          | "h3"
+          | "h4"
+          | "h5"
+          | "h6"
+          | "blockquote";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<
+          | {
+              reference?: PageReference | ExperienceReference;
+              _type: "internalLink";
+              _key: string;
+            }
+          | {
+              href?: string;
+              blank?: boolean;
+              _type: "externalLink";
+              _key: string;
+            }
+        >;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }
+    | {
+        asset?: SanityImageAssetReference;
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+        _key: string;
+      }
+    | {
+        asset?: SanityFileAssetReference;
+        media?: unknown;
+        title?: string;
+        _type: "file";
+        _key: string;
+      }
+  >;
   toc?: boolean;
+};
+
+export type Slug = {
+  _type: "slug";
+  current?: string;
+  source?: string;
+};
+
+export type SanityImagePaletteSwatch = {
+  _type: "sanity.imagePaletteSwatch";
+  background?: string;
+  foreground?: string;
+  population?: number;
+  title?: string;
+};
+
+export type SanityImagePalette = {
+  _type: "sanity.imagePalette";
+  darkMuted?: SanityImagePaletteSwatch;
+  lightVibrant?: SanityImagePaletteSwatch;
+  darkVibrant?: SanityImagePaletteSwatch;
+  vibrant?: SanityImagePaletteSwatch;
+  dominant?: SanityImagePaletteSwatch;
+  lightMuted?: SanityImagePaletteSwatch;
+  muted?: SanityImagePaletteSwatch;
+};
+
+export type SanityImageDimensions = {
+  _type: "sanity.imageDimensions";
+  height?: number;
+  width?: number;
+  aspectRatio?: number;
+};
+
+export type SanityImageMetadata = {
+  _type: "sanity.imageMetadata";
+  location?: Geopoint;
+  dimensions?: SanityImageDimensions;
+  palette?: SanityImagePalette;
+  lqip?: string;
+  blurHash?: string;
+  thumbHash?: string;
+  hasAlpha?: boolean;
+  isOpaque?: boolean;
 };
 
 export type SanityFileAsset = {
@@ -265,20 +312,11 @@ export type SanityFileAsset = {
   source?: SanityAssetSourceData;
 };
 
-export type SanityImageCrop = {
-  _type: "sanity.imageCrop";
-  top?: number;
-  bottom?: number;
-  left?: number;
-  right?: number;
-};
-
-export type SanityImageHotspot = {
-  _type: "sanity.imageHotspot";
-  x?: number;
-  y?: number;
-  height?: number;
-  width?: number;
+export type SanityAssetSourceData = {
+  _type: "sanity.assetSourceData";
+  name?: string;
+  id?: string;
+  url?: string;
 };
 
 export type SanityImageAsset = {
@@ -304,32 +342,28 @@ export type SanityImageAsset = {
   source?: SanityAssetSourceData;
 };
 
-export type SanityAssetSourceData = {
-  _type: "sanity.assetSourceData";
-  name?: string;
-  id?: string;
-  url?: string;
-};
+export type AllSanitySchemaTypes =
+  | PageReference
+  | SanityImageAssetReference
+  | Settings
+  | SanityImageCrop
+  | SanityImageHotspot
+  | ExperienceReference
+  | SanityFileAssetReference
+  | Experience
+  | Geopoint
+  | Page
+  | Slug
+  | SanityImagePaletteSwatch
+  | SanityImagePalette
+  | SanityImageDimensions
+  | SanityImageMetadata
+  | SanityFileAsset
+  | SanityAssetSourceData
+  | SanityImageAsset;
 
-export type SanityImageMetadata = {
-  _type: "sanity.imageMetadata";
-  location?: Geopoint;
-  dimensions?: SanityImageDimensions;
-  palette?: SanityImagePalette;
-  lqip?: string;
-  blurHash?: string;
-  hasAlpha?: boolean;
-  isOpaque?: boolean;
-};
-
-export type Slug = {
-  _type: "slug";
-  current?: string;
-  source?: string;
-};
-
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | Settings | Experience | Geopoint | Page | SanityFileAsset | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug;
 export declare const internalGroqTypeReferenceTo: unique symbol;
+
 // Source: sanity/lib/queries.ts
 // Variable: tourismPageQuery
 // Query: *[  _type == "experience"  && slug.current == $slug][0]{  ...,  "headings": content[style in ["h1", "h2", "h3", "h4", "h5", "h6"]],  content[]{    ...,    markDefs[]{      ...,      _type == "internalLink" => {        ...,        "type": @.reference->_type,        "slug": @.reference->slug      }    },    _type == "image" => {      ...,      asset->    },    _type == "file" => {      ...,      asset->    }  }}
@@ -343,105 +377,108 @@ export type TourismPageQueryResult = {
   name?: string;
   slug?: Slug;
   introduction?: string;
-  content: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-    listItem?: "bullet" | "number";
-    markDefs: Array<{
-      href?: string;
-      blank?: boolean;
-      _type: "externalLink";
-      _key: string;
-    } | {
-      reference?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "experience";
-      } | {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "page";
-      };
-      _type: "internalLink";
-      _key: string;
-      type: "experience" | "page" | null;
-      slug: Slug | null;
-    }> | null;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset: {
-      _id: string;
-      _type: "sanity.fileAsset";
-      _createdAt: string;
-      _updatedAt: string;
-      _rev: string;
-      originalFilename?: string;
-      label?: string;
-      title?: string;
-      description?: string;
-      altText?: string;
-      sha1hash?: string;
-      extension?: string;
-      mimeType?: string;
-      size?: number;
-      assetId?: string;
-      uploadId?: string;
-      path?: string;
-      url?: string;
-      source?: SanityAssetSourceData;
-    } | null;
-    title?: string;
-    _type: "file";
-    _key: string;
-    markDefs: null;
-  } | {
-    asset: {
-      _id: string;
-      _type: "sanity.imageAsset";
-      _createdAt: string;
-      _updatedAt: string;
-      _rev: string;
-      originalFilename?: string;
-      label?: string;
-      title?: string;
-      description?: string;
-      altText?: string;
-      sha1hash?: string;
-      extension?: string;
-      mimeType?: string;
-      size?: number;
-      assetId?: string;
-      uploadId?: string;
-      path?: string;
-      url?: string;
-      metadata?: SanityImageMetadata;
-      source?: SanityAssetSourceData;
-    } | null;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-    markDefs: null;
-  }> | null;
+  content: Array<
+    | {
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?:
+          | "blockquote"
+          | "h1"
+          | "h2"
+          | "h3"
+          | "h4"
+          | "h5"
+          | "h6"
+          | "normal";
+        listItem?: "bullet" | "number";
+        markDefs: Array<
+          | {
+              href?: string;
+              blank?: boolean;
+              _type: "externalLink";
+              _key: string;
+            }
+          | {
+              reference?: ExperienceReference | PageReference;
+              _type: "internalLink";
+              _key: string;
+              type: "experience" | "page" | null;
+              slug: Slug | null;
+            }
+        > | null;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }
+    | {
+        asset: {
+          _id: string;
+          _type: "sanity.fileAsset";
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          originalFilename?: string;
+          label?: string;
+          title?: string;
+          description?: string;
+          altText?: string;
+          sha1hash?: string;
+          extension?: string;
+          mimeType?: string;
+          size?: number;
+          assetId?: string;
+          uploadId?: string;
+          path?: string;
+          url?: string;
+          source?: SanityAssetSourceData;
+        } | null;
+        media?: unknown;
+        title?: string;
+        _type: "file";
+        _key: string;
+        markDefs: null;
+      }
+    | {
+        asset: {
+          _id: string;
+          _type: "sanity.imageAsset";
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          originalFilename?: string;
+          label?: string;
+          title?: string;
+          description?: string;
+          altText?: string;
+          sha1hash?: string;
+          extension?: string;
+          mimeType?: string;
+          size?: number;
+          assetId?: string;
+          uploadId?: string;
+          path?: string;
+          url?: string;
+          metadata?: SanityImageMetadata;
+          source?: SanityAssetSourceData;
+        } | null;
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+        _key: string;
+        markDefs: null;
+      }
+  > | null;
   toc?: boolean;
   categories?: Array<string>;
   image?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
@@ -462,31 +499,26 @@ export type TourismPageQueryResult = {
     }>;
     style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
     listItem?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      blank?: boolean;
-      _type: "externalLink";
-      _key: string;
-    } | {
-      reference?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "experience";
-      } | {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "page";
-      };
-      _type: "internalLink";
-      _key: string;
-    }>;
+    markDefs?: Array<
+      | {
+          href?: string;
+          blank?: boolean;
+          _type: "externalLink";
+          _key: string;
+        }
+      | {
+          reference?: ExperienceReference | PageReference;
+          _type: "internalLink";
+          _key: string;
+        }
+    >;
     level?: number;
     _type: "block";
     _key: string;
   }> | null;
 } | null;
+
+// Source: sanity/lib/queries.ts
 // Variable: contentPageQuery
 // Query: *[  _type == "page"  && slug.current == $slug][0]{  ...,  "headings": content[style in ["h1", "h2", "h3", "h4", "h5", "h6"]],  content[]{    ...,    markDefs[]{      ...,      _type == "internalLink" => {        ...,        "type": @.reference->_type,        "slug": @.reference->slug      }    },    _type == "image" => {      ...,      asset->    },    _type == "file" => {      ...,      asset->    }  }}
 export type ContentPageQueryResult = {
@@ -500,96 +532,103 @@ export type ContentPageQueryResult = {
   name?: string;
   slug?: Slug;
   preamble?: string;
-  content: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-    listItem?: "bullet" | "number";
-    markDefs: Array<{
-      href?: string;
-      blank?: boolean;
-      _type: "externalLink";
-      _key: string;
-    } | {
-      reference?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "experience";
-      } | {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "page";
-      };
-      _type: "internalLink";
-      _key: string;
-      type: "experience" | "page" | null;
-      slug: Slug | null;
-    }> | null;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset: {
-      _id: string;
-      _type: "sanity.fileAsset";
-      _createdAt: string;
-      _updatedAt: string;
-      _rev: string;
-      originalFilename?: string;
-      label?: string;
-      title?: string;
-      description?: string;
-      altText?: string;
-      sha1hash?: string;
-      extension?: string;
-      mimeType?: string;
-      size?: number;
-      assetId?: string;
-      uploadId?: string;
-      path?: string;
-      url?: string;
-      source?: SanityAssetSourceData;
-    } | null;
-    title?: string;
-    _type: "file";
-    _key: string;
-    markDefs: null;
-  } | {
-    asset: {
-      _id: string;
-      _type: "sanity.imageAsset";
-      _createdAt: string;
-      _updatedAt: string;
-      _rev: string;
-      originalFilename?: string;
-      label?: string;
-      title?: string;
-      description?: string;
-      altText?: string;
-      sha1hash?: string;
-      extension?: string;
-      mimeType?: string;
-      size?: number;
-      assetId?: string;
-      uploadId?: string;
-      path?: string;
-      url?: string;
-      metadata?: SanityImageMetadata;
-      source?: SanityAssetSourceData;
-    } | null;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-    markDefs: null;
-  }> | null;
+  content: Array<
+    | {
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?:
+          | "blockquote"
+          | "h1"
+          | "h2"
+          | "h3"
+          | "h4"
+          | "h5"
+          | "h6"
+          | "normal";
+        listItem?: "bullet" | "number";
+        markDefs: Array<
+          | {
+              href?: string;
+              blank?: boolean;
+              _type: "externalLink";
+              _key: string;
+            }
+          | {
+              reference?: ExperienceReference | PageReference;
+              _type: "internalLink";
+              _key: string;
+              type: "experience" | "page" | null;
+              slug: Slug | null;
+            }
+        > | null;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }
+    | {
+        asset: {
+          _id: string;
+          _type: "sanity.fileAsset";
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          originalFilename?: string;
+          label?: string;
+          title?: string;
+          description?: string;
+          altText?: string;
+          sha1hash?: string;
+          extension?: string;
+          mimeType?: string;
+          size?: number;
+          assetId?: string;
+          uploadId?: string;
+          path?: string;
+          url?: string;
+          source?: SanityAssetSourceData;
+        } | null;
+        media?: unknown;
+        title?: string;
+        _type: "file";
+        _key: string;
+        markDefs: null;
+      }
+    | {
+        asset: {
+          _id: string;
+          _type: "sanity.imageAsset";
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          originalFilename?: string;
+          label?: string;
+          title?: string;
+          description?: string;
+          altText?: string;
+          sha1hash?: string;
+          extension?: string;
+          mimeType?: string;
+          size?: number;
+          assetId?: string;
+          uploadId?: string;
+          path?: string;
+          url?: string;
+          metadata?: SanityImageMetadata;
+          source?: SanityAssetSourceData;
+        } | null;
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+        _key: string;
+        markDefs: null;
+      }
+  > | null;
   toc?: boolean;
   headings: Array<{
     children?: Array<{
@@ -600,61 +639,73 @@ export type ContentPageQueryResult = {
     }>;
     style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
     listItem?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      blank?: boolean;
-      _type: "externalLink";
-      _key: string;
-    } | {
-      reference?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "experience";
-      } | {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "page";
-      };
-      _type: "internalLink";
-      _key: string;
-    }>;
+    markDefs?: Array<
+      | {
+          href?: string;
+          blank?: boolean;
+          _type: "externalLink";
+          _key: string;
+        }
+      | {
+          reference?: ExperienceReference | PageReference;
+          _type: "internalLink";
+          _key: string;
+        }
+    >;
     level?: number;
     _type: "block";
     _key: string;
   }> | null;
 } | null;
+
+// Source: sanity/lib/queries.ts
 // Variable: experiencePageQuery
 // Query: *[  _type == "experience" && array::intersects(categories, $filters)][]{  ...,  image {    asset->{      ...,    }  }}
 export type ExperiencePageQueryResult = Array<never>;
+
+// Source: sanity/lib/queries.ts
+// Variable: pageSlugsQuery
+// Query: *[  _type == "page"  && defined(slug.current)  && coalesce(wip, false) == false][]{  "slug": slug.current,  _updatedAt}
+export type PageSlugsQueryResult = Array<{
+  slug: string | null;
+  _updatedAt: string;
+}>;
+
+// Source: sanity/lib/queries.ts
+// Variable: experienceSlugsQuery
+// Query: *[  _type == "experience"  && defined(slug.current)  && coalesce(wip, false) == false][]{  "slug": slug.current,  _updatedAt}
+export type ExperienceSlugsQueryResult = Array<{
+  slug: string | null;
+  _updatedAt: string;
+}>;
+
+// Source: sanity/lib/queries.ts
 // Variable: layoutQuery
 // Query: *[  _type == "settings" && _id == "settings"][0]{  ...,  menu[]{    ...,    _type == 'internalLink' => @->{slug, _id, name},    _type != 'internalLink' => @  }}
 export type LayoutQueryResult = {
-  _id: string;
+  _id: "settings";
   _type: "settings";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  menu: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-  } | {
-    title?: string;
-    url?: string;
-    blank?: boolean;
-    _type: "externalLink";
-    _key: string;
-  }> | null;
+  menu: Array<
+    | {
+        _key: string;
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+      }
+    | {
+        title?: string;
+        url?: string;
+        blank?: boolean;
+        _type: "externalLink";
+        _key: string;
+      }
+  > | null;
   slideshow_images?: Array<{
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
@@ -669,6 +720,8 @@ export type LayoutQueryResult = {
   email?: string;
   phone?: string;
 } | null;
+
+// Source: sanity/lib/queries.ts
 // Variable: slideshowQuery
 // Query: *[  _type == "settings" && _id == "settings"][0]{  slideshow_images[]{    ...,    asset->  }}
 export type SlideshowQueryResult = {
@@ -695,6 +748,7 @@ export type SlideshowQueryResult = {
       metadata?: SanityImageMetadata;
       source?: SanityAssetSourceData;
     } | null;
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
@@ -706,10 +760,12 @@ export type SlideshowQueryResult = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[\n  _type == \"experience\"\n  && slug.current == $slug\n][0]{\n  ...,\n  \"headings\": content[style in [\"h1\", \"h2\", \"h3\", \"h4\", \"h5\", \"h6\"]],\n  content[]{\n    ...,\n    markDefs[]{\n      ...,\n      _type == \"internalLink\" => {\n        ...,\n        \"type\": @.reference->_type,\n        \"slug\": @.reference->slug\n      }\n    },\n    _type == \"image\" => {\n      ...,\n      asset->\n    },\n    _type == \"file\" => {\n      ...,\n      asset->\n    }\n  }\n}": TourismPageQueryResult;
-    "*[\n  _type == \"page\"\n  && slug.current == $slug\n][0]{\n  ...,\n  \"headings\": content[style in [\"h1\", \"h2\", \"h3\", \"h4\", \"h5\", \"h6\"]],\n  content[]{\n    ...,\n    markDefs[]{\n      ...,\n      _type == \"internalLink\" => {\n        ...,\n        \"type\": @.reference->_type,\n        \"slug\": @.reference->slug\n      }\n    },\n    _type == \"image\" => {\n      ...,\n      asset->\n    },\n    _type == \"file\" => {\n      ...,\n      asset->\n    }\n  }\n}": ContentPageQueryResult;
-    "*[\n  _type == \"experience\" && array::intersects(categories, $filters)\n][]{\n  ...,\n  image {\n    asset->{\n      ...,\n    }\n  }\n}": ExperiencePageQueryResult;
+    '*[\n  _type == "experience"\n  && slug.current == $slug\n][0]{\n  ...,\n  "headings": content[style in ["h1", "h2", "h3", "h4", "h5", "h6"]],\n  content[]{\n    ...,\n    markDefs[]{\n      ...,\n      _type == "internalLink" => {\n        ...,\n        "type": @.reference->_type,\n        "slug": @.reference->slug\n      }\n    },\n    _type == "image" => {\n      ...,\n      asset->\n    },\n    _type == "file" => {\n      ...,\n      asset->\n    }\n  }\n}': TourismPageQueryResult;
+    '*[\n  _type == "page"\n  && slug.current == $slug\n][0]{\n  ...,\n  "headings": content[style in ["h1", "h2", "h3", "h4", "h5", "h6"]],\n  content[]{\n    ...,\n    markDefs[]{\n      ...,\n      _type == "internalLink" => {\n        ...,\n        "type": @.reference->_type,\n        "slug": @.reference->slug\n      }\n    },\n    _type == "image" => {\n      ...,\n      asset->\n    },\n    _type == "file" => {\n      ...,\n      asset->\n    }\n  }\n}': ContentPageQueryResult;
+    '*[\n  _type == "experience" && array::intersects(categories, $filters)\n][]{\n  ...,\n  image {\n    asset->{\n      ...,\n    }\n  }\n}': ExperiencePageQueryResult;
+    '*[\n  _type == "page"\n  && defined(slug.current)\n  && coalesce(wip, false) == false\n][]{\n  "slug": slug.current,\n  _updatedAt\n}': PageSlugsQueryResult;
+    '*[\n  _type == "experience"\n  && defined(slug.current)\n  && coalesce(wip, false) == false\n][]{\n  "slug": slug.current,\n  _updatedAt\n}': ExperienceSlugsQueryResult;
     "*[\n  _type == \"settings\" && _id == \"settings\"\n][0]{\n  ...,\n  menu[]{\n    ...,\n    _type == 'internalLink' => @->{slug, _id, name},\n    _type != 'internalLink' => @\n  }\n}": LayoutQueryResult;
-    "*[\n  _type == \"settings\" && _id == \"settings\"\n][0]{\n  slideshow_images[]{\n    ...,\n    asset->\n  }\n}": SlideshowQueryResult;
+    '*[\n  _type == "settings" && _id == "settings"\n][0]{\n  slideshow_images[]{\n    ...,\n    asset->\n  }\n}': SlideshowQueryResult;
   }
 }
