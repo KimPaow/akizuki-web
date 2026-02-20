@@ -1,0 +1,847 @@
+[
+  {
+    "options": {
+      "canvasApp": {
+        "purpose": "Tourism experience page containing public-facing editorial content and visitor details."
+      }
+    },
+    "fields": [
+      {
+        "initialValue": false,
+        "options": {
+          "canvasApp": {
+            "exclude": true
+          }
+        },
+        "description": "この項目が真実であれば、観光ページの体験リストに表示されます",
+        "name": "wip",
+        "type": "boolean",
+        "title": "リストに表示"
+      },
+      {
+        "options": {
+          "canvasApp": {
+            "purpose": "Public-facing title of the experience."
+          }
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "ページのタイトル",
+        "name": "name",
+        "type": "string",
+        "title": "タイトル"
+      },
+      {
+        "options": {
+          "canvasApp": {
+            "purpose": "URL slug for this experience page."
+          }
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "URLの一部として使用される一意の識別子",
+        "name": "slug",
+        "type": "slug",
+        "title": "スラッグ"
+      },
+      {
+        "options": {
+          "canvasApp": {
+            "purpose": "Short intro paragraph that summarizes the experience before full details."
+          }
+        },
+        "description": "ページの内容を説明する短い文章",
+        "name": "introduction",
+        "type": "text",
+        "title": "前置き"
+      },
+      {
+        "options": {
+          "canvasApp": {
+            "purpose": "Primary long-form body content containing headings, paragraphs, images, and files."
+          }
+        },
+        "description": "ページの本文",
+        "of": [
+          {
+            "marks": {
+              "annotations": [
+                {
+                  "fields": [
+                    {
+                      "to": [
+                        {
+                          "options": {
+                            "canvasApp": {
+                              "purpose": "General content page for public website copy, including long-form editorial text."
+                            }
+                          },
+                          "type": "page"
+                        },
+                        {
+                          "options": {
+                            "canvasApp": {
+                              "purpose": "Tourism experience page containing public-facing editorial content and visitor details."
+                            }
+                          },
+                          "type": "experience"
+                        }
+                      ],
+                      "name": "reference",
+                      "type": "reference"
+                    }
+                  ],
+                  "name": "internalLink",
+                  "type": "object",
+                  "title": "Internal link"
+                },
+                {
+                  "fields": [
+                    {
+                      "validation": [
+                        {
+                          "rules": [
+                            {
+                              "flag": "uri",
+                              "constraint": {
+                                "options": {
+                                  "scheme": [
+                                    "/^http$/",
+                                    "/^https$/"
+                                  ],
+                                  "allowRelative": false,
+                                  "relativeOnly": false,
+                                  "allowCredentials": false
+                                }
+                              }
+                            }
+                          ],
+                          "level": "error"
+                        }
+                      ],
+                      "name": "href",
+                      "type": "url",
+                      "title": "URL"
+                    },
+                    {
+                      "description": "Read https://css-tricks.com/use-target_blank/",
+                      "name": "blank",
+                      "type": "boolean",
+                      "title": "Open in new tab"
+                    }
+                  ],
+                  "name": "externalLink",
+                  "type": "object",
+                  "title": "External link"
+                }
+              ],
+              "decorators": [
+                {
+                  "value": "strong",
+                  "title": "Strong"
+                },
+                {
+                  "value": "em",
+                  "title": "Italic"
+                },
+                {
+                  "value": "code",
+                  "title": "Code"
+                },
+                {
+                  "value": "underline",
+                  "title": "Underline"
+                },
+                {
+                  "value": "strike-through",
+                  "title": "Strike"
+                }
+              ]
+            },
+            "lists": [
+              {
+                "value": "bullet",
+                "title": "Bulleted list"
+              },
+              {
+                "value": "number",
+                "title": "Numbered list"
+              }
+            ],
+            "styles": [
+              {
+                "value": "normal",
+                "title": "Normal"
+              },
+              {
+                "value": "h1",
+                "title": "Heading 1"
+              },
+              {
+                "value": "h2",
+                "title": "Heading 2"
+              },
+              {
+                "value": "h3",
+                "title": "Heading 3"
+              },
+              {
+                "value": "h4",
+                "title": "Heading 4"
+              },
+              {
+                "value": "h5",
+                "title": "Heading 5"
+              },
+              {
+                "value": "h6",
+                "title": "Heading 6"
+              },
+              {
+                "value": "blockquote",
+                "title": "Quote"
+              }
+            ],
+            "of": [],
+            "type": "block"
+          },
+          {
+            "fields": [
+              {
+                "validation": [
+                  {
+                    "rules": [
+                      {
+                        "flag": "presence",
+                        "constraint": "required"
+                      }
+                    ],
+                    "level": "error"
+                  }
+                ],
+                "name": "alt",
+                "type": "string"
+              }
+            ],
+            "type": "image"
+          },
+          {
+            "fields": [
+              {
+                "validation": [
+                  {
+                    "rules": [
+                      {
+                        "flag": "presence",
+                        "constraint": "required"
+                      }
+                    ],
+                    "level": "error"
+                  }
+                ],
+                "name": "title",
+                "type": "string"
+              }
+            ],
+            "type": "file"
+          }
+        ],
+        "name": "content",
+        "type": "array",
+        "title": "コンテンツ"
+      },
+      {
+        "initialValue": true,
+        "options": {
+          "canvasApp": {
+            "exclude": true
+          }
+        },
+        "description": "ページに目次を表示するかどうか",
+        "name": "toc",
+        "type": "boolean",
+        "title": "目次"
+      },
+      {
+        "options": {
+          "layout": "list",
+          "list": [
+            {
+              "title": "文化",
+              "value": "Culture"
+            },
+            {
+              "title": "自然",
+              "value": "Nature"
+            },
+            {
+              "title": "食事",
+              "value": "Food"
+            },
+            {
+              "title": "買い物",
+              "value": "Shopping"
+            },
+            {
+              "title": "宿泊",
+              "value": "Accommodation"
+            },
+            {
+              "title": "体験",
+              "value": "Experience"
+            }
+          ],
+          "canvasApp": {
+            "purpose": "Editorial taxonomy for filtering tourism listings, not free-form tags."
+          }
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "valid",
+                "constraint": [
+                  "Culture",
+                  "Nature",
+                  "Food",
+                  "Shopping",
+                  "Accommodation",
+                  "Experience"
+                ]
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "categories",
+        "type": "array",
+        "title": "カテゴリー"
+      },
+      {
+        "options": {
+          "canvasApp": {
+            "purpose": "Primary hero or thumbnail image representing this experience."
+          }
+        },
+        "name": "image",
+        "type": "image",
+        "title": "写真"
+      },
+      {
+        "options": {
+          "canvasApp": {
+            "purpose": "Official website URL for visitors."
+          }
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "website",
+        "type": "url",
+        "title": "ウェブサイト"
+      },
+      {
+        "options": {
+          "canvasApp": {
+            "purpose": "Public contact email address."
+          }
+        },
+        "name": "email",
+        "type": "email",
+        "title": "メールアドレス"
+      },
+      {
+        "options": {
+          "canvasApp": {
+            "purpose": "Public contact phone number."
+          }
+        },
+        "name": "phone",
+        "type": "string",
+        "title": "電話番号"
+      },
+      {
+        "options": {
+          "canvasApp": {
+            "purpose": "Opening hours or availability notes for visitors."
+          }
+        },
+        "name": "hours",
+        "type": "text",
+        "title": "営業時間"
+      },
+      {
+        "options": {
+          "canvasApp": {
+            "purpose": "Approximate price range guidance for visitors."
+          }
+        },
+        "name": "pricerange",
+        "type": "string",
+        "title": "価格帯"
+      },
+      {
+        "options": {
+          "canvasApp": {
+            "purpose": "Street address for visitor navigation."
+          }
+        },
+        "name": "address",
+        "type": "string",
+        "title": "住所"
+      },
+      {
+        "options": {
+          "canvasApp": {
+            "purpose": "Map coordinates used for location display and directions."
+          }
+        },
+        "name": "location",
+        "type": "geopoint",
+        "title": "場所"
+      }
+    ],
+    "name": "experience",
+    "type": "document",
+    "title": "観光"
+  },
+  {
+    "options": {
+      "canvasApp": {
+        "purpose": "General content page for public website copy, including long-form editorial text."
+      }
+    },
+    "fields": [
+      {
+        "initialValue": false,
+        "options": {
+          "canvasApp": {
+            "exclude": true
+          }
+        },
+        "description": "このページの訪問者に「建設中」メッセージを表示するかどうか",
+        "name": "wip",
+        "type": "boolean",
+        "title": "工事中"
+      },
+      {
+        "initialValue": false,
+        "options": {
+          "canvasApp": {
+            "exclude": true
+          }
+        },
+        "description": "このページにコンタクトフォームを表示するかどうか",
+        "name": "contact_form",
+        "type": "boolean",
+        "title": "コンタクトフォーム"
+      },
+      {
+        "options": {
+          "canvasApp": {
+            "purpose": "Main page title shown in content lists and page headers."
+          }
+        },
+        "description": "ページのタイトル",
+        "name": "name",
+        "type": "string",
+        "title": "タイトル"
+      },
+      {
+        "options": {
+          "canvasApp": {
+            "purpose": "URL slug for routing. Keep short, stable, and human-readable."
+          }
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "URLの一部として使用される一意の識別子",
+        "name": "slug",
+        "type": "slug",
+        "title": "スラッグ"
+      },
+      {
+        "options": {
+          "canvasApp": {
+            "purpose": "Short introductory summary that appears before the main content."
+          }
+        },
+        "description": "ページの内容を説明する短い文章",
+        "name": "preamble",
+        "type": "text",
+        "title": "前置き"
+      },
+      {
+        "options": {
+          "canvasApp": {
+            "purpose": "Primary long-form body content containing headings, paragraphs, images, and files."
+          }
+        },
+        "description": "ページの本文",
+        "of": [
+          {
+            "marks": {
+              "annotations": [
+                {
+                  "fields": [
+                    {
+                      "to": [
+                        {
+                          "options": {
+                            "canvasApp": {
+                              "purpose": "General content page for public website copy, including long-form editorial text."
+                            }
+                          },
+                          "type": "page"
+                        },
+                        {
+                          "options": {
+                            "canvasApp": {
+                              "purpose": "Tourism experience page containing public-facing editorial content and visitor details."
+                            }
+                          },
+                          "type": "experience"
+                        }
+                      ],
+                      "name": "reference",
+                      "type": "reference"
+                    }
+                  ],
+                  "name": "internalLink",
+                  "type": "object",
+                  "title": "Internal link"
+                },
+                {
+                  "fields": [
+                    {
+                      "validation": [
+                        {
+                          "rules": [
+                            {
+                              "flag": "uri",
+                              "constraint": {
+                                "options": {
+                                  "scheme": [
+                                    "/^http$/",
+                                    "/^https$/"
+                                  ],
+                                  "allowRelative": false,
+                                  "relativeOnly": false,
+                                  "allowCredentials": false
+                                }
+                              }
+                            }
+                          ],
+                          "level": "error"
+                        }
+                      ],
+                      "name": "href",
+                      "type": "url",
+                      "title": "URL"
+                    },
+                    {
+                      "description": "Read https://css-tricks.com/use-target_blank/",
+                      "name": "blank",
+                      "type": "boolean",
+                      "title": "Open in new tab"
+                    }
+                  ],
+                  "name": "externalLink",
+                  "type": "object",
+                  "title": "External link"
+                }
+              ],
+              "decorators": [
+                {
+                  "value": "strong",
+                  "title": "Strong"
+                },
+                {
+                  "value": "em",
+                  "title": "Italic"
+                },
+                {
+                  "value": "code",
+                  "title": "Code"
+                },
+                {
+                  "value": "underline",
+                  "title": "Underline"
+                },
+                {
+                  "value": "strike-through",
+                  "title": "Strike"
+                }
+              ]
+            },
+            "lists": [
+              {
+                "value": "bullet",
+                "title": "Bulleted list"
+              },
+              {
+                "value": "number",
+                "title": "Numbered list"
+              }
+            ],
+            "styles": [
+              {
+                "value": "normal",
+                "title": "Normal"
+              },
+              {
+                "value": "h1",
+                "title": "Heading 1"
+              },
+              {
+                "value": "h2",
+                "title": "Heading 2"
+              },
+              {
+                "value": "h3",
+                "title": "Heading 3"
+              },
+              {
+                "value": "h4",
+                "title": "Heading 4"
+              },
+              {
+                "value": "h5",
+                "title": "Heading 5"
+              },
+              {
+                "value": "h6",
+                "title": "Heading 6"
+              },
+              {
+                "value": "blockquote",
+                "title": "Quote"
+              }
+            ],
+            "of": [],
+            "type": "block"
+          },
+          {
+            "fields": [
+              {
+                "validation": [
+                  {
+                    "rules": [
+                      {
+                        "flag": "presence",
+                        "constraint": "required"
+                      }
+                    ],
+                    "level": "error"
+                  }
+                ],
+                "name": "alt",
+                "type": "string"
+              }
+            ],
+            "type": "image"
+          },
+          {
+            "fields": [
+              {
+                "validation": [
+                  {
+                    "rules": [
+                      {
+                        "flag": "presence",
+                        "constraint": "required"
+                      }
+                    ],
+                    "level": "error"
+                  }
+                ],
+                "name": "title",
+                "type": "string"
+              }
+            ],
+            "type": "file"
+          }
+        ],
+        "name": "content",
+        "type": "array",
+        "title": "コンテンツ"
+      },
+      {
+        "initialValue": true,
+        "options": {
+          "canvasApp": {
+            "exclude": true
+          }
+        },
+        "description": "ページに目次を表示するかどうか",
+        "name": "toc",
+        "type": "boolean",
+        "title": "目次"
+      }
+    ],
+    "name": "page",
+    "type": "document",
+    "title": "ページ"
+  },
+  {
+    "options": {
+      "canvasApp": {
+        "exclude": true
+      }
+    },
+    "fields": [
+      {
+        "of": [
+          {
+            "to": [
+              {
+                "options": {
+                  "canvasApp": {
+                    "purpose": "General content page for public website copy, including long-form editorial text."
+                  }
+                },
+                "type": "page"
+              }
+            ],
+            "type": "reference",
+            "name": "internalLink",
+            "title": "内部リンク"
+          },
+          {
+            "fields": [
+              {
+                "name": "title",
+                "type": "string",
+                "title": "タイトル"
+              },
+              {
+                "name": "url",
+                "type": "string",
+                "title": "URL"
+              },
+              {
+                "description": "Read https://css-tricks.com/use-target_blank/",
+                "name": "blank",
+                "type": "boolean",
+                "title": "Open in new tab"
+              }
+            ],
+            "type": "object",
+            "name": "externalLink",
+            "title": "外部リンク"
+          }
+        ],
+        "name": "menu",
+        "type": "array",
+        "title": "Main Menu"
+      },
+      {
+        "of": [
+          {
+            "type": "image"
+          }
+        ],
+        "name": "slideshow_images",
+        "type": "array",
+        "title": "スライドショーの画像"
+      },
+      {
+        "of": [
+          {
+            "fields": [
+              {
+                "name": "title",
+                "type": "string",
+                "title": "タイトル"
+              },
+              {
+                "name": "url",
+                "type": "string",
+                "title": "URL"
+              }
+            ],
+            "type": "object",
+            "name": "externalLink",
+            "title": "外部リンク"
+          }
+        ],
+        "name": "socials",
+        "type": "array",
+        "title": "ソーシャルリンク"
+      },
+      {
+        "name": "email",
+        "type": "email",
+        "title": "メールアドレス"
+      },
+      {
+        "name": "phone",
+        "type": "string",
+        "title": "電話番号"
+      }
+    ],
+    "name": "settings",
+    "type": "document",
+    "title": "設定"
+  }
+]

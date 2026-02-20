@@ -1,0 +1,21 @@
+{
+  "version": 3,
+  "createdAt": "2026-02-20T04:42:48.682Z",
+  "workspaces": [
+    {
+      "name": "default",
+      "title": "akizuki",
+      "basePath": "/admin",
+      "projectId": "60vbi69u",
+      "dataset": "production",
+      "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\"><rect width=\"32\" height=\"32\" rx=\"2\" fill=\"#8f57ef\"></rect><text x=\"50%\" y=\"50%\" text-anchor=\"middle\" alignment-baseline=\"middle\" fill=\"hsla(262, 83%, 24%, 1)\" style=\"font-family:Inter, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, &quot;Liberation Sans&quot;, Helvetica, Arial, system-ui, sans-serif;font-weight:500;font-size:13px;transform:translateY(1px)\">A</text></svg>",
+      "mediaLibrary": {
+        "enabled": false,
+        "__internal": {}
+      },
+      "schema": "a08747a2.create-schema.json",
+      "tools": "b992c54e.create-tools.json"
+    }
+  ],
+  "studioVersion": "5.10.0"
+}

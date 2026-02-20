@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import { preloadModule } from "react-dom";
+
+const bridgeScript = "https://core.sanity-cdn.com/bridge.js";
 
 export const metadata: Metadata = {
   title: "Admin",
@@ -13,9 +16,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  preloadModule(bridgeScript, { as: "script" });
+
   return (
     <html lang="ja">
-      <body>{children}</body>
+      <body>
+        <script src={bridgeScript} async type="module" />
+        {children}
+      </body>
     </html>
   );
 }
