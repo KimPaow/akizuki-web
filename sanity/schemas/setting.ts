@@ -4,6 +4,11 @@ export const settings = defineType({
   name: "settings",
   title: "設定",
   type: "document",
+  options: {
+    canvasApp: {
+      exclude: true,
+    },
+  },
   fields: [
     defineField({
       title: "Main Menu",

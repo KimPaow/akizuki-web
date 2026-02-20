@@ -5,6 +5,12 @@ export const page = defineType({
   name: "page",
   title: "ページ",
   type: "document",
+  options: {
+    canvasApp: {
+      purpose:
+        "General content page for public website copy, including long-form editorial text.",
+    },
+  },
   fields: [
     defineField({
       title: "工事中",
@@ -12,6 +18,11 @@ export const page = defineType({
       name: "wip",
       type: "boolean",
       initialValue: false,
+      options: {
+        canvasApp: {
+          exclude: true,
+        },
+      },
     }),
     defineField({
       title: "コンタクトフォーム",
@@ -19,12 +30,22 @@ export const page = defineType({
       name: "contact_form",
       type: "boolean",
       initialValue: false,
+      options: {
+        canvasApp: {
+          exclude: true,
+        },
+      },
     }),
     defineField({
       title: "タイトル",
       description: "ページのタイトル",
       name: "name",
       type: "string",
+      options: {
+        canvasApp: {
+          purpose: "Main page title shown in content lists and page headers.",
+        },
+      },
     }),
     defineField({
       title: "スラッグ",
@@ -32,12 +53,23 @@ export const page = defineType({
       name: "slug",
       type: "slug",
       validation: (Rule) => Rule.required(),
+      options: {
+        canvasApp: {
+          purpose: "URL slug for routing. Keep short, stable, and human-readable.",
+        },
+      },
     }),
     defineField({
       title: "前置き",
       description: "ページの内容を説明する短い文章",
       name: "preamble",
       type: "text",
+      options: {
+        canvasApp: {
+          purpose:
+            "Short introductory summary that appears before the main content.",
+        },
+      },
     }),
     richText,
     defineField({
@@ -46,6 +78,11 @@ export const page = defineType({
       name: "toc",
       type: "boolean",
       initialValue: true,
+      options: {
+        canvasApp: {
+          exclude: true,
+        },
+      },
     }),
   ],
   preview: {

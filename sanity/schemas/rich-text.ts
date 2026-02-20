@@ -6,6 +6,12 @@ export default defineField({
   description: "ページの本文",
   name: "content",
   type: "array",
+  options: {
+    canvasApp: {
+      purpose:
+        "Primary long-form body content containing headings, paragraphs, images, and files.",
+    },
+  },
   of: [
     {
       type: "block",
