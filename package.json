@@ -8,8 +8,10 @@
     "start": "next start",
     "lint": "eslint .",
     "sanity:schema": "sanity schema extract",
+    "sanity:manifest": "sanity manifest extract --path public/admin/static",
+    "sanity:deploy": "sanity schema deploy",
     "sanity:typegen": "sanity typegen generate",
-    "sanity:generate": "pnpm run sanity:schema && pnpm run sanity:typegen"
+    "sanity:generate": "pnpm run sanity:schema && pnpm run sanity:typegen && pnpm run sanity:manifest"
   },
   "dependencies": {
     "@hookform/resolvers": "^4.1.3",
