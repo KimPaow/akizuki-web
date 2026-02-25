@@ -3,7 +3,6 @@ import { structureTool } from "sanity/structure";
 import { visionTool } from "@sanity/vision";
 import { schema } from "./sanity/schemas";
 import { jaJPLocale } from "@sanity/locale-ja-jp";
-import { esESLocale } from "@sanity/locale-es-es";
 import { apiVersion, dataset, projectId } from "./sanity/env";
 import { presentationTool } from "sanity/presentation";
 import {
@@ -11,6 +10,7 @@ import {
   singletonTypes,
   structure,
 } from "./sanity/structure";
+import { locate } from "./sanity/presentation";
 
 const plugins: PluginOptions[] = [
   structureTool(structure),
@@ -19,13 +19,17 @@ const plugins: PluginOptions[] = [
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore This is complaining that "Types of property 'schema' are incompatible."
   visionTool({ defaultApiVersion: apiVersion }),
-  esESLocale(),
   jaJPLocale(),
   presentationTool({
+    locate,
     previewUrl: {
       previewMode: {
         enable: "/api/draft-mode/enable",
       },
+      origin:
+        typeof window !== "undefined"
+          ? window.location.origin
+          : "https://www.akizuki.co.jp",
     },
   }),
 ];
