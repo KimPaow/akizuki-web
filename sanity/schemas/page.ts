@@ -55,7 +55,8 @@ export const page = defineType({
       validation: (Rule) => Rule.required(),
       options: {
         canvasApp: {
-          purpose: "URL slug for routing. Keep short, stable, and human-readable.",
+          purpose:
+            "URL slug for routing. Keep short, stable, and human-readable.",
         },
       },
     }),
@@ -90,6 +91,13 @@ export const page = defineType({
       title: "name",
       subtitle: "slug.current",
       media: "image",
+    },
+    prepare({ title, subtitle }) {
+      return {
+        title,
+        subtitle,
+        media: undefined,
+      };
     },
   },
 });
