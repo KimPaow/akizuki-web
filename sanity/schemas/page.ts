@@ -90,7 +90,6 @@ export const page = defineType({
     select: {
       title: "name",
       subtitle: "slug.current",
-      media: "image",
     },
     prepare({ title, subtitle }) {
       return {
